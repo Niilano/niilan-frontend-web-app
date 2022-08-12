@@ -40,11 +40,11 @@ nav button{
    line-height: 33px;
 }
 
-/*@media(max-width: 1400px){
-	img.flower{
-		display: none !important;
+@media(max-width: 1400px){
+	top-content{
+		padding-top: 0% !important;
 	}
-}*/
+}
 
 	img.flower{
     position: absolute;
