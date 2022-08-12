@@ -1,0 +1,41 @@
+div.flow{
+
+background: linear-gradient(180deg, #CBF9FD 0%, rgba(242, 254, 255, 0) 58.85%);
+
+min-height: 100vh;
+
+}
+
+div.logo{
+	font-family: 'Inder';
+   font-style: normal;
+   font-weight: 400;
+  font-size: 35px;
+  line-height: 60px;
+  width: 30%;
+}
+
+nav{
+	width: 100%;
+	text-align: right;
+}
+
+nav a{
+	text-decoration: none;
+	margin: 0 2%;
+	color: black;
+	font-family: 'Inder';
+   font-style: normal;
+   font-weight: 400;
+  font-size: 1.2em;
+  line-height: 30px;
+
+}
+
+nav button{
+	font-family: 'inter-light';
+    font-style: normal;
+   font-weight: 400;
+   font-size: 1.2em;
+   line-height: 33px;
+}
