@@ -41,7 +41,7 @@ nav button{
 }
 
 div.mobile{
-	display: none;
+	display: none !important;
 }
 
 @media(max-width: 1400px){
