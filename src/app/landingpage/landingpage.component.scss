@@ -40,6 +40,10 @@ nav button{
    line-height: 33px;
 }
 
+div.mobile{
+	display: none;
+}
+
 @media(max-width: 1400px){
 	top-content{
 		padding-top: 0% !important;
@@ -56,4 +60,13 @@ nav button{
   z-index: -99;
 
   filter: drop-shadow(0px 8px 9px rgba(0, 0, 0, 0.25));
+	}
+
+	@media(max-width:  500px){
+		div.flow{
+			display: none;
+		}
+		div.mobile{
+			display: block;
+		}
 	}
