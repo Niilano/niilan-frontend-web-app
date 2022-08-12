@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 
 const routes: Routes = [
-{path : 'home' , component: LandingpageComponent }
+{path : 'home' , component: LandingpageComponent },
+{path : '' , redirectTo: 'home' , pathMatch: 'full' }
 ];
 
 @NgModule({
