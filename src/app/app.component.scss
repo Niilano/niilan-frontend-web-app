@@ -1,0 +1,15 @@
+.mobile{
+    display: none !important;
+}
+
+@media(max-width: 500px){
+
+    .mobile{
+        display: flex !important;
+    }
+
+    .router{
+        display: none !important;
+    }
+
+}
