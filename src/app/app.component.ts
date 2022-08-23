@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'niilan';
+
+  ngAfterViewInit(){
+    let preloader = document.getElementById("preloader") as HTMLElement
+
+    let content = document.getElementById("content") as HTMLElement
+  
+    setTimeout(()=>{
+      preloader.classList.add('hidden')
+      content.classList.remove('hidden')
+    },2000)
+  
+  }
+
 }

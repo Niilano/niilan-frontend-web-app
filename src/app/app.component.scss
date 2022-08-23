@@ -2,6 +2,26 @@
     display: none !important;
 }
 
+img{
+	animation: see 2s ease infinite;
+}
+
+@keyframes see{
+	from{
+		/*transform: rotate(45deg);*/
+		width: 20%;
+	}
+	to{
+		width: 30%;
+		/*transform: rotate(-45deg);*/
+	}
+}
+
+.hidden{
+	display: none !important;
+	transition: all 2s ease-in-out;
+}
+
 @media(max-width: 500px){
 
     .mobile{
