@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -57,12 +58,12 @@ export class AuthenticateusersComponent implements OnInit {
   }
 
   register = this.fb.group({
-    fullname : ['',Validators.required],
-    email : ['',Validators.required],
-    phone : ['',Validators.required],
+    fullName : ['',Validators.required],
+    email : ['',[Validators.required,Validators.email]],
+    phoneNumber : ['',Validators.required],
     password : ['',Validators.required],
-    confirmPassword : ['',Validators.required],
-    agree : ['',Validators.required]
+    confirmPassword : ['',[Validators.required,Validators.max(6)]],
+    agreedTermsOfService : ['',Validators.required]
   },
     {
       validators: [this.mustmatch('password','confirmPassword')]
@@ -75,13 +76,30 @@ export class AuthenticateusersComponent implements OnInit {
 
   submitRegister(){
     this.submitted = true
-    if(this.register.errors){
-      this.submitted = false
+
+    if(this.register.invalid){
+      // this.submitted = false
       return
     }
+
+    // console.log(this.register.getRawValue())
+
+    this.http.post('http://localhost:4000/users/register',this.register.getRawValue()).subscribe(
+      res=>{
+
+        console.log(res)
+
+      },
+      err=>{
+
+        console.log(err)
+
+      }
+    )
+
   }
 
-  constructor( private fb : FormBuilder ) {
+  constructor( private fb : FormBuilder, private http : HttpClient ) {
    }
 
   ngOnInit(): void {

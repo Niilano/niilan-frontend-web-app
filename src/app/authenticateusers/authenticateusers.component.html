@@ -78,19 +78,21 @@
 
                 <div class="form-group mb-3" style="width: 50%;">
 
-                <label > Full name </label>
+                <!-- <label > Full name </label> -->
 
-                <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['fullname'].errors?.['required']"> *** This field is required *** </small>
+                <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['fullName'].errors?.['required']"> *** This field is required *** </small>
 
-                <input class="form-control bg-light" placeholder="Full name" formControlName="fullname" >
+                <input class="form-control bg-light" placeholder="Full name" formControlName="fullName" >
 
                 </div>
 
                 <div class="form-group mb-3" style="width: 50%;">
 
-                <label > Email </label>
+                <!-- <label > Email </label> -->
 
                 <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['email'].errors?.['required']"> *** This field is required *** </small>
+
+                <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['email'].errors?.['email']"> *** Please provide a valid email *** </small>
 
                 <input class="form-control bg-light" placeholder="Email" formControlName="email" >
 
@@ -98,19 +100,21 @@
 
                 <div class="form-group mb-3" style="width: 50%;">
 
-                    <label > Phone Number </label>
+                    <!-- <label > Phone Number </label> -->
 
-                    <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['phone'].errors?.['required']"> *** This field is required *** </small>
+                    <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['phoneNumber'].errors?.['required']"> *** This field is required *** </small>
     
-                    <input class="form-control bg-light" placeholder="Phone Number" formControlName="phone" >
+                    <input class="form-control bg-light" placeholder="Phone Number" formControlName="phoneNumber" >
     
                     </div>
 
                     <div class="form-group mb-3" style="width: 50%;">
 
-                        <label > Password </label>
+                        <!-- <label > Password </label> -->
 
                         <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['password'].errors?.['required']"> *** This field is required *** </small>
+
+                        <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['password'].errors?.['max']"> *** Password must be at least 6. *** </small>
 
                         <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['confirmPassword'].errors?.['mustmatch']"> *** Passwords do not match *** </small>
         
@@ -120,7 +124,7 @@
 
                         <div class="form-group mb-3" style="width: 50%;">
 
-                            <label > Confirm Password </label>
+                            <!-- <label > Confirm Password </label> -->
 
                             <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['confirmPassword'].errors?.['required']"> *** This field is required *** </small>
 
@@ -132,11 +136,11 @@
 
                         <div class="mb-3" style="width: 50%;">
             
-                            <input class="bg-light d-inline" type="checkbox" formControlName="agree" >
+                            <input id="agreedTermsOfService" class="bg-light d-inline" type="checkbox" formControlName="agreedTermsOfService" >
 
-                            <label class="d-inline"> By creating an account, I have accepted and agree to the Terms of service and Privacy Policy of Niilan </label>
+                            <label for="agreedTermsOfService" class="d-inline"> By creating an account, I have accepted and agree to the Terms of service and Privacy Policy of Niilan </label>
 
-                            <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['agree'].errors?.['required']"> *** This field is required *** </small>
+                            <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['agreedTermsOfService'].errors?.['required']"> *** This field is required *** </small>
             
                             </div>
 
