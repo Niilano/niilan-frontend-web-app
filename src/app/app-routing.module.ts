@@ -10,7 +10,8 @@ const routes: Routes = [
 {path : 'login' , component : AuthenticateusersComponent },
 { path : 'register' , component : AuthenticateusersComponent },
 { path: 'listings', component: CarsComponent },
-{path : '' , redirectTo: 'home' , pathMatch: 'full' }
+{ path: '' , component: LandingpageComponent }
+// {path : '' , redirectTo: 'home' , pathMatch: 'full' }
 ];
 
 @NgModule({

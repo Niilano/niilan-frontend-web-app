@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authenticateusers',
@@ -9,11 +10,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AuthenticateusersComponent implements OnInit {
 
+  SucMsg:any
+  ErrMsg:any
+
   submitted = false
 
   // Log in form
   login = this.fb.group({
-    username : ['',Validators.required],
+    email : ['',Validators.required],
     password : ['',Validators.required]
   })
 
@@ -24,12 +28,37 @@ export class AuthenticateusersComponent implements OnInit {
   submitLoginDetails(){
     this.submitted = true
 
-    if(this.login.errors){
-      // this.submitted = false
-      return
-    }
+    if(this.login.invalid) return
+    
+    this.http.post('http://localhost:4000/users/login',this.login.getRawValue()).subscribe(
+      res=>{
 
-    // alert('helooo')
+        // console.log(res)
+
+        let result = JSON.parse(JSON.stringify(res))
+
+        this.SucMsg = result.msg
+
+        setTimeout(()=>{
+          this.SucMsg = ''
+          localStorage.setItem('user',result.token);
+          this.route.navigate(['listings']);
+        },2000)
+
+      },
+      err=>{
+
+        console.log(err)
+
+        this.ErrMsg = err.error.msg
+
+        setTimeout(()=>{
+          this.ErrMsg = ''
+        },3000)
+
+      }
+    )
+
   }
 
   // Register Form
@@ -87,19 +116,35 @@ export class AuthenticateusersComponent implements OnInit {
     this.http.post('http://localhost:4000/users/register',this.register.getRawValue()).subscribe(
       res=>{
 
-        console.log(res)
+        // console.log(res)
+
+        let result = JSON.parse(JSON.stringify(res))
+
+        this.SucMsg = result.msg
+
+        setTimeout(()=>{
+          this.SucMsg = ''
+          localStorage.setItem('user',result.token);
+          this.route.navigate(['listings']);
+        },2000)
 
       },
       err=>{
 
         console.log(err)
 
+        this.ErrMsg = err.error.msg
+
+        setTimeout(()=>{
+          this.ErrMsg = ''
+        },3000)
+
       }
     )
 
   }
 
-  constructor( private fb : FormBuilder, private http : HttpClient ) {
+  constructor( private fb : FormBuilder, private http : HttpClient, private route : Router ) {
    }
 
   ngOnInit(): void {

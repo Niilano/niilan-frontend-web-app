@@ -12,11 +12,11 @@ export class AppComponent {
     let preloader = document.getElementById("preloader") as HTMLElement
 
     let content = document.getElementById("content") as HTMLElement
-  
-    setTimeout(()=>{
-      preloader.classList.add('hidden')
-      content.classList.remove('hidden')
-    },2000)
+    content.classList.remove('hidden')
+    // setTimeout(()=>{
+    //   // preloader.classList.add('hidden')
+    //   content.classList.remove('hidden')
+    // },2000)
   
   }
 

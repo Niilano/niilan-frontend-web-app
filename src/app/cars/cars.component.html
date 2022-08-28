@@ -1,3 +1,75 @@
+<!-- 
+<div class="bg-dark d-flex p-3">
+	<div class="logo">
+		<img src="assets/niilan.png">
+	</div>
+	<h1 class="text-light m-0"> Welcome {{user}} </h1>
+</div> -->
+
+<header class="d-flex justify-content-between py-3 px-3 align-items-center border-bottom rounded border-5 ">
+
+	<div class="logo" >
+	
+		<img src="assets/niilan.png" class="img-responsive" style="width: 50px;"> NIILAN
+	
+	</div>
+	
+	<nav *ngIf="!user">
+	
+		<a href=""> About </a>
+	
+		<a href=""> How it works? </a>
+	
+		<a routerLink="/listings"> Cars </a>
+	
+		<button class="btn mx-3" style="border: 1px solid #000000;border-radius: 36px;" routerLink="/login" > Log in </button>
+	
+		<button class="btn" style="background: #039ADD; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.17); border-radius: 36px;" routerLink="/register" > Sign up </button>
+	
+	</nav>
+
+	<!-- <p class="bg-dark" style="width: 30%;"> WELCOME AAA </p> -->
+
+	<nav *ngIf="user">
+	
+		<a href="" class="border border-3 p-1 rounded bg-dark text-light"> List a Car </a>
+	
+		<a href=""> Learn More </a>
+	
+		<a routerLink="/listings"> Trips </a>
+	
+		<i class="fa fa-user-circle fa-2x" ></i>
+
+		<div class="dropdown">
+			<button class="btn btn-primary dropdown-toggle" data-toddle="dropdown"> Drop <span class="caret"></span>  </button>
+
+			<ul class="dropdown-menu">
+				<li> <a href=""> Profile </a> </li>
+				<li> <a href=""> Log out </a> </li>
+			</ul>
+
+		</div>
+	
+	</nav>
+	
+	</header>
+
+	<div class="dropdown">
+		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Drop <span class="caret"></span>  </button>
+
+		<ul class="dropdown-menu">
+			<li> <a href=""> Profile </a> </li>
+			<li> <a href=""> Log out </a> </li>
+		</ul>
+
+	</div>
+
+	<!-- <div class="a d-flex flex-column fixed-top bg-light " style=" width: 20%; left: 80%; top: 5%; "> 
+
+		<a href=""> Profile </a>
+		<a href=""> Log out </a>
+		
+	</div> -->
 
 <div class="mt-5">
 
@@ -21,9 +93,9 @@
 
 					<!-- <h6 class="text-center m-0"> Details  </h6> -->
 
-					<p class="font-weight-bold m-0"> Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr </p>
+					<p class="font-weight-bold m-0" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; "> Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr </p>
 
-					<h2 class="m-0 text-center"> <b> GH300 </b>  </h2>
+					<h2 class="m-0 text-center"> <b> GH₵300 / day </b>  </h2>
 
 				</div>
 
@@ -31,7 +103,7 @@
 
 			<div class="card-footer justify-content-center align-items-center row m-0" >
 
-<span class="col-4 m-0 p-0 text-center font-weight-bolder text-primary " style="font-weight : bolder; font-size: .9em; ">
+<span class="col-4 m-0 p-0 text-center font-weight-bolder text-primary " style="font-weight : bolder; font-size: .9em; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; ">
 				<i class="fa-solid fa-check-double font-weight-bolder"></i> AVAILABLE
 			</span>
 
@@ -72,7 +144,7 @@
 
 					<!-- <h6 class="text-center m-0"> Details  </h6> -->
 
-					<p class="font-weight-bold m-0"> Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr </p>
+					<p class="font-weight-bold m-0" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; "> Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr </p>
 
 					<h2 class="m-0 text-center"> <b> GH250 </b>  </h2>
 

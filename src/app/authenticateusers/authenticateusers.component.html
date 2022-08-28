@@ -17,21 +17,21 @@
 
                 <div class="form-group mb-4" style="width: 50%;">
 
-                <label > Full name </label>
+                <label > Email </label>
 
-                <small class="text-danger font-weight-bolder" *ngIf="submitted && this.loginV['username'].errors?.['required']"> *** This field is required *** </small>
+                <small class="text-danger font-weight-bolder" *ngIf="submitted && this.loginV['email'].errors?.['required']"> *** This field is required *** </small>
 
-                <input class="form-control bg-light" placeholder="Full name" formControlName="username" >
+                <input class="form-control bg-light" placeholder="email" formControlName="email" >
 
                 </div>
 
                 <div class="form-group" style="width: 50%;">
 
-                <label > Email </label>
+                <label > Password </label>
 
                 <small class="text-danger font-weight-bolder" *ngIf="submitted && this.loginV['password'].errors?.['required']"> *** This field is required *** </small>
 
-                <input class="form-control bg-light" placeholder="Email" formControlName="password" >
+                <input class="form-control bg-light" placeholder="Password" formControlName="password" type="password" >
 
                 </div>
 
@@ -165,3 +165,7 @@
     
 
 </div>
+
+<p *ngIf="SucMsg" class="fixed-top bg-success mx-auto rounded p-3 text-center text-light" style="width: 50%; top: 5%;"> {{SucMsg}} </p>
+
+<p *ngIf="ErrMsg" class="fixed-top bg-danger mx-auto rounded p-3 text-center text-light" style="width: 50%; top: 5%;"> {{ErrMsg}} </p>
