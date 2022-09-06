@@ -6,7 +6,7 @@
 	<h1 class="text-light m-0"> Welcome {{user}} </h1>
 </div> -->
 
-<header class="d-flex justify-content-between py-3 px-3 align-items-center border-bottom rounded border-5 ">
+<header class="d-flex justify-content-between py-2 px-3 align-items-center border-bottom rounded border-5 ">
 
 	<div class="logo" >
 	
@@ -14,7 +14,7 @@
 	
 	</div>
 	
-	<nav *ngIf="!user">
+	<nav class="m-hide" *ngIf="!user">
 	
 		<a href=""> About </a>
 	
@@ -28,41 +28,73 @@
 	
 	</nav>
 
+	<div *ngIf="!user" class="col text-end d-hide">
+		<div ngbDropdown class="d-inline-block" style="background-color: transparent !important;" >
+			<!-- <i class="fa-solid fa-user border border-5 p-3 "  style="border-radius: 50%;" ></i> -->
+		  <button type="button" class=" border border-0" style="background-color: transparent !important;" id="dropdownBasic1" ngbDropdownToggle>
+			<i class="fa-solid fa-bars fa-2x "   ></i></button>
+
+		  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+
+			<!-- <button ngbDropdownItem  onclick="document.getElementById('addEvents').classList.toggle('hidden')"> Profile </button>
+
+<button ngbDropdownItem >
+	 Log out </button> -->
+
+		<a href="" ngbDropdownItem > Log In </a>
+	
+		<a href="" ngbDropdownItem > Sign Up </a>
+	
+		<a routerLink="/listings" ngbDropdownItem > Learn More </a>
+
+
+		  </div>
+		</div>
+	  </div>
+
 	<!-- <p class="bg-dark" style="width: 30%;"> WELCOME AAA </p> -->
 
-	<nav *ngIf="user">
+	<nav *ngIf="user" class="d-flex justify-content-end align-items-center" >
+
+		<div class="m-hide " style="width: 100%;" >
 	
 		<a href="" class="border border-3 p-1 rounded bg-dark text-light"> List a Car </a>
 	
 		<a href=""> Learn More </a>
 	
 		<a routerLink="/listings"> Trips </a>
-	
-		<i class="fa fa-user-circle fa-2x" ></i>
-
-		<div class="dropdown">
-			<button class="btn btn-primary dropdown-toggle" data-toddle="dropdown"> Drop <span class="caret"></span>  </button>
-
-			<ul class="dropdown-menu">
-				<li> <a href=""> Profile </a> </li>
-				<li> <a href=""> Log out </a> </li>
-			</ul>
 
 		</div>
+	
+		<!-- <i class="fa fa-user-circle fa-2x" ></i> -->
+
+		<div class="">
+			<div ngbDropdown class="d-inline-block">
+				<!-- <i class="fa-solid fa-user border border-5 p-3 "  style="border-radius: 50%;" ></i> -->
+			  <button type="button" class=" border border-0" style="background-color: transparent !important;" id="dropdownBasic1" ngbDropdownToggle>
+				<i class="fa-solid fa-user-circle fa-2x"   ></i></button>
+
+			  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+
+				<button ngbDropdownItem  onclick="document.getElementById('addEvents').classList.toggle('hidden')"> Profile </button>
+
+	<button ngbDropdownItem >
+		 Log out </button>
+	
+			<a href="" ngbDropdownItem > List a Car </a>
+		
+			<a href="" ngbDropdownItem > Learn More </a>
+		
+			<a routerLink="/listings" ngbDropdownItem > Trips </a>
+	
+
+			  </div>
+			</div>
+		  </div>
 	
 	</nav>
 	
 	</header>
-
-	<div class="dropdown">
-		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Drop <span class="caret"></span>  </button>
-
-		<ul class="dropdown-menu">
-			<li> <a href=""> Profile </a> </li>
-			<li> <a href=""> Log out </a> </li>
-		</ul>
-
-	</div>
 
 	<!-- <div class="a d-flex flex-column fixed-top bg-light " style=" width: 20%; left: 80%; top: 5%; "> 
 
@@ -71,211 +103,70 @@
 		
 	</div> -->
 
-<div class="mt-5">
+<div class="mt-2 row m-0 ">
 
-<div class="lists row px-5 m-0">
+	<div class="col-md-2 bg-dark"></div>
 
-	<div class="col-lg-3 col-md-4 car">
+<div class="lists row m-0 col-md-10">
 
-		<div class="card bg-light">
+	<div [routerLink]="['/cars', carsId ]" class="col-md-4 car" *ngFor=" let x of cars index as carsId " style="cursor: pointer;" >
+
+		<div class="card"  >
 
 			<div class="card-header img bg-primary">
 
-				<img src="assets/pexels-mike-b-116675.jpg" width="100%">
+				<img [src]="x.images[0]" width="100%">
 
 			</div>
 
 			<div class="card-body">
 
-				<h3 class="text-center"> Range Rover (4x4)  </h3>
+				<!-- <a [routerLink]="['/cars', carsId ]" > {{x.name}}</a> -->
+
+				<h5 class="text-center" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > {{x.name}}  </h5>
 
 				<div class="details">
 
 					<!-- <h6 class="text-center m-0"> Details  </h6> -->
 
-					<p class="font-weight-bold m-0" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; "> Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr </p>
-
-					<h2 class="m-0 text-center"> <b> GH₵300 / day </b>  </h2>
+					<p class="font-weight-bold m-0" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; "> {{x.description}} </p>
 
 				</div>
 
 			</div>
 
-			<div class="card-footer justify-content-center align-items-center row m-0" >
+			<div class="card-footer d-flex justify-content-center align-items-center " >
 
-<span class="col-4 m-0 p-0 text-center font-weight-bolder text-primary " style="font-weight : bolder; font-size: .9em; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; ">
-				<i class="fa-solid fa-check-double font-weight-bolder"></i> AVAILABLE
-			</span>
+				<p class="m-0 text-center" style="width: 50%;  text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > <b> {{x.price}} </b>  </p>
 
-			<span class="col-4 text-center">
+				<button class="btn btn-outline-primary" style="width: 50%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > BOOK NOW </button>
 
-				<i class="fa-solid fa-thumbs-up fa-2x"></i> <b> 7 </b>
-
-			</span>
-
-			<span class="col-4 text-center">
-
-				<button class="btn btn-primary"> <i class="fa-solid fa-circle-plus"></i> RENT </button>
-
-			</span>
-
-		</div>
-
-		</div>
-
-
-	</div>
-
-	<div class="car col-lg-3 col-md-4 ">
-
-<div class="card bg-light">
-
-			<div class="card-header img bg-primary">
-
-				<img src="assets/pexels-mike-b-244206.jpg" width="100%">
-
-			</div>
-
-			<div class="card-body">
-
-				<h3 class="text-center"> AUDI  </h3>
-
-				<div class="details">
-
-					<!-- <h6 class="text-center m-0"> Details  </h6> -->
-
-					<p class="font-weight-bold m-0" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; "> Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr </p>
-
-					<h2 class="m-0 text-center"> <b> GH250 </b>  </h2>
-
-				</div>
-
-			</div>
-
-			<div class="card-footer justify-content-center align-items-center row m-0">
-
-<span class="col-4 text-center font-weight-bolder text-primary " style="font-weight : bolder;">
-				<i class="fa-solid fa-check-double font-weight-bolder"></i> <span class="font-weight-bolder"> AVAILABLE </span>
-			</span>
-
-			<span class="col-4 text-center">
-
-				<i class="fa-solid fa-thumbs-up fa-2x"></i> <b> 6 </b>
-
-			</span>
-
-			<span class="col-4 text-center">
-
-				<button class="btn btn-primary"> <i class="fa-solid fa-circle-plus"></i> RENT </button>
-
-			</span>
+				<!-- <span class="col-4 m-0 p-0 text-center font-weight-bolder text-primary " style="font-weight : bolder; font-size: .9em; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; ">
+								<i class="fa-solid fa-check-double font-weight-bolder"></i> AVAILABLE
+							</span>
+				
+							<span class="col-4 text-center">
+				
+								<i class="fa-solid fa-thumbs-up fa-2x"></i> <b> 7 </b>
+				
+							</span>
+				
+							<span class="col-4 text-center">
+				
+								<button [routerLink]="['/cars', carsId ]" class="btn btn-primary"> <i class="fa-solid fa-circle-plus"></i> RENT </button>
+				
+							</span> -->
+				
+						</div>
 
 		</div>
 
 		</div>
 
-	</div>
-
-	<div class="col-lg-3 col-md-4 car">
-
-<div class="card bg-light">
-
-			<div class="card-header img bg-primary">
-
-				<img src="assets/pexels-mike-b-116675.jpg" width="100%">
-
-			</div>
-
-			<div class="card-body">
-
-				<h3 class="text-center"> Range Rover (4x4)  </h3>
-
-				<div class="details">
-
-					<!-- <h6 class="text-center m-0"> Details  </h6> -->
-
-					<p class="font-weight-bold m-0"> Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr </p>
-
-					<h2 class="m-0 text-center"> <b> GH300 </b>  </h2>
-
-				</div>
-
-			</div>
-
-			<div class="card-footer justify-content-center align-items-center row m-0">
-
-<span class="col-4 text-center font-weight-bolder text-primary " style="font-weight : bolder;">
-				<i class="fa-solid fa-check-double font-weight-bolder"></i> <span class="font-weight-bolder"> AVAILABLE </span>
-			</span>
-
-			<span class="col-4 text-center">
-
-				<i class="fa-solid fa-thumbs-up fa-2x"></i> <b> 7 </b>
-
-			</span>
-
-			<span class="col-4 text-center">
-
-				<button class="btn btn-primary"> <i class="fa-solid fa-circle-plus"></i> RENT </button>
-
-			</span>
-
-		</div>
-
-		</div>
-
-	</div>
-
-	<div class="col-lg-3 col-md-4 car">
-
-<div class="card bg-light">
-
-			<div class="card-header img bg-primary">
-
-				<img src="assets/pexels-mike-b-244206.jpg" width="100%">
-
-			</div>
-
-			<div class="card-body">
-
-				<h3 class="text-center"> AUDI  </h3>
-
-				<div class="details">
-
-					<!-- <h6 class="text-center m-0"> Details  </h6> -->
-
-					<p class="font-weight-bold m-0"> Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr </p>
-
-					<h2 class="m-0 text-center"> <b> GH250 </b>  </h2>
-
-				</div>
-
-			</div>
-
-			<div class="card-footer justify-content-center align-items-center row m-0">
-
-<span class="col-4 text-center font-weight-bolder text-primary " style="font-weight : bolder;">
-				<i class="fa-solid fa-check-double font-weight-bolder"></i> <span class="font-weight-bolder"> AVAILABLE </span>
-			</span>
-
-			<span class="col-4 text-center">
-
-				<i class="fa-solid fa-thumbs-up fa-2x"></i> <b> 9 </b>
-
-			</span>
-
-			<span class="col-4 text-center">
-
-				<button class="btn btn-primary"> <i class="fa-solid fa-circle-plus"></i> RENT </button>
-
-			</span>
-
-		</div>
-
-		</div>
-
-	</div>
+		
 
 </div>
 
 </div>
+
+<!-- <router-outlet></router-outlet> -->

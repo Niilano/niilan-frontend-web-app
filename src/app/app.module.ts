@@ -8,19 +8,26 @@ import { AppComponent } from './app.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { AuthenticateusersComponent } from './authenticateusers/authenticateusers.component';
 import { CarsComponent } from './cars/cars.component';
+import { CarDetailsComponent } from './car-details/car-details.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// import { NgbdCarouselPause } from './carousel-pause';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingpageComponent,
     AuthenticateusersComponent,
-    CarsComponent
+    CarsComponent,
+    CarDetailsComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,24 @@
+.des-less::after{
+    height: 100px;
+    // background-color: green;
+    background-image: linear-gradient(360deg,white,transparent);
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    left: 0%;
+    content: "";
+}
+
+.des-less{
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+}
+
+.des-more{
+    height: auto;
+}
+
 
 div.logo{
 	font-family: 'Inder';
@@ -37,10 +58,6 @@ nav button{
 	display: none;
 }
 
-.dropdown-toggle::after{
-	display: none;
-}
-
 @media(max-width : 500px){
 	div.logo{
 		width: 100%;
@@ -57,4 +74,7 @@ nav button{
 	.d-hide{
 		display: block;
 	}
+    // .dropdown-toggle::after{
+    //     display: none;
+    // }
 }
