@@ -166,6 +166,10 @@
 
 </div>
 
-<p *ngIf="SucMsg" class="fixed-top bg-success mx-auto rounded p-3 text-center text-light" style="width: 50%; top: 5%;"> {{SucMsg}} </p>
+<div *ngIf="SucMsg" class="fixed-top d-flex justify-content-center align-items-center" style=" top: 5%;"> 
+    <p class="bg-success rounded p-2 d-flex justify-content-center align-items-center text-light" > <i class="fa-solid fa-circle-check fa-2x m-2 "></i> {{SucMsg}} </p>
+ </div>
 
-<p *ngIf="ErrMsg" class="fixed-top bg-danger mx-auto rounded p-3 text-center text-light" style="width: 50%; top: 5%;"> {{ErrMsg}} </p>
+<div *ngIf="ErrMsg" class="fixed-top d-flex justify-content-center align-items-center" style=" top: 5%;"> 
+    <p class="bg-danger rounded p-2 d-flex justify-content-center align-items-center text-light" > <i class="fa-solid fa-circle-exclamation fa-2x m-2 "> </i> {{ErrMsg}} </p>
+ </div>

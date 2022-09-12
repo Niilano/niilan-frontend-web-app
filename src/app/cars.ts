@@ -1,6 +1,7 @@
 export const cars = [
     {
       name: 'McLaren 570S 2017',
+      category: 'Van',
       price: "GH₵1,500 / day",
       seats: "2 seats",
       fuel: "Gas",
@@ -10,6 +11,7 @@ export const cars = [
     },
     {
       name: 'Ford Transit-350 Wagon 2019',
+      category: 'Van',
       price: "GH₵1,000 / day",
       seats: "15 seats",
       fuel: "Deisel",
@@ -19,12 +21,14 @@ export const cars = [
     },
     {
         name: 'Range Rover (4x4)',
+        category: 'Van',
         price: "GH₵1,100 / day",
         description: 'Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr',
         images : JSON.parse('["assets/pexels-mike-b-116675.jpg","assets/pexels-mike-b-244206.jpg","assets/pexels-mike-b-116675.jpg"]')
       },
       {
         name: 'AUDI',
+        category: 'Van',
         price: "GH₵800 / day",
         description: 'Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr',
         images : JSON.parse('["assets/pexels-mike-b-244206.jpg","assets/pexels-mike-b-116675.jpg"]')

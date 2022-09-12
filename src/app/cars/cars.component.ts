@@ -12,7 +12,7 @@ export class CarsComponent implements OnInit {
 
   userToken = localStorage.getItem('user')
 
-  user:any
+  user = localStorage.getItem("username")
 
   cars = cars
 
@@ -36,7 +36,9 @@ export class CarsComponent implements OnInit {
         
         let result = JSON.parse(JSON.stringify(res))
 
-        this.user = result.user
+        // this.user = result.user
+
+        // console.log(result.user)
 
       },
       err =>{

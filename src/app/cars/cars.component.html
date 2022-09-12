@@ -58,7 +58,7 @@
 
 		<div class="m-hide " style="width: 100%;" >
 	
-		<a href="" class="border border-3 p-1 rounded bg-dark text-light"> List a Car </a>
+		<a routerLink="/list-cars" class="border border-3 p-1 rounded bg-dark text-light"> List a Car </a>
 	
 		<a href=""> Learn More </a>
 	
@@ -109,13 +109,13 @@
 
 <div class="lists row m-0 col-md-10">
 
-	<div [routerLink]="['/cars', carsId ]" class="col-md-4 car" *ngFor=" let x of cars index as carsId " style="cursor: pointer;" >
+	<div [routerLink]="['/cars', carsId ]" class="col-md-4 mt-3 car" *ngFor=" let x of cars index as carsId " style="cursor: pointer;" >
 
 		<div class="card"  >
 
-			<div class="card-header img bg-primary">
+			<div class="card-header d-flex justify-content-center bg-primary p-0 overflow-hidden " style="height: 200px; box-sizing: border-box; " >
 
-				<img [src]="x.images[0]" width="100%">
+				<img [src]="x.images[0]" style="height: 100%;">
 
 			</div>
 

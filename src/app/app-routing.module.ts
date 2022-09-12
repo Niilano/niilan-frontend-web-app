@@ -5,6 +5,7 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 import { AuthenticateusersComponent } from './authenticateusers/authenticateusers.component';
 import { CarsComponent } from './cars/cars.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
+import { ListCarComponent } from './list-car/list-car.component';
 
 const routes: Routes = [
 {path : 'home' , component: LandingpageComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
 
 { path: 'cars', component: CarsComponent},
 { path: 'cars/:carsId', component: CarDetailsComponent},
+{ path: 'list-cars', component: ListCarComponent },
 
 { path: '' , component: LandingpageComponent }  
 // {path : '' , redirectTo: 'home' , pathMatch: 'full' }

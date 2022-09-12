@@ -1,0 +1,174 @@
+
+<header class="d-flex justify-content-between py-2 px-3 align-items-center border-bottom rounded border-5 ">
+
+	<div class="logo" >
+	
+		<img src="assets/niilan.png" class="img-responsive" style="width: 50px;"> NIILAN
+	
+	</div>
+	
+	<nav class="m-hide" *ngIf="!user">
+	
+		<a href=""> About </a>
+	
+		<a href=""> How it works? </a>
+	
+		<a routerLink="/listings"> Cars </a>
+	
+		<button class="btn mx-3" style="border: 1px solid #000000;border-radius: 36px;" routerLink="/login" > Log in </button>
+	
+		<button class="btn" style="background: #039ADD; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.17); border-radius: 36px;" routerLink="/register" > Sign up </button>
+	
+	</nav>
+
+	<div *ngIf="!user" class="col text-end d-hide">
+		<div ngbDropdown class="d-inline-block" style="background-color: transparent !important;" >
+			<!-- <i class="fa-solid fa-user border border-5 p-3 "  style="border-radius: 50%;" ></i> -->
+		  <button type="button" class=" border border-0" style="background-color: transparent !important;" id="dropdownBasic1" ngbDropdownToggle>
+			<i class="fa-solid fa-bars fa-2x "   ></i></button>
+
+		  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+
+			<!-- <button ngbDropdownItem  onclick="document.getElementById('addEvents').classList.toggle('hidden')"> Profile </button>
+
+<button ngbDropdownItem >
+	 Log out </button> -->
+
+		<a href="" ngbDropdownItem > Log In </a>
+	
+		<a href="" ngbDropdownItem > Sign Up </a>
+	
+		<a routerLink="/listings" ngbDropdownItem > Learn More </a>
+
+
+		  </div>
+		</div>
+	  </div>
+
+	<!-- <p class="bg-dark" style="width: 30%;"> WELCOME AAA </p> -->
+
+	<nav *ngIf="user" class="d-flex justify-content-end align-items-center" >
+
+		<div class="m-hide " style="width: 100%;" >
+	
+		<a routerLink="/list-cars" class="border border-3 p-1 rounded bg-dark text-light"> List a Car </a>
+	
+		<a href=""> Learn More </a>
+	
+		<a routerLink="/listings"> Trips </a>
+
+		</div>
+	
+		<!-- <i class="fa fa-user-circle fa-2x" ></i> -->
+
+		<div class="">
+			<div ngbDropdown class="d-inline-block">
+				<!-- <i class="fa-solid fa-user border border-5 p-3 "  style="border-radius: 50%;" ></i> -->
+			  <button type="button" class=" border border-0" style="background-color: transparent !important;" id="dropdownBasic1" ngbDropdownToggle>
+				<i class="fa-solid fa-user-circle fa-2x"   ></i></button>
+
+			  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+
+				<button ngbDropdownItem  onclick="document.getElementById('addEvents').classList.toggle('hidden')"> Profile </button>
+
+	<button ngbDropdownItem >
+		 Log out </button>
+	
+			<a href="" ngbDropdownItem > List a Car </a>
+		
+			<a href="" ngbDropdownItem > Learn More </a>
+		
+			<a routerLink="/listings" ngbDropdownItem > Trips </a>
+	
+
+			  </div>
+			</div>
+		  </div>
+	
+	</nav>
+	
+	</header>
+
+
+    <div class="my-3" >
+
+        <form [formGroup]="listCars" (ngSubmit)="listCarSubmit()" class=" p-4 bg-dark rounded ">
+
+            <div class="form-group">
+                <input class="form-control" placeholder="Car Name" >
+            </div>
+
+            <div class="form-group mt-3 ">
+
+                <input type="text" list="regions" class="form-control" placeholder="Choose Region" >
+
+                <datalist id="regions">
+                    <option *ngFor="let x of regions"> {{x}} </option>
+                </datalist>
+
+                <!-- <select class="form-control" placeholder="Choose Region" >
+
+                    <option> Greater Accra </option>
+                    <option> Ashanti </option>
+
+                    </select> -->
+            </div>
+
+            <div class="form-group mt-3 ">
+                <input class="form-control" placeholder="Location" >
+            </div>
+
+            <div class="form-group mt-3 ">
+                <input class="form-control" type="number" placeholder=" No. of seats " >
+            </div>
+
+            <div class="form-group mt-3 ">
+                <input class="form-control" type="text" placeholder="Color" >
+            </div>
+
+            <div class="form-group mt-3 ">
+                <input class="form-control" type="number" placeholder="Price (GH₵) " >
+            </div>
+            
+            <div class="d-flex justify-content-center align-items-center p-3 m-0  " style="height: 200px; overflow-x: scroll; scroll-behavior: smooth; scroll-margin-inline-end: 0; ">
+
+                <label class="p-2 rounded bg-light " style=" width: max-content; " for="images"  > <i class="fa-solid fa-plus"></i> Add Image </label>
+
+                <div *ngIf="src" class="d-flex align-items-center" style="height: 100%; width: 80%; ">
+                <img class="rounded mx-3" *ngFor="let x of src" [src]="x" style="height: 100%; " >
+                </div>
+                
+            </div>
+
+            <div class="form-group mt-3 " style="display: none;">
+                <input class="form-control" id="images"  type="file" placeholder="Images" #file (change)="imagePreview(file.files)" >
+            </div>
+
+            <div class="form-group mt-3 " >
+                <label class="text-light m-2" > Description: </label>
+                <textarea placeholder=" A little message for your customers " style="height: 200px;" class="form-control" ></textarea>
+
+            </div>
+
+            <div class="form-group mt-3 text-end ">
+
+                <button type="reset" class="btn btn-danger mx-2" (click)="resetForm()" > Reset Form </button>
+                
+                <button type="submit" class="btn btn-primary" > Submit Listing </button>
+
+            </div>
+
+        </form>
+
+    </div>
+    
+    <div *ngIf="sucMsg" class="vh-100 fixed-top d-flex align-items-center justify-content-center" style=" backdrop-filter: blur(3px); " >
+
+        <div class="bg-success p-3 rounded text-center">
+            <!-- <i class="fa-solid fa-circle-check fa-2x m-2 "></i> -->
+            <i class="fa-regular fa-face-smile my-2 fa-4x text-warning"></i>
+        <h3 class="text-light"> {{sucMsg}} </h3>
+        <i class="fa-solid fa-person-digging my-2 fa-4x text-light"></i>
+        </div>
+
+    </div>
