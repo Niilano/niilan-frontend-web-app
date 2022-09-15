@@ -48,7 +48,29 @@ export class CarsComponent implements OnInit {
 
   }
 
+  from:any
+  to:any
+
+  priceRangeFrom(){
+    let from = document.getElementById('from') as HTMLInputElement
+    this.from = from.value
+
+  }
+
+  priceRangeTo(){
+    let to = document.getElementById('to') as HTMLInputElement
+    this.to = to.value
+
+  }
+
   ngOnInit(): void {
+
+    let from = document.getElementById('from') as HTMLInputElement
+    let to = document.getElementById('to') as HTMLInputElement
+
+    this.from = from.defaultValue
+    this.to = to.value
+
   }
 
 }

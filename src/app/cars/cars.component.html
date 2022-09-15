@@ -105,7 +105,24 @@
 
 <div class="mt-2 row m-0 ">
 
-	<div class="col-md-2 bg-dark"></div>
+	<div class="col-md-2 p-0 m-0"> 
+	
+		<div class="text-center m-0 p-0">
+			<i class="fa-solid fa-car-tunnel fa-3x "></i>
+			<h5 class="m-0 mt-1"> FIND YOUR CAR </h5>
+		</div>
+
+		<div class="text-center mt-3 p-2"> 
+			<h5 class="m-0 my-2 text-start"> Price Range </h5>
+			<p class="m-0"> From: <span> GH₵ {{from}} </span>	</p>
+			<input type="range" value="600" class="form-range" id="from" min="0" max="2000" (input)="priceRangeFrom()" >
+			<p class="m-0"> To: <span> GH₵ {{to}} </span>	</p>
+			<input type="range" value="500" class="form-range" id="to" min="0" max="2000" (input)="priceRangeTo()" >
+			
+			
+		</div>
+		
+	</div>
 
 <div class="lists row m-0 col-md-10">
 

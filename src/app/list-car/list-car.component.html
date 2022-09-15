@@ -128,11 +128,27 @@
 
             <div class="form-group mt-3 ">
                 <input class="form-control" type="number" placeholder="Price (GH₵) " >
+                
+            </div>
+
+            <div class="form-group mt-3 row ">
+                <div class="col-6">
+                <input class="form-control" type="text" placeholder=" Car Make " list="carMake" >
+                <datalist id="carMake">
+                    <option *ngFor="let x of carMake"> {{x}} </option>
+                </datalist>
+                </div>
+                <div class="col-6">
+                    <input class="form-control" type="text" list="carBody" placeholder=" Body Style " >
+                    <datalist id="carBody">
+                        <option *ngFor="let x of carBody"> {{x}} </option>
+                    </datalist>
+                    </div>
             </div>
             
             <div class="d-flex justify-content-center align-items-center p-3 m-0  " style="height: 200px; overflow-x: scroll; scroll-behavior: smooth; scroll-margin-inline-end: 0; ">
 
-                <label class="p-2 rounded bg-light " style=" width: max-content; " for="images"  > <i class="fa-solid fa-plus"></i> Add Image </label>
+                <label class="p-2 rounded bg-light " style=" width: max-content; " for="images"  > <i class="fa-solid fa-plus"></i> Add Images </label>
 
                 <div *ngIf="src" class="d-flex align-items-center" style="height: 100%; width: 80%; ">
                 <img class="rounded mx-3" *ngFor="let x of src" [src]="x" style="height: 100%; " >
