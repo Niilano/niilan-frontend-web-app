@@ -28,7 +28,19 @@ export class CarsComponent implements OnInit {
 
 regionsSearch(a:any){
   // alert(a.value)
-  this.route.navigate(['/','users'])
+
+  // this.cars = ["asfb","das"]
+
+  // cars.forEach((b:any)=>{
+  //   // this.cars = b[a]
+  //   if(b['category'] == a){
+  //     this.cars = b['category']
+  //   }
+  // })
+
+  // console.log(this.cars)
+
+  // this.route.navigate(['/cars/search','users'])
 }
   
 
@@ -39,7 +51,7 @@ regionsSearch(a:any){
     // this.cars[0].images = JSON.parse(cars[0].images) 
 
     this.cars.forEach((d:any,index:any)=>{
-      // console.log(index)
+      // console.log(d['category'])
       this.cars[index].images = JSON.parse(JSON.stringify(d.images))
     })
 
@@ -82,7 +94,7 @@ regionsSearch(a:any){
     let from = document.getElementById('from') as HTMLInputElement
     let to = document.getElementById('to') as HTMLInputElement
 
-    this.from = from.defaultValue
+    this.from = from.value
     this.to = to.value
 
   }

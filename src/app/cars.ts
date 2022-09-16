@@ -21,7 +21,7 @@ export const cars = [
     },
     {
         name: 'Range Rover (4x4)',
-        category: 'Van',
+        category: 'bus',
         price: "GH₵1,100 / day",
         description: 'Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr',
         images : JSON.parse('["assets/pexels-mike-b-116675.jpg","assets/pexels-mike-b-244206.jpg","assets/pexels-mike-b-116675.jpg"]')
