@@ -13,7 +13,8 @@ const routes: Routes = [
 { path : 'register' , component : AuthenticateusersComponent },
 
 { path: 'cars', component: CarsComponent},
-{ path: 'cars/:carsId', component: CarDetailsComponent},
+{ path: 'cars/details/:carsId', component: CarDetailsComponent},
+{ path: 'cars/search/:region', component: CarsComponent},
 { path: 'list-cars', component: ListCarComponent },
 
 { path: '' , component: LandingpageComponent }  

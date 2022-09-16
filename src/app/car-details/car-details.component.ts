@@ -68,7 +68,7 @@ export class CarDetailsComponent implements OnInit {
       // console.log( typeof(params.get('carsId')))
     })
 
-    console.log(this.car)
+    console.log(this.car[0])
   }
 
 }

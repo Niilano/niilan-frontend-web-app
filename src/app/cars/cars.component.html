@@ -103,9 +103,15 @@
 		
 	</div> -->
 
-<div class="mt-2 row m-0 ">
 
-	<div class="col-md-2 p-0 m-0"> 
+
+<div class="mt-2 m-0  p-0 vw-100">
+
+	<div class="p-0 m-0" style="width:100%; position: absolute; z-index: 99; backdrop-filter: blur(3px);  " > 
+
+		<div class="p-5 mt-0" style=" width: 40%; margin: auto; background-color: #ffffffb3; position: relative;">
+
+		<i style=" position: absolute; right: 0; " class="fa-solid text-danger fa-xmark mx-3 fa-3x"></i>
 	
 		<div class="text-center m-0 p-0">
 			<i class="fa-solid fa-car-tunnel fa-3x "></i>
@@ -113,20 +119,72 @@
 		</div>
 
 		<div class="text-center mt-3 p-2"> 
+			<h5 class="m-0 my-2 text-start"> By Region </h5>
+			
+			<input class="form-control" #region list="regions" placeholder="Region" >
+			<datalist id="regions">
+                    <option *ngFor="let x of regions"> {{x}} </option>
+                </datalist>
+			
+			<button class="btn btn-primary w-100 mt-3" (click)="regionsSearch(this.region)" > Find </button>
+		</div>
+
+		<div class="text-center mt-3 p-2"> 
+			<h5 class="m-0 my-2 text-start"> By Loaction </h5>
+			
+			<input class="form-control" list="regions" placeholder="Location" >
+			<datalist id="regions">
+                    <option *ngFor="let x of regions"> {{x}} </option>
+                </datalist>
+			
+			<button class="btn btn-primary w-100 mt-3"> Find </button>
+		</div>
+
+		<div class="text-center mt-3 p-2"> 
+			<h5 class="m-0 my-2 text-start"> By Body </h5>
+			
+			<input class="form-control" list="carBody" placeholder="Body Style" >
+			<datalist id="carBody">
+                    <option *ngFor="let x of carBody"> {{x}} </option>
+                </datalist>
+			
+			<button class="btn btn-primary w-100 mt-3"> Find </button>
+		</div>
+
+		<div class="text-center mt-3 p-2"> 
+			<h5 class="m-0 my-2 text-start"> By Make </h5>
+			
+			<input class="form-control" list="carMake" placeholder="Car Make" >
+			<datalist id="carMake">
+                    <option *ngFor="let x of carMake"> {{x}} </option>
+                </datalist>
+			
+			<button class="btn btn-primary w-100 mt-3"> Find </button>
+		</div>
+
+		<div class="text-center mt-3 p-2"> 
 			<h5 class="m-0 my-2 text-start"> Price Range </h5>
 			<p class="m-0"> From: <span> GH₵ {{from}} </span>	</p>
 			<input type="range" value="600" class="form-range" id="from" min="0" max="2000" (input)="priceRangeFrom()" >
 			<p class="m-0"> To: <span> GH₵ {{to}} </span>	</p>
-			<input type="range" value="500" class="form-range" id="to" min="0" max="2000" (input)="priceRangeTo()" >
+			<input type="range" value="1900" class="form-range" id="to" min="0" max="2000" (input)="priceRangeTo()" >
 			
-			
+			<button class="btn btn-primary w-100"> Find </button>
 		</div>
+
+	</div>
 		
 	</div>
 
-<div class="lists row m-0 col-md-10">
+	<div class="text-center m-0 p-0">
+			<i class="fa-solid fa-car-tunnel fa-4x "></i>
+			<!-- <h5 class="m-0 mt-1"> FIND YOUR CAR </h5> -->
+			<button class="btn btn-primary mt-2" style="width: 50%; margin: auto; display: block;" > FIND YOUR CAR </button>
+		</div>
 
-	<div [routerLink]="['/cars', carsId ]" class="col-md-4 mt-3 car" *ngFor=" let x of cars index as carsId " style="cursor: pointer;" >
+<div class="lists row m-0 p-0 " >
+
+	<div [routerLink]="['/cars/details', carsId ]" class="col-lg-3 col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of cars index as carsId " style="cursor: pointer;" >
 
 		<div class="card"  >
 

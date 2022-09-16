@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { cars } from '../cars';
 
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
@@ -10,17 +12,29 @@ import { cars } from '../cars';
 })
 export class CarsComponent implements OnInit {
 
+  sidebarExpanded = true;
+
   userToken = localStorage.getItem('user')
 
   user = localStorage.getItem("username")
 
   cars = cars
 
+  regions = (["Western North Region- Sefwi Wiawso","Western Region – Sekondi","Volta Region – Ho","Greater Accra Region – Accra","Eastern Region – Koforidua","Ashanti Region – Kumasi","Central Region – Cape Coast","Northern Region – Tamale","Upper East Region – Bolgatanga","Upper West Region – Wa","Oti Region – Dambai","Bono East Region – Techiman","Ahafo Region – Goaso","Bono Region – Sunyani","North East Region – Nalerigu","Savannah Region – Damango"]).sort()
+
+  carBody = (["Convertible","Sports Car & Coupe","Crossover","Sedan","SUV","Pickup Truck","Van/Minivan","Hatchback"]).sort()
+  carMake = (["Buick","INFINITI","Mitsubishi","Chevrolet","Jaguar","Nissan","Chrysler","Jeep","Ram","Dodge","Kia","Toyota","Ford","Lincoln","Volkswagen","GMC","Mazda","Volvo","Hyundai","Mercedes-Benz"]).sort()
+
+
+regionsSearch(a:any){
+  // alert(a.value)
+  this.route.navigate(['/','users'])
+}
   
 
   // im = JSON.parse(cars[3].images)
 
-  constructor( private http : HttpClient ) {
+  constructor( private http : HttpClient, private route: Router ) {
 
     // this.cars[0].images = JSON.parse(cars[0].images) 
 
