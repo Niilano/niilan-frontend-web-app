@@ -81,7 +81,7 @@
 	<button ngbDropdownItem >
 		 Log out </button>
 	
-			<a href="" ngbDropdownItem > List a Car </a>
+			<a routerLink="/list-cars" ngbDropdownItem > List a Car </a>
 		
 			<a href="" ngbDropdownItem > Learn More </a>
 		
@@ -176,26 +176,52 @@
 		
 	</div> -->
 
-	<div class="d-flex align-items-center m-0 p-0 bg-dark" style="box-sizing: border-box;">
+	<form [formGroup]="searchForm" (ngSubmit)="sortSearch()" class="d-flex align-items-center m-0 p-0 bg-dark" style="box-sizing: border-box;">
 
 		<i class="fa-solid fa-car-tunnel fa-4x text-light mx-2" style="  box-sizing: border-box;"></i>
 
-		<div class="bg-light m-3 p-2 rounded d-flex flex-column " style="width: 100%;  box-sizing: border-box;">
+		<div class="bg-light m-3 p-2 rounded d-flex flex-column " onmouseenter=" document.getElementById('drop').classList.add('d-show') " onmouseleave=" document.getElementById('drop').classList.remove('d-show') " style="width: 100%;  box-sizing: border-box;">
 
 			<div class="form-group row p-0 m-0">
 
 				<h5 class="col-12 my-2 p-0"> Price: <span class=" bg-dark rounded text-light p-1" > GH₵ {{from}} / day </span> </h5>
 
-				<input type="range" value="100" class="form-range col-12 m-0 p-0" id="from" min="0" max="2000" (input)="priceRangeFrom()" >
+				<input type="range" class="form-range col-12 m-0 p-0" id="from" min="0" max="2000" (input)="priceRangeFrom()" formControlName="price" >
 
 			</div>
 
 			<div class="form-group mt-2">
-			<input class="form-control" list="regions" placeholder="Location" >
+			<input class="form-control" list="regions" placeholder="Location" formControlName="location" >
 			<datalist id="regions">
                     <option *ngFor="let x of regions"> {{x}} </option>
                 </datalist>
 				</div>
+
+<div id="drop" class=" form-group m-0 p-0 animate__animated animate__fadeInDown" style="display: none; transition: all 5s infinite;" >
+				<div class=" form-group text-center m-0 p-0 mt-3"> 
+					<!-- <h5 class="m-0 my-2 text-start"> By Body </h5> -->
+					
+					<input class="form-control" list="carBody" placeholder="Body Style" formControlName="bodyStyle" >
+					<datalist id="carBody">
+							<option *ngFor="let x of carBody"> {{x}} </option>
+						</datalist>
+					
+					<!-- <button class="btn btn-primary w-100 mt-3"> Find </button> -->
+				</div>
+		
+				<div class="form-group m-0 p-0 mt-3"> 
+					<!-- <h5 class="m-0 my-2 text-start"> By Make </h5> -->
+					
+					<input class="form-control" list="carMake" placeholder="Car Make" formControlName="carMake" >
+					<datalist id="carMake">
+							<option *ngFor="let x of carMake"> {{x}} </option>
+						</datalist>
+					
+					<!-- <button class="btn btn-primary w-100 mt-3"> Find </button> -->
+				</div>
+
+				</div>
+
 
 				<div class="form-group mt-2">
 				<button class="btn btn-primary w-100"> Find your car </button>
@@ -216,17 +242,20 @@
 			<!-- <i class="fa-solid fa-car-tunnel fa-4x "></i>
 			<h5 class="m-0 mt-1"> FIND YOUR CAR </h5>
 			<button class="btn btn-primary mt-2" style="width: 50%; margin: auto; display: block;" > FIND YOUR CAR </button> -->
-		</div>
+			</form>
+
+
+		<div *ngIf="loader" class="text-center"> Loading... </div>
 
 <div class="lists row m-0 p-0 " >
 
-	<div [routerLink]="['/cars/details', carsId ]" class="col-lg-3 col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of cars index as carsId " style="cursor: pointer;" >
+	<div [routerLink]="['/cars/details', carsId ]" class="col-lg-3 col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of cars1 index as carsId " style="cursor: pointer;" >
 
 		<div class="card"  >
 
 			<div class="card-header d-flex justify-content-center bg-primary p-0 overflow-hidden " style="height: 200px; box-sizing: border-box; " >
 
-				<img [src]="x.images[0]" style="height: 100%;">
+				<img [src]="x.carImagesUrl[0]" id="carsImg" style="height: 100%;">
 
 			</div>
 
@@ -234,7 +263,7 @@
 
 				<!-- <a [routerLink]="['/cars', carsId ]" > {{x.name}}</a> -->
 
-				<h5 class="text-center" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > {{x.name}}  </h5>
+				<h5 class="text-center" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > {{x.carName}}  </h5>
 
 				<div class="details">
 
@@ -248,7 +277,7 @@
 
 			<div class="card-footer d-flex justify-content-center align-items-center " >
 
-				<p class="m-0 text-center" style="width: 50%;  text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > <b> {{x.price}} </b>  </p>
+				<p class="m-0 text-center" style="width: 50%;  text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > <b> GH₵{{x.price}} per day </b>  </p>
 
 				<button class="btn btn-outline-primary" style="width: 50%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > BOOK NOW </button>
 
@@ -281,3 +310,61 @@
 </div>
 
 <!-- <router-outlet></router-outlet> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="lists row m-0 p-0 " *ngIf="(carsSorted.length > 0)" >
+
+	<div [routerLink]="['/cars/details', carsId ]" class="col-lg-3 col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of carsSorted index as carsId " style="cursor: pointer;" >
+
+		<div class="card"  >
+
+			<div class="card-header d-flex justify-content-center bg-primary p-0 overflow-hidden " style="height: 200px; box-sizing: border-box; " >
+
+				<img [src]="x.images[0]" style="height: 100%;">
+
+			</div>
+
+			<div class="card-body">
+
+				<h5 class="text-center" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > {{x.name}}  </h5>
+
+				<div class="details">
+
+					<p class="font-weight-bold m-0" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; "> {{x.description}} </p>
+
+				</div>
+
+			</div>
+
+			<div class="card-footer d-flex justify-content-center align-items-center " >
+
+				<p class="m-0 text-center" style="width: 50%;  text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > <b> GH₵{{x.price}} per day </b>  </p>
+
+				<button class="btn btn-outline-primary" style="width: 50%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > BOOK NOW </button>
+				
+						</div>
+
+		</div>
+
+		</div>
+
+		
+
+</div> -->

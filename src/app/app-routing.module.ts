@@ -14,7 +14,7 @@ const routes: Routes = [
 
 { path: 'cars', component: CarsComponent},
 { path: 'cars/details/:carsId', component: CarDetailsComponent},
-{ path: 'cars/search/:region', component: CarsComponent},
+{ path: 'cars/search/:location/:price/:category', component: CarsComponent},
 { path: 'list-cars', component: ListCarComponent },
 
 { path: '' , component: LandingpageComponent }  

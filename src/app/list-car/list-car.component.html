@@ -95,12 +95,12 @@
         <form [formGroup]="listCars" (ngSubmit)="listCarSubmit()" class=" p-4 bg-dark rounded ">
 
             <div class="form-group">
-                <input class="form-control" placeholder="Car Name" >
+                <input class="form-control" formControlName="carName" placeholder="Car Name" >
             </div>
 
             <div class="form-group mt-3 ">
 
-                <input type="text" list="regions" class="form-control" placeholder="Choose Region" >
+                <input type="text" list="regions" formControlName="carRegion" class="form-control" placeholder="Choose Region" >
 
                 <datalist id="regions">
                     <option *ngFor="let x of regions"> {{x}} </option>
@@ -115,36 +115,45 @@
             </div>
 
             <div class="form-group mt-3 ">
-                <input class="form-control" placeholder="Location" >
+                <input class="form-control" formControlName="carLocation" placeholder="Location" >
             </div>
 
             <div class="form-group mt-3 ">
-                <input class="form-control" type="number" placeholder=" No. of seats " >
+                <input class="form-control" type="number" formControlName="noOfSeats" placeholder=" No. of seats " >
             </div>
 
             <div class="form-group mt-3 ">
-                <input class="form-control" type="text" placeholder="Color" >
+                <label class="text-light"> Color: </label>
+                <input class="form-control" type="text" formControlName="color" placeholder="Color" >
             </div>
 
             <div class="form-group mt-3 ">
-                <input class="form-control" type="number" placeholder="Price (GH₵) " >
+                <input class="form-control" type="number" formControlName="price" placeholder="Price (GH₵) " >
                 
             </div>
 
             <div class="form-group mt-3 row ">
                 <div class="col-6">
-                <input class="form-control" type="text" placeholder=" Car Make " list="carMake" >
+                <input class="form-control" type="text" formControlName="carMake" placeholder=" Car Make " list="carMake" >
                 <datalist id="carMake">
                     <option *ngFor="let x of carMake"> {{x}} </option>
                 </datalist>
                 </div>
                 <div class="col-6">
-                    <input class="form-control" type="text" list="carBody" placeholder=" Body Style " >
+                    <input class="form-control" type="text" list="carBody" formControlName="bodyStyle" placeholder=" Body Style " >
                     <datalist id="carBody">
                         <option *ngFor="let x of carBody"> {{x}} </option>
                     </datalist>
                     </div>
             </div>
+
+            <div class="form-group mt-3 ">
+
+                <label class="text-light"> Enter vehicle plate: </label>
+                <input class="form-control" formControlName="carPlate" type="text" placeholder=" format - GW902020 " >
+                
+            </div>
+            
             
             <div class="d-flex justify-content-center align-items-center p-3 m-0  " style="height: 200px; overflow-x: scroll; scroll-behavior: smooth; scroll-margin-inline-end: 0; ">
 
@@ -160,9 +169,16 @@
                 <input class="form-control" id="images"  type="file" placeholder="Images" #file (change)="imagePreview(file.files)" >
             </div>
 
+            <div class="form-check form-switch mt-3">
+                <!-- <p class="text-light"> No </p> -->
+                <input class="form-check-input" type="checkbox" formControlName="driver" id="mySwitch" value="yes" checked> 
+                <!-- <p class="text-light"> Yes </p>> -->
+                <label class="form-check-label text-light" for="mySwitch"> Comes With Driver </label>
+            </div>
+
             <div class="form-group mt-3 " >
                 <label class="text-light m-2" > Description: </label>
-                <textarea placeholder=" A little message for your customers " style="height: 200px;" class="form-control" ></textarea>
+                <textarea formControlName="description" placeholder=" A little message for your customers " style="height: 200px;" class="form-control" ></textarea>
 
             </div>
 
@@ -177,6 +193,8 @@
         </form>
 
     </div>
+
+    <p *ngIf="loading"> Loading... </p> 
     
     <div *ngIf="sucMsg" class="vh-100 fixed-top d-flex align-items-center justify-content-center" style=" backdrop-filter: blur(3px); " >
 

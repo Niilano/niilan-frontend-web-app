@@ -32,19 +32,19 @@ export class AuthenticateusersComponent implements OnInit {
 
     if(this.login.invalid) return
 
-    else if(this.login.getRawValue().email == "admin" && this.login.getRawValue().password == "Administrator@321" ){
+    // else if(this.login.getRawValue().email == "admin" && this.login.getRawValue().password == "Administrator@321" ){
 
-      this.SucMsg = "Log in Successful"
+    //   this.SucMsg = "Log in Successful"
 
-        setTimeout(()=>{
-          this.SucMsg = ''
-          localStorage.setItem('username',this.login.getRawValue().email);
-          this.route.navigate(['cars']);
-        },2000)
+    //     setTimeout(()=>{
+    //       this.SucMsg = ''
+    //       localStorage.setItem('username',this.login.getRawValue().email);
+    //       this.route.navigate(['cars']);
+    //     },2000)
 
-        return
+    //     return
 
-    }
+    // }
 
     else{
     
@@ -149,7 +149,7 @@ export class AuthenticateusersComponent implements OnInit {
         setTimeout(()=>{
           this.SucMsg = ''
           localStorage.setItem('user',result.token);
-          this.route.navigate(['listings']);
+          this.route.navigate(['cars']);
         },2000)
 
       },

@@ -41,6 +41,18 @@ nav button{
 	display: none;
 }
 
+.d-show{
+	display: block !important;
+}
+
+#drop{
+	transition: all 5s infinite;
+}
+
+#carsImg:hover{
+	width: 90%;
+}
+
 @media(max-width : 500px){
 	div.logo{
 		width: 100%;

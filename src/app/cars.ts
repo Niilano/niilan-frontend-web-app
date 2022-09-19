@@ -1,9 +1,10 @@
 export const cars = [
     {
       name: 'McLaren 570S 2017',
-      category: 'Van',
-      price: "GH₵1,500 / day",
+      category: 'Saloon',
+      price: 1500,
       seats: "2 seats",
+      location : "Western North Region- Sefwi Wiawso",
       fuel: "Gas",
       speed: "200km/hr",
       description: 'Here we have a McLaren 570S mid-engine sports car with a 562-hp twin-turbo V-8 that provides amazing acceleration with a 0–62 mph in 3.2 seconds. Black and orange suede interior, dual-zone automatic climate control, heated leather bucket seats, power-adjustable seats, adjustable steering column, 12-speaker Bowers & Wilkins audio system and a 7.0-inch touchscreen, navigation with real-time traffic information, Wi-Fi capability, Bluetooth, voice activation, and four USB ports. (93 Octane Only)     FUN CAR YOU’RE GOING TO LOVE IT',
@@ -12,8 +13,9 @@ export const cars = [
     {
       name: 'Ford Transit-350 Wagon 2019',
       category: 'Van',
-      price: "GH₵1,000 / day",
+      price: 1000,
       seats: "15 seats",
+      location : "Greater Accra Region – Accra",
       fuel: "Deisel",
       speed: "250km/hr",
       description: '2019 Ford Transit 350, passenger van. Please consider this vehicle for your big group, instead of rent 3 or 4 cars, take one vehicle. The 3.7 liter V6 engine will get you there comfortably. You will not disappointed. Please note that if I’m delivering a car to you. Do not expect the gas to be filled full. When I’m leaving my house to drive 20, 30 or 40 miles to your location, gas will be spent. The expectation is to return the car with a full tank of gas. Thank you in advance. The car can be pick up in Burlingame, CA which is 2 exits away from SFO. I can also deliver the car for $100 within 20 miles of Burlingame.  I’m accommodating so please feel free to ask any questions.  NO SMOKING',
@@ -21,15 +23,17 @@ export const cars = [
     },
     {
         name: 'Range Rover (4x4)',
-        category: 'bus',
-        price: "GH₵1,100 / day",
+        category: 'Van',
+        price: 900,
+        location : "Greater Accra Region – Accra",
         description: 'Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr',
         images : JSON.parse('["assets/pexels-mike-b-116675.jpg","assets/pexels-mike-b-244206.jpg","assets/pexels-mike-b-116675.jpg"]')
       },
       {
         name: 'AUDI',
         category: 'Van',
-        price: "GH₵800 / day",
+        location : "Eastern Region – Koforidua",
+        price: 800,
         description: 'Color : Black , 5 seats, LPG, Low fuel consumption, 250 km/hr',
         images : JSON.parse('["assets/pexels-mike-b-244206.jpg","assets/pexels-mike-b-116675.jpg"]')
       }

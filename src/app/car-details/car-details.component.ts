@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -25,6 +26,7 @@ export class CarDetailsComponent implements OnInit {
   pauseOnFocus = true;
 
   car:any
+  car1:any
 
   @ViewChild('carousel', { static: true })  carousel!: NgbCarousel;
 
@@ -59,16 +61,31 @@ export class CarDetailsComponent implements OnInit {
   }
 
 
-  constructor(  private route: ActivatedRoute) {  }
+  constructor(  private route: ActivatedRoute, private http : HttpClient ) {  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       let index = Number(params.get('carsId'))
       this.car = cars[index];
+
+      this.http.get(`http://localhost:4000/listings/getListings/${index+1}`).subscribe(
+      res=>{
+        console.log(res)
+        this.car1 = JSON.parse(JSON.stringify(res))[0]
+        console.log(this.car1.carImagesUrl)
+        this.car1.carImagesUrl = JSON.parse(this.car1.carImagesUrl)
+        console.log(this.car1.carImagesUrl)
+        
+      },
+      err=>{
+
+      }
+    )
+
       // console.log( typeof(params.get('carsId')))
     })
 
-    console.log(this.car[0])
+    // console.log(this.car[0])
   }
 
 }

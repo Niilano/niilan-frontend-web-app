@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -20,6 +21,8 @@ export class ListCarComponent implements OnInit {
 
   src:any = []
 
+  loading = false
+
   imagePreview(files:any){
     if(files.length===0) 
       return;
@@ -40,14 +43,40 @@ export class ListCarComponent implements OnInit {
   }
 
   listCars = this.fb.group({
-    carName:['']
+    token : [localStorage.getItem('user')],
+    carName : [''],
+    carRegion : [''],
+    carLocation : [''],
+    noOfSeats: [''],
+    color : [''],
+    price : [''],
+    carMake : [''],
+    bodyStyle : [''],
+    carImagesUrl : [''],
+    description : [''],
+    driver : [false],
+    carPlate : ['']
   })
 
   listCarSubmit(){
-    this.sucMsg = "Project under development."
+    // this.sucMsg = "Project under development."
+
+    this.loading = true
+
+    this.listCars.controls['carImagesUrl'].setValue(JSON.stringify(this.src))
+
+    console.log(this.listCars.getRawValue())
+
+    this.http.post(`http://localhost:4000/listings/list`,this.listCars.getRawValue()).subscribe(
+      res=>{
+        this.loading = false
+        console.log("Response",res)
+      }
+    )
+
   }
 
-  constructor( private fb:FormBuilder ) { }
+  constructor( private fb:FormBuilder, private http : HttpClient ) { }
 
   ngOnInit(): void {
   }
