@@ -71,7 +71,7 @@ export class CarDetailsComponent implements OnInit {
       this.http.get(`http://localhost:4000/listings/getListings/${index+1}`).subscribe(
       res=>{
         console.log(res)
-        this.car1 = JSON.parse(JSON.stringify(res))[0]
+        this.car1 = JSON.parse(JSON.stringify(res))
         console.log(this.car1.carImagesUrl)
         this.car1.carImagesUrl = JSON.parse(this.car1.carImagesUrl)
         console.log(this.car1.carImagesUrl)

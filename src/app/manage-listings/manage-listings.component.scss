@@ -40,13 +40,47 @@ nav button{
 	display: none;
 }
 
-form{
-    width: 60%;
-    margin: auto;
+.d-show{
+	display: block !important;
+}
+
+#drop{
+	transition: all 5s infinite;
+}
+
+#carsImg:hover{
+	width: 90%;
 }
 
 label{
     color: white;
+}
+
+@media(max-width : 500px){
+	div.logo{
+		width: 100%;
+	}
+	.lists{
+		padding: 0% !important;
+	}
+	.car{
+		margin-top: 7%;
+	}
+	.m-hide{
+		display: none;
+	}
+	.d-hide{
+		display: block;
+	}
+}
+
+.hidden{
+    display: none !important;
+}
+
+form{
+    width: 60%;
+    margin: auto;
 }
 
 @media(max-width : 1000px){
@@ -68,21 +102,6 @@ label{
 }
 
 @media(max-width : 500px){
-	div.logo{
-		width: 100%;
-	}
-	.lists{
-		padding: 0% !important;
-	}
-	.car{
-		margin-top: 7%;
-	}
-	.m-hide{
-		display: none;
-	}
-	.d-hide{
-		display: block;
-	}
 
     form{
         width: 90%;

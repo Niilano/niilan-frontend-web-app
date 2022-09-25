@@ -14,7 +14,7 @@
 	
 	</div>
 	
-	<nav class="m-hide" *ngIf="!user">
+	<nav class="m-hide" *ngIf="!loggedIn">
 	
 		<a href=""> About </a>
 	
@@ -28,7 +28,7 @@
 	
 	</nav>
 
-	<div *ngIf="!user" class="col text-end d-hide">
+	<div *ngIf="!loggedIn" class="col text-end d-hide">
 		<div ngbDropdown class="d-inline-block" style="background-color: transparent !important;" >
 			<!-- <i class="fa-solid fa-user border border-5 p-3 "  style="border-radius: 50%;" ></i> -->
 		  <button type="button" class=" border border-0" style="background-color: transparent !important;" id="dropdownBasic1" ngbDropdownToggle>
@@ -54,15 +54,15 @@
 
 	<!-- <p class="bg-dark" style="width: 30%;"> WELCOME AAA </p> -->
 
-	<nav *ngIf="user" class="d-flex justify-content-end align-items-center" >
+	<nav *ngIf="loggedIn" class="d-flex justify-content-end align-items-center" >
 
 		<div class="m-hide " style="width: 100%;" >
 	
-		<a routerLink="/list-cars" class="border border-3 p-1 rounded bg-dark text-light"> List a Car </a>
+			<a routerLink="/list-cars" class="border border-3 p-1 rounded bg-dark text-light"> List a Car </a>
 	
-		<a href=""> Learn More </a>
-	
-		<a routerLink="/listings"> Trips </a>
+			<!-- <a href=""> Learn More </a> -->
+		
+			<a routerLink="/manage"> Manage Listings </a>
 
 		</div>
 	
@@ -77,15 +77,15 @@
 			  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
 
 				<button ngbDropdownItem  onclick="document.getElementById('addEvents').classList.toggle('hidden')"> Profile </button>
-
-	<button ngbDropdownItem >
-		 Log out </button>
 	
-			<a routerLink="/list-cars" ngbDropdownItem > List a Car </a>
+			<a href="" ngbDropdownItem > List a Car </a>
 		
-			<a href="" ngbDropdownItem > Learn More </a>
+			<!-- <a href="" ngbDropdownItem > Learn More </a> -->
 		
-			<a routerLink="/listings" ngbDropdownItem > Trips </a>
+			<a routerLink="/manage" ngbDropdownItem > Manage Listings </a>
+
+            <button ngbDropdownItem >
+                Log out </button>
 	
 
 			  </div>
@@ -306,6 +306,15 @@
 		
 
 </div>
+
+</div>
+
+<div *ngIf="loader" class="d-flex justify-content-center align-items-center fixed-top" style=" backdrop-filter: blur(3px); width: 100%; left: 0; height: 100vh; top: 0; " >
+
+	<div class="bg-light p-3 rounded ">
+		<i class="fa-solid fa-gear fa-spin "></i>   LOADING...
+	</div>
+
 
 </div>
 

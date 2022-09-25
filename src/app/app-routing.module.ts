@@ -6,6 +6,7 @@ import { AuthenticateusersComponent } from './authenticateusers/authenticateuser
 import { CarsComponent } from './cars/cars.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { ListCarComponent } from './list-car/list-car.component';
+import { ManageListingsComponent } from './manage-listings/manage-listings.component';
 
 const routes: Routes = [
 {path : 'home' , component: LandingpageComponent },
@@ -16,6 +17,8 @@ const routes: Routes = [
 { path: 'cars/details/:carsId', component: CarDetailsComponent},
 { path: 'cars/search/:location/:price/:category', component: CarsComponent},
 { path: 'list-cars', component: ListCarComponent },
+{ path: 'manage', component: ManageListingsComponent },
+{ path: 'manage/:id', component: ManageListingsComponent },
 
 { path: '' , component: LandingpageComponent }  
 // {path : '' , redirectTo: 'home' , pathMatch: 'full' }

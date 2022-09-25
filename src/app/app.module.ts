@@ -12,6 +12,7 @@ import { CarDetailsComponent } from './car-details/car-details.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListCarComponent } from './list-car/list-car.component';
+import { ManageListingsComponent } from './manage-listings/manage-listings.component';
 
 // import { NgbdCarouselPause } from './carousel-pause';
 
@@ -22,7 +23,8 @@ import { ListCarComponent } from './list-car/list-car.component';
     AuthenticateusersComponent,
     CarsComponent,
     CarDetailsComponent,
-    ListCarComponent
+    ListCarComponent,
+    ManageListingsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,3 @@
-
 <header class="d-flex justify-content-between py-2 px-3 align-items-center border-bottom rounded border-5 ">
 
 	<div class="logo" >
@@ -7,7 +6,7 @@
 	
 	</div>
 	
-	<nav class="m-hide" *ngIf="!user">
+	<nav class="m-hide" *ngIf="!loggedIn">
 	
 		<a href=""> About </a>
 	
@@ -21,7 +20,7 @@
 	
 	</nav>
 
-	<div *ngIf="!user" class="col text-end d-hide">
+	<div *ngIf="!loggedIn" class="col text-end d-hide">
 		<div ngbDropdown class="d-inline-block" style="background-color: transparent !important;" >
 			<!-- <i class="fa-solid fa-user border border-5 p-3 "  style="border-radius: 50%;" ></i> -->
 		  <button type="button" class=" border border-0" style="background-color: transparent !important;" id="dropdownBasic1" ngbDropdownToggle>
@@ -47,15 +46,15 @@
 
 	<!-- <p class="bg-dark" style="width: 30%;"> WELCOME AAA </p> -->
 
-	<nav *ngIf="user" class="d-flex justify-content-end align-items-center" >
+	<nav *ngIf="loggedIn" class="d-flex justify-content-end align-items-center" >
 
 		<div class="m-hide " style="width: 100%;" >
 	
-		<a routerLink="/list-cars" class="border border-3 p-1 rounded bg-dark text-light"> List a Car </a>
+			<a routerLink="/list-cars" class="border border-3 p-1 rounded bg-dark text-light"> List a Car </a>
 	
-		<!-- <a routerLink="/cars" ngbDropdownItem > Cars </a> -->
-	
-		<a routerLink="/manage"> Manage Listings </a>
+			<!-- <a href=""> Learn More </a> -->
+		
+			<a routerLink="/manage"> Manage Listings </a>
 
 		</div>
 	
@@ -73,7 +72,7 @@
 	
 			<a href="" ngbDropdownItem > List a Car </a>
 		
-			<a routerLink="/cars" ngbDropdownItem > Cars </a>
+			<!-- <a href="" ngbDropdownItem > Learn More </a> -->
 		
 			<a routerLink="/manage" ngbDropdownItem > Manage Listings </a>
 
@@ -89,10 +88,56 @@
 	
 	</header>
 
+    <div class="container bg-light p-5" id="lists">
 
-    <div class="my-3" >
+        <h3 class="text-center"> Manage Listings </h3>
 
-        <form [formGroup]="listCars" (ngSubmit)="listCarSubmit()" class=" p-4 bg-dark rounded ">
+        <!-- <div class="border-top border-bottom border-3 py-3 row text-center" >
+
+            <div class="col">
+                Car 12
+                </div>
+
+                <div class="col text-primary">
+                    <p> <i class="fa-solid fa-pen-to-square"></i> Edit </p>
+                </div>
+
+                <div class="col text-danger">
+                    <p> <i class="fa-solid fa-trash"></i> Delete </p>
+                </div>
+
+        </div> -->
+
+        <div class="border-top border-bottom border-3 py-3 row text-center" *ngFor="let x of cars index as carId" >
+
+            <div class="col">
+                {{x.carName}}
+                </div>
+
+                <div class="col text-primary">
+                    <p [routerLink]="['/manage', x.id ]" style="cursor: pointer;" > <i class="fa-solid fa-pen-to-square"></i> Edit </p>
+                </div>
+
+                <div class="col text-danger">
+                    <p style="cursor: pointer;"> <i class="fa-solid fa-trash" ></i> Delete </p>
+                </div>
+
+        </div>
+
+        <div *ngIf="noListings" class="border-top border-bottom border-3 py-3 text-center" >
+            {{noListings}}
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <div class="my-3 hidden" id="uForm" >
+
+        <form [formGroup]="listCars" (ngSubmit)="updateCarSubmit()" class=" p-4 bg-dark rounded ">
 
             <div class="form-group">
                 <label> Name your Vehicle </label>
@@ -125,7 +170,7 @@
                     <label> Seats </label>
                     <input class="form-control" type="number" formControlName="noOfSeats" placeholder=" Seats " list="seats" >
                     <datalist id="seats">
-                        <option *ngFor="let x of seats" > {{x}}  </option>
+                        <!-- <option *ngFor="let x of seats" > {{x}}  </option> -->
                     </datalist>
                 </div>
 
@@ -223,30 +268,12 @@
 
             <div class="form-group mt-3 text-end ">
 
-                <button type="reset" class="btn btn-danger mx-2" (click)="resetForm()" > Reset Form </button>
+                <!-- <button type="reset" class="btn btn-danger mx-2" (click)="resetForm()" > Reset Form </button> -->
                 
-                <button type="submit" class="btn btn-primary" > Submit Listing </button>
+                <button type="submit" class="btn btn-primary" > Update Listing </button>
 
             </div>
 
         </form>
-
-    </div>
-    
-
-    <div *ngIf="sucMsg" class="fixed-top text-light font-weight-bolder animate__animated animate__zoomIn d-flex justify-content-center " style=" transition: all 2s ease-in-out;" > 
-        <div class="d-flex justify-content-center bg-success rounded p-2 align-items-center" style="width:max-content;"> <i class="fa-solid fa-2x mx-1 fa-circle-check"></i> {{sucMsg}} </div>
-      </div>
-
-      <div *ngIf="errMsg" class="fixed-top text-light font-weight-bolder animate__animated animate__zoomIn d-flex justify-content-center " style=" transition: all 2s ease-in-out;" > 
-        <div class="d-flex justify-content-center bg-danger rounded p-2 align-items-center" style="width:max-content;"> <i class="fa-solid fa-2x mx-1 fa-circle-check"></i> {{errMsg}} </div>
-      </div>
-
-    <div *ngIf="loading" class="d-flex justify-content-center align-items-center fixed-top" style=" backdrop-filter: blur(3px); width: 100%; left: 0; height: 100vh; top: 0; " >
-
-        <div class="bg-light p-3 rounded ">
-            <i class="fa-solid fa-gear fa-spin "></i>   PROCESSING...
-        </div>
-
 
     </div>

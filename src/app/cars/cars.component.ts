@@ -4,8 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { cars } from '../cars';
+import { paths } from '../routes';
 
 import { ActivatedRoute, Router } from '@angular/router';
+import { UsersInfoService } from '../users-info.service';
 
 @Component({
   selector: 'app-cars',
@@ -16,9 +18,7 @@ export class CarsComponent implements OnInit {
 
   sidebarExpanded = true;
 
-  userToken = localStorage.getItem('user')
-
-  user = localStorage.getItem("username")
+  loggedIn:any
 
   cars = cars
 
@@ -47,30 +47,44 @@ sortSearch(){
 }
 
 loader = false
-  
 
-  // im = JSON.parse(cars[3].images)
+getAllCars(){
 
-  constructor( private http : HttpClient, private route: ActivatedRoute, private router: Router, private fb: FormBuilder ) {
+  this.loader = true
 
-    // this.regionsSearch()
-
-    // if(!location.pathname.includes('search')) this.cars = cars
-
-    // this.cars[0].images = JSON.parse(cars[0].images)
-    
-    // this.loader = true
-
-    this.http.get('http://localhost:4000/listings/getListings').subscribe(
+  this.http.get(`${paths.backHost}listings/getListings`).subscribe(
       res=>{
         // console.log(res)
+        this.loader = false
         this.cars1 = JSON.parse(JSON.stringify(res))
         this.cars1.forEach((a:any,index:any)=>{
           this.cars1[index].carImagesUrl = JSON.parse(a.carImagesUrl)
         })
       },
       err=>{
+        console.log(err)
+        this.loader = false
+        // alert('error')
+      }
+    )
+}
+  
 
+  // im = JSON.parse(cars[3].images)
+
+  constructor( private http : HttpClient, private route: ActivatedRoute, private router: Router, private fb: FormBuilder,  private users : UsersInfoService ) {
+
+    this.getAllCars()
+
+    this.users.userInfo().subscribe(
+      res=>{
+        this.loggedIn = true
+        console.log(res)
+      },
+      err=>{
+        this.loggedIn = false
+        console.log(err)
+        // alert(err.error.msg)
       }
     )
 
@@ -87,34 +101,8 @@ loader = false
     
   })
 
-  // this.loader = false
-
-  //     // params.get('carsId')
     })
 
-    // alert(this.route.snapshot.paramMap.get('price'))
-
-    // this.cars.forEach((d:any,index:any)=>{
-    //   // console.log(d['category'])
-    //   this.cars[index].images = JSON.parse(JSON.stringify(d.images))
-    // })
-
-    // console.log(this.cars)
-
-    this.http.get(`http://localhost:4000/users/info/${this.userToken}`).subscribe(
-      res=>{
-        
-        let result = JSON.parse(JSON.stringify(res))
-
-        // this.user = result.user
-
-        // console.log(result.user)
-
-      },
-      err =>{
-
-      }
-    )
 
   }
 

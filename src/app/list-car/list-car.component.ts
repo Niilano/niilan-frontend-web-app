@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-car',
@@ -20,6 +21,10 @@ export class ListCarComponent implements OnInit {
   carMake = (["Buick","INFINITI","Mitsubishi","Chevrolet","Jaguar","Nissan","Chrysler","Jeep","Ram","Dodge","Kia","Toyota","Ford","Lincoln","Volkswagen","GMC","Mazda","Volvo","Hyundai","Mercedes-Benz"]).sort()
 
   src:any = []
+
+  seats:any = []
+
+  speed = ["100km/hr","120km/hr","150km/hr","200km/hr","250km/hr"]
 
   loading = false
 
@@ -48,13 +53,15 @@ export class ListCarComponent implements OnInit {
     carRegion : [''],
     carLocation : [''],
     noOfSeats: [''],
+    fuel: [''],
+    speed: [''],
     color : [''],
     price : [''],
     carMake : [''],
     bodyStyle : [''],
     carImagesUrl : [''],
     description : [''],
-    driver : [false],
+    driver : [''],
     carPlate : ['']
   })
 
@@ -69,14 +76,40 @@ export class ListCarComponent implements OnInit {
 
     this.http.post(`http://localhost:4000/listings/list`,this.listCars.getRawValue()).subscribe(
       res=>{
+
+        let result = JSON.parse(JSON.stringify(res))
+
         this.loading = false
+
+        this.sucMsg = result.msg
+
+        setTimeout(() => {
+          this.sucMsg = ""
+          this.router.navigate([`/cars/details/${result.id-1}`])
+        }, 2000);
+
         console.log("Response",res)
+      },
+      err=>{
+        this.loading = false
+        this.errMsg = err.error.msg
+        setTimeout(() => {
+          this.errMsg = ""
+        }, 2000);
       }
     )
 
   }
 
-  constructor( private fb:FormBuilder, private http : HttpClient ) { }
+  constructor( private fb:FormBuilder, private http : HttpClient, private router : Router ) {
+    var i = 0;
+
+    while(i<50){
+      this.seats.push(i)
+      i++
+    }
+
+   }
 
   ngOnInit(): void {
   }
