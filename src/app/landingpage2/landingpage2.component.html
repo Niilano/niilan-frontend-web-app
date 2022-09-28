@@ -1,29 +1,70 @@
-<header class="bg-light d-flex align-items-center">
+<header class="fixed-top">
+<div class="text-light py-3 d-flex align-items-center ">
 
     <div class="logo text-center">
         <img src="assets/niilan.png"> NIILAN
     </div>
 
-    <nav class="text-center d-flex justify-content-center">
+    <nav class="desktop text-center d-flex justify-content-center">
 
-        <a>CARS</a>
-        <a>ABOUT US</a>
-        <a>CONTACT US</a>
+        <a>Home</a>
+        <a>About</a>
+        <a>Pricing</a>
+        <a>Cars</a>
+        <a>Blog</a>
+        <a>Contact</a>
 
     </nav>
+
+    <div class="menu-bar d-flex justify-content-center" style="width: 80%;">
+
+        <p style="color: rgba(255, 255, 255, 0.5);" class="m-0" onclick="document.getElementById('m-nav').classList.toggle('hide')" >
+            <i class="fa fa-bars"></i> MENU
+        </p>
+
+    </div>
     
+</div>
+
+ <nav id="m-nav" class="hide text-light mt-4 d-flex flex-column" style="width: 100%;">
+
+        <a>Home</a>
+        <a>About</a>
+        <a>Pricing</a>
+        <a>Cars</a>
+        <a>Blog</a>
+        <a>Contact</a>
+
+    </nav>
 
     </header>
 
-    <div class="banner bg-dark d-flex align-items-end " style="height: 400px; background-image: url(assets/banner.jpg); position: relative;">
+    <div class="banner bg-dark d-flex align-items-center " style="height: 850px; background-image: url(assets/banner3.jpg); position: relative;">
 
-        <div class="ms-5 mb-5 rounded p-3" style=" background-color: rgba(236, 237, 247, 0.507); backdrop-filter: blur(3px); width: max-content;"  >
+        <div class="row container" style="position: relative; z-index: 99;">
+
+            <div class="col-sm-6">
+<!-- <h1 class="" style="color: white; position: relative; z-index: 99; font-size: 60px; line-height: 1.1; font-weight: 200;"> Now
+It's easy for you
+rent a car </h1> -->
+<h1 class="" style="color: white; font-size: 60px; line-height: 1.1; font-weight: 200;"> Taking you there like a BOSS </h1>
+
+<p style="font-size: 18px; color: white !important;"> Niilan gives a wide range of vehicles to choose from. These vehicles suit the style of everyone. Luxurious and comfortable cars that will not just get you to your destination but treat you like the royal you from beginning to end. </p>
+            </div>
+
+             <div class="col-sm-6">
+d
+            </div>
+
+        </div>
+
+     <!--    <div class="ms-5 mb-5 rounded p-3" style=" background-color: rgba(236, 237, 247, 0.507); backdrop-filter: blur(3px); width: max-content;"  >
         <h2 class="text-primary"> Car Rental Based in <br> Ghana </h2>
-        <p class="text-dark"> Experience top quality rental care by friendly <br> and experienced </p>
+        <p class="text-dark"> Experience top quality rental care by friendly <br> and experienced </p> -->
         <!-- <h2 class="text-primary"> Taking you there like a BOSS </h2>
         <p class="text-dark">Niilan gives a wide range of vehicles 
             to choose from. These vehicles suit the style of everyone. Luxurious and comfortable cars that will not just get you to your destination but treat you like the royal you from beginning to end.</p>-->
-        </div>
+        <!-- </div> -->
 
         <div class="" style="position: absolute; width: 100%; bottom: -10%;">
         <div class="bg-primary container p-4 d-flex justify-content-between">

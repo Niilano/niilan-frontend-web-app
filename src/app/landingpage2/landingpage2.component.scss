@@ -4,7 +4,7 @@ header{
     width: 30%;
 
     img{
-        width: 7%;
+        width: 15%;
     }
 }
 
@@ -16,19 +16,96 @@ nav{
         padding: 2%;
     }
 }
+
+}
+
+div.m-nav{
+    transition: all 3s ease-in;
+}
+
+.hide,.menu-bar{
+    display: none !important;
 }
 
 div.banner{
     background-size: cover;
-    background-position-y: -60px;
     font-family: 'Inder';
+    background-position: 50% 0px;
+    background-repeat: no-repeat;
 }
 
-@media(max-width: 500px){
-    div.banner{
+div.banner::before{
+    content: "";
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: .4;
+}
+
+@media(max-width: 990px){
+
+    .show{
+        display: block !important;
+    }
+
+    .menu-bar{
+        display: flex !important;
+    }
+
+    header{
+        background-color: black;
+        nav.desktop{
+            display: none !important;
+        }
+
+        nav.m-nav a{
+            border-top: 2px solid;
+            width: 100%;
+        }
+    }
+
+    /*div.banner{
         background-size: cover;
         background-position: center;
         // background-position-y: 0px;
         // background-position-x: 0px;
+    }*/
+}
+
+@media(max-width: 500px){
+
+    .show{
+        display: block !important;
     }
+
+    div.logo{
+        width: 50% !important;
+    }
+
+    .menu-bar{
+        display: flex !important;
+        justify-content: end !important;
+        padding-right: 3%;
+        width: 50% !important;
+    }
+
+    header{
+        background-color: black;
+        nav.desktop{
+            display: none !important;
+        }
+
+        nav#m-nav a{
+            border-top: 2px solid white;
+            width: 100%;
+        }
+    }
+
+    /*div.banner{
+        background-size: cover;
+        background-position: center;
+        // background-position-y: 0px;
+        // background-position-x: 0px;
+    }*/
 }
