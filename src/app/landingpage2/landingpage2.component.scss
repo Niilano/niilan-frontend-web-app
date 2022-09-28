@@ -75,6 +75,14 @@ div.banner::before{
 
 @media(max-width: 500px){
 
+    div.banner{
+        height: 1150px !important;
+    }
+
+    div.sr-form{
+        margin-top: 10%;
+    }
+
     .show{
         display: block !important;
     }
