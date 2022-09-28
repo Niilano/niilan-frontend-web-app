@@ -1,0 +1,34 @@
+header{
+    div.logo{
+    font-family: 'Inder';
+    width: 30%;
+
+    img{
+        width: 7%;
+    }
+}
+
+nav{
+    width: 80%;
+    font-family: 'Inder';
+
+    a{
+        padding: 2%;
+    }
+}
+}
+
+div.banner{
+    background-size: cover;
+    background-position-y: -60px;
+    font-family: 'Inder';
+}
+
+@media(max-width: 500px){
+    div.banner{
+        background-size: cover;
+        background-position: center;
+        // background-position-y: 0px;
+        // background-position-x: 0px;
+    }
+}

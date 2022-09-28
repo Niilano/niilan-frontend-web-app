@@ -13,6 +13,7 @@ import { CarDetailsComponent } from './car-details/car-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListCarComponent } from './list-car/list-car.component';
 import { ManageListingsComponent } from './manage-listings/manage-listings.component';
+import { Landingpage2Component } from './landingpage2/landingpage2.component';
 
 // import { NgbdCarouselPause } from './carousel-pause';
 
@@ -24,7 +25,8 @@ import { ManageListingsComponent } from './manage-listings/manage-listings.compo
     CarsComponent,
     CarDetailsComponent,
     ListCarComponent,
-    ManageListingsComponent
+    ManageListingsComponent,
+    Landingpage2Component
   ],
   imports: [
     BrowserModule,
