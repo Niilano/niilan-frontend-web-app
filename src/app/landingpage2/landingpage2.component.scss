@@ -43,6 +43,11 @@ div.banner::before{
     opacity: .4;
 }
 
+label{
+    color: rgba(0, 0, 0, 0.8);
+    font-family: 'Inder';
+}
+
 @media(max-width: 990px){
 
     .show{
