@@ -65,7 +65,10 @@ rent a car </h1> -->
 
                     <div class="form-group">
                         <label>Select region</label>
-                        <input type="text" class="form-control" name="">
+                        <input type="text" class="form-control" list="region">
+                        <datalist id="region"> 
+                            <option *ngFor="let x of regions">{{x}} </option>
+                        </datalist>
                     </div>
 
                     <div class="form-group mt-3">
@@ -101,13 +104,17 @@ rent a car </h1> -->
 
     <h3 class="text-primary text-center"> Find your car </h3>
 
-    <form class="row align-items-end">
+    <div class="row align-items-end">
 
         <div class="col-sm-3 form-group mt-3">
 
             <label> Choose Brand </label>
 
-            <input type="text" class="form-control" name="">
+            <input type="text" list="brand" class="form-control" name="">
+
+            <datalist id="brand">
+                <option *ngFor="let x of carMake"> {{x}} </option>
+            </datalist>
 
         </div>
 
@@ -115,15 +122,19 @@ rent a car </h1> -->
 
             <label> Choose Type </label>
 
-            <input type="text" class="form-control" name="">
+            <input type="text" list="type" class="form-control" >
+
+            <datalist id="type">
+                <option *ngFor="let x of carBody"> {{x}} </option>
+         </datalist>
 
         </div>
 
         <div class="col-sm-3 form-group mt-3">
 
-            <label> Price Limit </label>
+            <label class="my-3"> Price Limit <span class="bg-dark p-3 rounded text-light"> GH₵ {{price}} </span> </label>
 
-            <input type="text" class="form-control" name="">
+            <input [value]="price" type="range" [(ngModel)]="price" max="2000" class="form-range" name="">
 
         </div>
 
@@ -133,7 +144,7 @@ rent a car </h1> -->
 
         </div>
         
-    </form>
+    </div>
 
 </div>
 
@@ -164,24 +175,42 @@ rent a car </h1> -->
 
     </div>
 
-    <div class="container mt-5" style="font-family: 'Inder">
+    <div class="container my-5" style="font-family: 'Inder">
 
         <p class="text-center text-warning font-weight-bolder m-0 "> WHAT WE OFFER </p>
 
         <h1 class="text-center text-dark font-weight-bolder "> Choose your car </h1>
 
+        <div class="row">
+
+            <div class="col-md-4 col-lg-3 bg-dark p-3">
+
+            </div>
+
+              <div class="col-md-4 col-lg-3 bg-dark p-3">
+
+            </div>
+
+              <div class="col-md-4 col-lg-3 bg-dark p-3">
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="work-flow bg-dark text-light py-5" style="font-family: 'Inder">
+    <div class="work-flow bg-dark text-light " style="font-family: 'Inder'; background-image: url('assets/banner4.jpg'); ">
 
-        <p class="text-center font-weight-bolder m-0"> WORK FLOW </p>
+        <p class="text-center font-weight-bolder m-0" style="position: relative; z-index: 1;"> WORK FLOW </p>
 
-        <h1 class="text-center"> How it works </h1>
+        <h1 class="text-center" style="position: relative; z-index: 1;"> How it works </h1>
 
-<div class="container">
+<div class="container" style="position: relative; z-index: 1">
         <div class="row mt-5">
 
             <div class="col-sm-3 text-center">
+
+                <i class="fa-solid fa-map-location fa-2x border border-3 border-warning p-3" style="border-radius: 50%;"></i>
 
                 <h3> Pick Destination </h3>
 
@@ -191,6 +220,8 @@ rent a car </h1> -->
 
             <div class="col-sm-3 text-center">
 
+                <i class="fa-solid fa-hand-pointer fa-2x border border-3 border-warning p-3" style="border-radius: 50%;"></i>
+
                 <h3> Select Term </h3>
 
                 <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod </p>
@@ -199,6 +230,8 @@ rent a car </h1> -->
 
             <div class="col-sm-3 text-center">
 
+                <i class="fa-solid fa-map-location fa-2x border border-3 border-warning p-3" style="border-radius: 50%;"></i>
+
                 <h3> Choose A Car </h3>
 
                 <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod </p>
@@ -206,6 +239,8 @@ rent a car </h1> -->
             </div>
 
             <div class="col-sm-3 text-center">
+
+                <i class="fa-solid fa-map-location fa-2x border border-3 border-warning p-3" style="border-radius: 50%;"></i>
 
                 <h3> Enjoy The Ride </h3>
 

@@ -60,6 +60,25 @@ label{
     -webkit-font-smoothing: antialiased;
 }
 
+div.work-flow{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    padding: 10% 0%;
+}
+
+div.work-flow::before{
+    position: absolute;
+    content: '';
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 0;
+    opacity: .6;
+}
+
 @media(max-width: 990px){
 
     .show{

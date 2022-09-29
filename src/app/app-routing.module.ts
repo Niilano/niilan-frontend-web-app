@@ -21,7 +21,7 @@ const routes: Routes = [
 { path: 'manage', component: ManageListingsComponent },
 { path: 'manage/:id', component: ManageListingsComponent },
 
-{ path: '' , component: LandingpageComponent }  
+{ path: '' , component: Landingpage2Component }  
 // {path : '' , redirectTo: 'home' , pathMatch: 'full' }
 ];
 
