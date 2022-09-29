@@ -2,6 +2,7 @@ header{
     div.logo{
     font-family: 'Inder';
     width: 30%;
+    transition: all 3s ease;
 
     img{
         width: 15%;
@@ -105,6 +106,10 @@ label{
 
     div.logo{
         width: 50% !important;
+
+        img{
+            width: 20%;
+        }
     }
 
     .menu-bar{
