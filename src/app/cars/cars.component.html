@@ -1,273 +1,42 @@
-<!-- 
-<div class="bg-dark d-flex p-3">
-	<div class="logo">
-		<img src="assets/niilan.png">
+
+
+<app-header></app-header>
+
+<div class="banner d-flex justify-content-end flex-column">
+
+	
+	<div class="previous-links container text-light d-flex align-items-center" style="position: relative; z-index: 2;">
+		<p> HOME >></p> 
+		<p> ABOUT US </p>
 	</div>
-	<h1 class="text-light m-0"> Welcome {{user}} </h1>
-</div> -->
 
-<header class="d-flex justify-content-between py-2 px-3 align-items-center border-bottom rounded border-5 ">
-
-	<div class="logo" >
-	
-		<img src="assets/niilan.png" class="img-responsive" style="width: 50px;"> NIILAN
-	
+	<div class="container text-warning rounded" style="position: relative; z-index: 2;">
+		<h3> | CHOOSE YOUR CAR </h3>
 	</div>
-	
-	<nav class="m-hide" *ngIf="!loggedIn">
-	
-		<a href=""> About </a>
-	
-		<a href=""> How it works? </a>
-	
-		<a routerLink="/listings"> Cars </a>
-	
-		<button class="btn mx-3" style="border: 1px solid #000000;border-radius: 36px;" routerLink="/login" > Log in </button>
-	
-		<button class="btn" style="background: #039ADD; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.17); border-radius: 36px;" routerLink="/register" > Sign up </button>
-	
-	</nav>
 
-	<div *ngIf="!loggedIn" class="col text-end d-hide">
-		<div ngbDropdown class="d-inline-block" style="background-color: transparent !important;" >
-			<!-- <i class="fa-solid fa-user border border-5 p-3 "  style="border-radius: 50%;" ></i> -->
-		  <button type="button" class=" border border-0" style="background-color: transparent !important;" id="dropdownBasic1" ngbDropdownToggle>
-			<i class="fa-solid fa-bars fa-2x "   ></i></button>
+</div>
 
-		  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+<div class="mt-5 container">
 
-			<!-- <button ngbDropdownItem  onclick="document.getElementById('addEvents').classList.toggle('hidden')"> Profile </button>
+		<div *ngIf="loader" class="text-center text-dark bg-success"> Loading... </div>
 
-<button ngbDropdownItem >
-	 Log out </button> -->
+<div class="lists row m-0 p-0  " >
 
-		<a href="" ngbDropdownItem > Log In </a>
-	
-		<a href="" ngbDropdownItem > Sign Up </a>
-	
-		<a routerLink="/listings" ngbDropdownItem > Learn More </a>
-
-
-		  </div>
-		</div>
-	  </div>
-
-	<!-- <p class="bg-dark" style="width: 30%;"> WELCOME AAA </p> -->
-
-	<nav *ngIf="loggedIn" class="d-flex justify-content-end align-items-center" >
-
-		<div class="m-hide " style="width: 100%;" >
-	
-			<a routerLink="/list-cars" class="border border-3 p-1 rounded bg-dark text-light"> List a Car </a>
-	
-			<!-- <a href=""> Learn More </a> -->
-		
-			<a routerLink="/manage"> Manage Listings </a>
-
-		</div>
-	
-		<!-- <i class="fa fa-user-circle fa-2x" ></i> -->
-
-		<div class="">
-			<div ngbDropdown class="d-inline-block">
-				<!-- <i class="fa-solid fa-user border border-5 p-3 "  style="border-radius: 50%;" ></i> -->
-			  <button type="button" class=" border border-0" style="background-color: transparent !important;" id="dropdownBasic1" ngbDropdownToggle>
-				<i class="fa-solid fa-user-circle fa-2x"   ></i></button>
-
-			  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-
-				<button ngbDropdownItem  onclick="document.getElementById('addEvents').classList.toggle('hidden')"> Profile </button>
-	
-			<a href="" ngbDropdownItem > List a Car </a>
-		
-			<!-- <a href="" ngbDropdownItem > Learn More </a> -->
-		
-			<a routerLink="/manage" ngbDropdownItem > Manage Listings </a>
-
-            <button ngbDropdownItem >
-                Log out </button>
-	
-
-			  </div>
-			</div>
-		  </div>
-	
-	</nav>
-	
-	</header>
-
-	<!-- <div class="a d-flex flex-column fixed-top bg-light " style=" width: 20%; left: 80%; top: 5%; "> 
-
-		<a href=""> Profile </a>
-		<a href=""> Log out </a>
-		
-	</div> -->
-
-
-
-<div class="mt-2 m-0  p-0 vw-100">
-
-	<!-- <div class="p-0 m-0" style="width:100%; display: none; position: absolute; z-index: 99; backdrop-filter: blur(3px);  " > 
-
-		<div class="p-5 mt-0" style=" width: 40%; margin: auto; background-color: #ffffffb3; position: relative;">
-
-		<i style=" position: absolute; right: 0; " class="fa-solid text-danger fa-xmark mx-3 fa-3x"></i>
-	
-		<div class="text-center m-0 p-0">
-			<i class="fa-solid fa-car-tunnel fa-3x "></i>
-			<h5 class="m-0 mt-1"> FIND YOUR CAR </h5>
-		</div>
-
-		<div class="text-center mt-3 p-2"> 
-			<h5 class="m-0 my-2 text-start"> By Region </h5>
-			
-			<input class="form-control" #region list="regions" placeholder="Region" >
-			<datalist id="regions">
-                    <option *ngFor="let x of regions"> {{x}} </option>
-                </datalist>
-			
-			<button class="btn btn-primary w-100 mt-3" (click)="regionsSearch(this.region)" > Find </button>
-		</div>
-
-		<div class="text-center mt-3 p-2"> 
-			<h5 class="m-0 my-2 text-start"> By Loaction </h5>
-			
-			<input class="form-control" list="regions" placeholder="Location" >
-			<datalist id="regions">
-                    <option *ngFor="let x of regions"> {{x}} </option>
-                </datalist>
-			
-			<button class="btn btn-primary w-100 mt-3"> Find </button>
-		</div>
-
-		<div class="text-center mt-3 p-2"> 
-			<h5 class="m-0 my-2 text-start"> By Body </h5>
-			
-			<input class="form-control" list="carBody" placeholder="Body Style" >
-			<datalist id="carBody">
-                    <option *ngFor="let x of carBody"> {{x}} </option>
-                </datalist>
-			
-			<button class="btn btn-primary w-100 mt-3"> Find </button>
-		</div>
-
-		<div class="text-center mt-3 p-2"> 
-			<h5 class="m-0 my-2 text-start"> By Make </h5>
-			
-			<input class="form-control" list="carMake" placeholder="Car Make" >
-			<datalist id="carMake">
-                    <option *ngFor="let x of carMake"> {{x}} </option>
-                </datalist>
-			
-			<button class="btn btn-primary w-100 mt-3"> Find </button>
-		</div>
-
-		<div class="text-center mt-3 p-2"> 
-			<h5 class="m-0 my-2 text-start"> Price Range </h5>
-			<p class="m-0"> From: <span> GH₵ {{from}} </span>	</p>
-			<input type="range" value="600" class="form-range" id="from" min="0" max="2000" (input)="priceRangeFrom()" >
-			<p class="m-0"> To: <span> GH₵ {{to}} </span>	</p>
-			<input type="range" value="1900" class="form-range" id="to" min="0" max="2000" (input)="priceRangeTo()" >
-			
-			<button class="btn btn-primary w-100"> Find </button>
-		</div>
-
-	</div>
-		
-	</div> -->
-
-	<form [formGroup]="searchForm" (ngSubmit)="sortSearch()" class="d-flex align-items-center m-0 p-0 bg-dark" style="box-sizing: border-box;">
-
-		<i class="fa-solid fa-car-tunnel fa-4x text-light mx-2" style="  box-sizing: border-box;"></i>
-
-		<div class="bg-light m-3 p-2 rounded d-flex flex-column " onmouseenter=" document.getElementById('drop').classList.add('d-show') " onmouseleave=" document.getElementById('drop').classList.remove('d-show') " style="width: 100%;  box-sizing: border-box;">
-
-			<div class="form-group row p-0 m-0">
-
-				<h5 class="col-12 my-2 p-0"> Price: <span class=" bg-dark rounded text-light p-1" > GH₵ {{from}} / day </span> </h5>
-
-				<input type="range" class="form-range col-12 m-0 p-0" id="from" min="0" max="2000" (input)="priceRangeFrom()" formControlName="price" >
-
-			</div>
-
-			<div class="form-group mt-2">
-			<input class="form-control" list="regions" placeholder="Location" formControlName="location" >
-			<datalist id="regions">
-                    <option *ngFor="let x of regions"> {{x}} </option>
-                </datalist>
-				</div>
-
-<div id="drop" class=" form-group m-0 p-0 animate__animated animate__fadeInDown" style="display: none; transition: all 5s infinite;" >
-				<div class=" form-group text-center m-0 p-0 mt-3"> 
-					<!-- <h5 class="m-0 my-2 text-start"> By Body </h5> -->
-					
-					<input class="form-control" list="carBody" placeholder="Body Style" formControlName="bodyStyle" >
-					<datalist id="carBody">
-							<option *ngFor="let x of carBody"> {{x}} </option>
-						</datalist>
-					
-					<!-- <button class="btn btn-primary w-100 mt-3"> Find </button> -->
-				</div>
-		
-				<div class="form-group m-0 p-0 mt-3"> 
-					<!-- <h5 class="m-0 my-2 text-start"> By Make </h5> -->
-					
-					<input class="form-control" list="carMake" placeholder="Car Make" formControlName="carMake" >
-					<datalist id="carMake">
-							<option *ngFor="let x of carMake"> {{x}} </option>
-						</datalist>
-					
-					<!-- <button class="btn btn-primary w-100 mt-3"> Find </button> -->
-				</div>
-
-				</div>
-
-
-				<div class="form-group mt-2">
-				<button class="btn btn-primary w-100"> Find your car </button>
-				</div>
-
-		</div>
-
-		<!-- <div class="text-center p-2 bg-light"> 
-			<h5 class="m-0 my-2 text-start"> Price Range </h5>
-			<p class="m-0"> From: <span> GH₵ {{from}} </span>	</p>
-			<input type="range" value="600" class="form-range" id="from" min="0" max="2000" (input)="priceRangeFrom()" >
-			<p class="m-0"> To: <span> GH₵ {{to}} </span>	</p>
-			<input type="range" value="1900" class="form-range" id="to" min="0" max="2000" (input)="priceRangeTo()" >
-			
-			<button class="btn btn-primary w-100"> Find </button>
-		</div> -->
-
-			<!-- <i class="fa-solid fa-car-tunnel fa-4x "></i>
-			<h5 class="m-0 mt-1"> FIND YOUR CAR </h5>
-			<button class="btn btn-primary mt-2" style="width: 50%; margin: auto; display: block;" > FIND YOUR CAR </button> -->
-			</form>
-
-
-		<div *ngIf="loader" class="text-center"> Loading... </div>
-
-<div class="lists row m-0 p-0 " >
-
-	<div [routerLink]="['/cars/details', carsId ]" class="col-lg-3 col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of cars1 index as carsId " style="cursor: pointer;" >
+	<div [routerLink]="['/cars/details', carsId ]" class="col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of cars index as carsId " style="cursor: pointer;" >
 
 		<div class="card"  >
 
-			<div class="card-header d-flex justify-content-center bg-primary p-0 overflow-hidden " style="height: 200px; box-sizing: border-box; " >
-
-				<img [src]="x.carImagesUrl[0]" id="carsImg" style="height: 100%;">
+			<div class="card-header d-flex justify-content-center p-0 overflow-hidden ; background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center; " style="height: 200px; box-sizing: border-box;  " [ngStyle]="{ 'background-image' : 'url('+x.images[0]+')', 'background-size':'cover','background-position': 'center center','background-repeat' : 'no-repeat'}">
 
 			</div>
 
 			<div class="card-body">
 
-				<!-- <a [routerLink]="['/cars', carsId ]" > {{x.name}}</a> -->
-
-				<h5 class="text-center" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > {{x.carName}}  </h5>
+				<h5 class="text-center" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > {{x.name}}  </h5>
 
 				<div class="details">
-
-					<!-- <h6 class="text-center m-0"> Details  </h6> -->
 
 					<p class="font-weight-bold m-0" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; "> {{x.description}} </p>
 
@@ -280,22 +49,6 @@
 				<p class="m-0 text-center" style="width: 50%;  text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > <b> GH₵{{x.price}} per day </b>  </p>
 
 				<button class="btn btn-outline-primary" style="width: 50%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > BOOK NOW </button>
-
-				<!-- <span class="col-4 m-0 p-0 text-center font-weight-bolder text-primary " style="font-weight : bolder; font-size: .9em; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; ">
-								<i class="fa-solid fa-check-double font-weight-bolder"></i> AVAILABLE
-							</span>
-				
-							<span class="col-4 text-center">
-				
-								<i class="fa-solid fa-thumbs-up fa-2x"></i> <b> 7 </b>
-				
-							</span>
-				
-							<span class="col-4 text-center">
-				
-								<button [routerLink]="['/cars', carsId ]" class="btn btn-primary"> <i class="fa-solid fa-circle-plus"></i> RENT </button>
-				
-							</span> -->
 				
 						</div>
 
@@ -309,14 +62,14 @@
 
 </div>
 
-<div *ngIf="loader" class="d-flex justify-content-center align-items-center fixed-top" style=" backdrop-filter: blur(3px); width: 100%; left: 0; height: 100vh; top: 0; " >
+<!-- <div *ngIf="loader" class="d-flex justify-content-center align-items-center fixed-top" style=" backdrop-filter: blur(3px); width: 100%; left: 0; height: 100vh; top: 0; " >
 
 	<div class="bg-light p-3 rounded ">
 		<i class="fa-solid fa-gear fa-spin "></i>   LOADING...
 	</div>
 
 
-</div>
+</div> -->
 
 <!-- <router-outlet></router-outlet> -->
 

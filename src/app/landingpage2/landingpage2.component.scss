@@ -1,32 +1,3 @@
-header{
-    div.logo{
-    font-family: 'Inder';
-    width: 30%;
-    transition: all 3s ease;
-
-    img{
-        width: 15%;
-    }
-}
-
-nav{
-    width: 80%;
-    font-family: 'Inder';
-
-    a{
-        padding: 2%;
-    }
-}
-
-}
-
-div.m-nav{
-    transition: all 3s ease-in;
-}
-
-.hide,.menu-bar{
-    display: none !important;
-}
 
 div.banner{
     background-size: cover;
@@ -89,16 +60,7 @@ div.work-flow::before{
         display: flex !important;
     }
 
-    header{
-        background-color: black;
-        nav.desktop{
-            display: none !important;
-        }
 
-        nav.m-nav a{
-            border-top: 2px solid;
-            width: 100%;
-        }
     }
 
     /*div.banner{
@@ -107,7 +69,6 @@ div.work-flow::before{
         // background-position-y: 0px;
         // background-position-x: 0px;
     }*/
-}
 
 @media(max-width: 500px){
 
@@ -123,32 +84,6 @@ div.work-flow::before{
         display: block !important;
     }
 
-    div.logo{
-        width: 50% !important;
-
-        img{
-            width: 20%;
-        }
-    }
-
-    .menu-bar{
-        display: flex !important;
-        justify-content: end !important;
-        padding-right: 3%;
-        width: 50% !important;
-    }
-
-    header{
-        background-color: black;
-        nav.desktop{
-            display: none !important;
-        }
-
-        nav#m-nav a{
-            border-top: 2px solid white;
-            width: 100%;
-            padding-right: 5%;
-        }
     }
 
     /*div.banner{
@@ -157,4 +92,3 @@ div.work-flow::before{
         // background-position-y: 0px;
         // background-position-x: 0px;
     }*/
-}

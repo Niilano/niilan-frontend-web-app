@@ -1,72 +1,29 @@
-
-div.logo{
+div.banner{
+	height: 400px;
+	background-image: url(../../assets/banner.jpg);
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+	z-index: 1;
 	font-family: 'Inder';
-   font-style: normal;
-   font-weight: 400;
-  font-size: 35px;
-  line-height: 60px;
-  width: 30%;
 }
 
-nav{
+div.banner::before{
+	content: '';
+	background-color: black;
+	position: absolute;
 	width: 100%;
-	text-align: right;
+	height: 100%;
+	opacity: .4;
+	z-index: 0;
 }
 
-nav a{
-	text-decoration: none;
-	margin: 0 2%;
-	color: black;
-	font-family: 'Inder';
-   font-style: normal;
-   font-weight: 400;
-  font-size: 1.2em;
-  line-height: 30px;
-
+div.previous-links p{
+	cursor: pointer;
+	margin: 0%;
+	padding: 1%;
 }
 
-nav button{
-	font-family: 'inter-light';
-    font-style: normal;
-   font-weight: 400;
-   font-size: 1.2em;
-   line-height: 33px;
-}
-
-.d-hide{
-	display: none;
-}
-
-.dropdown-toggle::after{
-	display: none;
-}
-
-.d-show{
-	display: block !important;
-}
-
-#drop{
-	transition: all 5s infinite;
-}
-
-#carsImg:hover{
-	width: 90%;
-}
-
-@media(max-width : 500px){
-	div.logo{
-		width: 100%;
-	}
-	.lists{
-		padding: 0% !important;
-	}
-	.car{
-		margin-top: 7%;
-	}
-	.m-hide{
-		display: none;
-	}
-	.d-hide{
-		display: block;
-	}
+div.previous-links p:hover{
+	color: #ffc107;
 }
