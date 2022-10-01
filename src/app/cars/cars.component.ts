@@ -18,6 +18,8 @@ export class CarsComponent implements OnInit {
 
   sidebarExpanded = true;
 
+  price:any
+
   loggedIn:any
 
   cars = cars

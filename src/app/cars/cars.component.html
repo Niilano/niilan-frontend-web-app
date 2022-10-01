@@ -16,6 +16,50 @@
 
 </div>
 
+<div class="sort container mt-3">
+	<div class="row align-items-end">
+
+        <div class="col-sm-3 form-group mt-3">
+
+            <label> Choose Brand </label>
+
+            <input type="text" list="brand" class="form-control" name="">
+
+            <datalist id="brand">
+                <option *ngFor="let x of carMake"> {{x}} </option>
+            </datalist>
+
+        </div>
+
+          <div class="col-sm-3 form-group mt-3">
+
+            <label> Choose Type </label>
+
+            <input type="text" list="type" class="form-control" >
+
+            <datalist id="type">
+                <option *ngFor="let x of carBody"> {{x}} </option>
+         </datalist>
+
+        </div>
+
+        <div class="col-sm-3 form-group mt-3">
+
+            <label class="my-3"> Price Limit <span class="bg-dark p-3 rounded text-light"> GH₵ {{price}} </span> </label>
+
+            <input [value]="price" type="range" [(ngModel)]="price" max="2000" class="form-range" name="">
+
+        </div>
+
+        <div class="col-sm-3 form-group mt-3 text-center">
+
+           <button class="btn btn-primary p-3"> Find vehicle </button>
+
+        </div>
+        
+    </div>
+</div>
+
 <div class="mt-5 container">
 
 		<div *ngIf="loader" class="text-center text-dark bg-success"> Loading... </div>
