@@ -30,6 +30,16 @@ aside::before{
     width: 100%;
 }
 
+
+nav p:hover{
+    background-color: #ffc107 !important;
+    cursor: pointer;
+}
+
+nav p.active{
+    background-color: #ffc107 !important;
+}
+
 .hide{
     display: none !important;
 }

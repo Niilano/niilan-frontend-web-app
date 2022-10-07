@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  title = "profile"
+
   constructor() { }
 
   ngOnInit(): void {
