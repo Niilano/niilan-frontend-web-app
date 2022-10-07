@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersInfoService } from '../users-info.service';
 
 @Component({
   selector: 'app-header',
@@ -7,22 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  isLoggedIn:any
+
+  constructor( private users : UsersInfoService ) {
+    this.users.userInfo().subscribe(
+      res=>{
+
+        let result = JSON.parse(JSON.stringify(res))
+
+        this.isLoggedIn = result.status
+
+      },
+      err=>{
+        this.isLoggedIn = false
+      }
+    )
+   }
 
   ngOnInit(): void {
     const menu = document.querySelector('.menu-bar p') as HTMLElement
     const logo = document.querySelector('.logo') as HTMLElement
     const header = document.querySelector('header') as HTMLElement
     const mnav = document.querySelectorAll('#m-nav a')
-    const nav = document.querySelector('.desktop') as HTMLElement
+    const nav = document.querySelectorAll('.desktop')
     const navA = document.querySelectorAll('nav a')
 window.addEventListener('scroll', fixNav)
 
 function fixNav() {
-    if(window.scrollY > header.offsetHeight + 150) {
+    if(window.scrollY > header.offsetHeight + 80) {
         header.style.backgroundColor = 'white';
         header.classList.add('shadow')
-        nav.style.color = 'black';
+        nav.forEach((a:any)=>{
+          a.style.color = 'black';
+        })
         logo.style.color = 'black';
         menu.style.color = 'black';
         mnav.forEach((a:any)=>{
@@ -35,7 +53,9 @@ function fixNav() {
     } else {
        header.style.backgroundColor = '';
        header.classList.remove('shadow')
-        nav.style.color = '';
+       nav.forEach((a:any)=>{
+        a.style.color = '';
+      })
         logo.style.color = '';
         menu.style.color = '';
         mnav.forEach((a:any)=>{

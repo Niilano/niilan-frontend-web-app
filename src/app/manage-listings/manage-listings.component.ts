@@ -13,6 +13,8 @@ import { paths } from '../routes';
 })
 export class ManageListingsComponent implements OnInit {
 
+  title = "Manage Listings"
+
   loggedIn:any
 
   noListings:any
@@ -69,7 +71,7 @@ export class ManageListingsComponent implements OnInit {
       },
       err=>{
         // this.err
-        this.route.navigate(['cars'])
+        // this.route.navigate(['cars'])
 
       }
     )
@@ -92,6 +94,7 @@ export class ManageListingsComponent implements OnInit {
       },
       err=>{
         console.log(err)
+        this.noListings = "No Vehicles Listed"
       }
     )
 

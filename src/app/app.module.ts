@@ -15,6 +15,19 @@ import { ListCarComponent } from './list-car/list-car.component';
 import { ManageListingsComponent } from './manage-listings/manage-listings.component';
 import { Landingpage2Component } from './landingpage2/landingpage2.component';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SortComponent } from './sort/sort.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatSliderModule } from '@angular/material/slider';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { DashHeaderComponent } from './dash-header/dash-header.component';
+import { OverviewComponent } from './overview/overview.component';
+import { ProfileComponent } from './profile/profile.component';
 
 // import { NgbdCarouselPause } from './carousel-pause';
 
@@ -28,7 +41,13 @@ import { HeaderComponent } from './header/header.component';
     ListCarComponent,
     ManageListingsComponent,
     Landingpage2Component,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    SortComponent,
+    DashboardComponent,
+    DashHeaderComponent,
+    OverviewComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +55,12 @@ import { HeaderComponent } from './header/header.component';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatProgressSpinnerModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

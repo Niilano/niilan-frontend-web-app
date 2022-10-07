@@ -1,102 +1,24 @@
+<app-header class="bg-dark"></app-header>
 
-<header class="d-flex justify-content-between py-2 px-3 align-items-center border-bottom rounded border-5 ">
+<div class="banner d-flex justify-content-end flex-column">
 
-	<div class="logo" >
 	
-		<img src="assets/niilan.png" class="img-responsive" style="width: 50px;"> NIILAN
-	
+	<div class="previous-links container text-light d-flex align-items-center" style="position: relative; z-index: 2;">
+		<p routerLink="/"> HOME >></p> 
+    <P routerLink="/cars"> CARS >></P>
+		<p> RENT </p>
 	</div>
-	
-	<nav class="m-hide" *ngIf="!user">
-	
-		<a href=""> About </a>
-	
-		<a href=""> How it works? </a>
-	
-		<a routerLink="/listings"> Cars </a>
-	
-		<button class="btn mx-3" style="border: 1px solid #000000;border-radius: 36px;" routerLink="/login" > Log in </button>
-	
-		<button class="btn" style="background: #039ADD; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.17); border-radius: 36px;" routerLink="/register" > Sign up </button>
-	
-	</nav>
 
-	<div *ngIf="!user" class="col text-end d-hide">
-		<div ngbDropdown class="d-inline-block" style="background-color: transparent !important;" >
-			<!-- <i class="fa-solid fa-user border border-5 p-3 "  style="border-radius: 50%;" ></i> -->
-		  <button type="button" class=" border border-0" style="background-color: transparent !important;" id="dropdownBasic1" ngbDropdownToggle>
-			<i class="fa-solid fa-bars fa-2x "   ></i></button>
+	<div class="container text-warning rounded" style="position: relative; z-index: 2;">
+		<h3> | RENT VEHICLE </h3>
+	</div>
 
-		  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-
-			<!-- <button ngbDropdownItem  onclick="document.getElementById('addEvents').classList.toggle('hidden')"> Profile </button>
-
-<button ngbDropdownItem >
-	 Log out </button> -->
-
-		<a href="" ngbDropdownItem > Log In </a>
-	
-		<a href="" ngbDropdownItem > Sign Up </a>
-	
-		<a routerLink="/listings" ngbDropdownItem > Learn More </a>
+</div>
 
 
-		  </div>
-		</div>
-	  </div>
+<div class="" style="font-family: 'Inder';">
 
-	<!-- <p class="bg-dark" style="width: 30%;"> WELCOME AAA </p> -->
-
-	<nav *ngIf="user" class="d-flex justify-content-end align-items-center" >
-
-		<div class="m-hide " style="width: 100%;" >
-	
-		<a routerLink="/list-cars" class="border border-3 p-1 rounded bg-dark text-light"> List a Car </a>
-	
-		<a href=""> Learn More </a>
-	
-		<a routerLink="/listings"> Trips </a>
-
-		</div>
-	
-		<!-- <i class="fa fa-user-circle fa-2x" ></i> -->
-
-		<div class="">
-			<div ngbDropdown class="d-inline-block">
-				<!-- <i class="fa-solid fa-user border border-5 p-3 "  style="border-radius: 50%;" ></i> -->
-			  <button type="button" class=" border border-0" style="background-color: transparent !important;" id="dropdownBasic1" ngbDropdownToggle>
-				<i class="fa-solid fa-user-circle fa-2x"   ></i></button>
-
-			  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-
-				<button ngbDropdownItem  onclick="document.getElementById('addEvents').classList.toggle('hidden')"> Profile </button>
-
-	<button ngbDropdownItem >
-		 Log out </button>
-	
-			<a href="" ngbDropdownItem > List a Car </a>
-		
-			<a href="" ngbDropdownItem > Learn More </a>
-		
-			<a routerLink="/listings" ngbDropdownItem > Trips </a>
-	
-
-			  </div>
-			</div>
-		  </div>
-	
-	</nav>
-	
-	</header>
-
-
-
-<div>
-
-    <div routerLink="/cars" class=" text-center bg-primary font-weight-bolder p-2 " style="font-weight: bold; cursor: pointer; " >
-        <i class="fa-solid fa-arrow-rotate-left"></i> BACK TO CARS
-    </div>
-    <!-- {{car.name}} -->
+  
     <div class="row m-0 p-0 mt-3 container-fluid mx-auto ">
 
     <ngb-carousel class="col-lg-6 p-0 rounded overflow-hidden"  #carousel [interval]="2000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
@@ -106,8 +28,8 @@
             <h3> {{car1.carName}} </h3>
           </div>
           <!-- <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer"> -->
-            <div class="picsum-img-wrapper rounded ">
-              <img class="img-rounded" [src]="img" style="max-width: 100%;" alt="My image {{i + 1}} description">
+            <div class="picsum-img-wrapper rounded " style="height: 500px; box-sizing: border-box;  " [ngStyle]="{ 'background-image' : 'url('+img+')', 'background-size':'cover','background-position': 'center center','background-repeat' : 'no-repeat'}">
+              <!-- <img class="img-rounded" [src]="img" style="max-width: 100%;" alt="My image {{i + 1}} description"> -->
             </div>
           <!-- </a> -->
         </ng-template>
@@ -124,19 +46,28 @@
 
         <div class="row my-3">
             <div class="col">
-            <i class="fa-solid fa-chair"></i> {{car1.noOfSeats}} Seats
+            <i class="fa-solid fa-chair text-primary"></i> {{car1.noOfSeats}} Seats
             </div>
             <div class="col">
-                <i class="fa-solid fa-gas-pump"></i> {{car1.fuel}}
+                <i class="fa-solid fa-gas-pump text-primary"></i> {{car1.fuel}}
                 </div>
                 <div class="col">
-                    <i class="fa-solid fa-gauge"></i> {{car1.speed}}
+                    <i class="fa-solid fa-gauge text-primary"></i> {{car1.speed}}
                     </div>
                 
         </div>
 
-        <div class="text-center my-3">
-          <img src="assets/wheel.png" style="width: 8%;" class="fa-spin"> {{car1.driver}}              
+        <div class="text-center my-3 row">
+
+          <div class="col">
+            <img src="assets/wheel.png" style="width: 5%;" class=""> {{car1.driver}} 
+          </div>
+
+          <div class="col">
+            <i class="fa-solid fa-palette text-primary"></i> {{car1.color}}
+            <!-- No. {{car1.carPlate}}  -->
+          </div>
+               
     </div>
 
         <div id="ee" class="des-less">
@@ -146,7 +77,7 @@
 
         <button class=" mt-3 btn btn-outline-primary" (click)="expDes(a)" #a > Read More </button>
 
-        <p class="text-center bg-primary my-3 p-3 rounded font-weight-bolder " style="font-weight: bolder;" > GH₵ {{car1.price}} </p>
+        <p class="text-center text-light bg-primary my-3 p-3 rounded font-weight-bolder " style="font-weight: bolder;" > {{car1.price | currency:'GHS':'symbol-narrow':'2.2-4' }} </p>
     </div>
 
       
@@ -154,13 +85,15 @@
       </div>
 </div>
 
-<div class="row mx-0 mt-3 ">
+<div class="row mx-0 my-3 ">
 
-    <div class="col-lg-6 text-center d-flex align-items-center justify-content-center flex-column">
+    <div class="col-lg-12 text-center d-flex align-items-center justify-content-center flex-column">
 
-        <form (ngSubmit)="rent()" >
+        <form (ngSubmit)="rent()" class="" >
 
-            <div class="row my-3">
+          <h2 class="m-0"> Submit your request </h2>
+
+            <div class="row">
                 <label class="my-3 font-weight-bolder"> Trip start </label>
                 <div class="col">
                 <input type="date" class="form-control " value="2022-10-02" >
@@ -202,22 +135,71 @@
             <div class="row container ">
 
             <div class="form-check col">
-                <input class="form-check-input" type="radio" id="check1" name="option1" value="something" checked>
+                <input class="form-check-input" type="radio" id="check1" name="option1" disabled  checked>
                 <label class="form-check-label">With Driver</label>
               </div>
 
               <div class="form-check col">
-                <input class="form-check-input" type="radio" id="check1" name="option1" value="something" >
+                <input class="form-check-input" type="radio" id="check1" name="option1" disabled  >
                 <label class="form-check-label">Without Driver</label>
               </div>
 
               </div>
 
-            <button (click)="rent()" type="submit" class="btn btn-outline-primary mt-3"> Rent </button>
+              <!-- <div class="form-group mt-3">
+                <label> Enter your license number </label>
+                <input class="form-control" type="text">
+              </div> -->
+
+              <div class="form-group mt-3">
+                <p class="m-0 mb-2"> Upload an image of your driving license </p>
+                <div class=" border border-2 text-dark rounded p-3 d-flex align-items-center justify-content-center" style="height: 300px; border-style: dashed !important;"> <label for="license" class="bg-dark rounded text-light p-3"> <i class="fa-solid fa-plus"></i> Upload image </label> </div>
+                <input class="form-control d-none" type="file" id="license" >
+              </div>
+
+            <button (click)="rent()" type="submit" class="btn btn-outline-primary mt-3"> Rent Vehicle </button>
 
         </form>
 
 
       </div>
+
+      <!-- <div class="col-sm-6 comments">
+        <h3> Feedbacks </h3>
+        <div class="form-group border-light bg-dark border-3 p-3 rounded text-center">
+        <input type="text" class="form-control" placeholder="Add your feedback">
+        <button class="btn btn-outline-primary mt-3"> Submit </button>
+        </div>
+      </div> -->
+
+</div>
+
+<div class="fixed-top  "  >
+
+  <div *ngIf="successMessage" class="d-flex align-items-center justify-content-center bg-light rounded mx-auto p-3  " style=" width: max-content; " >
+
+    <i class="fa-solid fa-check-double bg-success p-1 text-light mx-2" style="border-radius: 50%;"></i>
+
+    <p class="m-0"> Your request has been submitted </p>
+
+  </div>
+
+  <div *ngIf="errorMessage" class="d-flex align-items-center justify-content-center bg-light rounded mx-auto p-3  " style=" width: max-content; " >
+
+    <i class="fa-solid fa-xmark bg-danger p-1 text-light mx-2" style="border-radius: 50%;"></i>
+
+    <p class="m-0"> {{errorMessage}} </p>
+
+    <!-- Error sending your request. Please try later. -->
+
+  </div>
+
+  <!-- <div class="bg-light border-black border-5 rounded p-3 d-flex justify-content-center align-items-center flex-column " style=" width: 60%; box-sizing: border-box; " >
+
+    <i class="fa-solid fa-check-double fa-2x bg-success p-3 mb-3 text-light " style="border-radius: 50%;"></i>
+
+    <p> Your request has successfully being sent for approval, once it is approved you can continue to make payment and enjoy your ride. </p> 
+
+  </div> -->
 
 </div>

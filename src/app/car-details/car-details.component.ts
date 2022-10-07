@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 
 import {cars} from '../cars';
+import { CarsService } from '../cars.service';
 
 @Component({
   selector: 'app-car-details',
@@ -14,6 +15,8 @@ import {cars} from '../cars';
 export class CarDetailsComponent implements OnInit {
 
   user = localStorage.getItem('username')
+
+  opp:any
 
   // images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
@@ -56,25 +59,34 @@ export class CarDetailsComponent implements OnInit {
     d.innerText = d.innerText == "Less" && "Read More" || d.innerText != "Less" && "Less"
   }
 
+  successMessage:any
+  errorMessage:any
+
   rent(){
-    alert("Please Log in!!!")
+    // alert("Please Log in!!!")
+    this.errorMessage = "Kindly login to submit this request"
+
+    setTimeout(() => {
+      this.errorMessage = ""
+    }, 2000);
+
   }
 
 
-  constructor(  private route: ActivatedRoute, private http : HttpClient ) {  }
+  constructor(  private route: ActivatedRoute, private http : HttpClient, private cars : CarsService ) {  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       let index = Number(params.get('carsId'))
       this.car = cars[index];
 
-      this.http.get(`http://localhost:4000/listings/getListings/${index+1}`).subscribe(
+      this.cars.getOneCar(index).subscribe(
       res=>{
-        console.log(res)
+        // console.log(res)
         this.car1 = JSON.parse(JSON.stringify(res))
-        console.log(this.car1.carImagesUrl)
+        // console.log(this.car1.carImagesUrl)
         this.car1.carImagesUrl = JSON.parse(this.car1.carImagesUrl)
-        console.log(this.car1.carImagesUrl)
+        // console.log(this.car1.carImagesUrl)
         
       },
       err=>{

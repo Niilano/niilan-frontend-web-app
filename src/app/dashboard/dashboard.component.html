@@ -1,0 +1,24 @@
+
+<div class="row m-0 p-0 vh-100 overflow-hidden">
+
+  <aside class="m-hide col-sm-3 vh-100 bg-light shadow px-2"
+>
+
+<h3 class="text-center m-0 py-3"> <img class="mx-1" src="assets/niilan.png" style="width: 15%;"> NIILAN <hr style=" border: 1px solid; "> </h3>
+
+<nav style="font-size: 1em;">
+  <p class="m-0 rounded p-2 " routerLinkActive="active"  routerLink="/dashboard/overview"> <i class="fa-solid fa-gauge" ></i> Dashboard </p>
+  <p class="m-0 rounded p-2 mt-3 " routerLinkActive="active"  routerLink="/dashboard/profile" > <i class="fa-solid fa-user-circle"></i> User Profile </p>
+  <p class="m-0 rounded p-2 mt-3 " routerLinkActive="active"  routerLink="/dashboard/list-car"> <i class="fa-solid fa-car"></i> List Car </p>
+  <p class="m-0 rounded p-2 mt-3 " routerLinkActive="active"  routerLink="/dashboard/manage-listings"> <i class="fa-solid fa-car"></i> Manage Listings </p>
+  <p class="m-0 rounded p-2 mt-3 " > <i class="fa-solid fa-car"></i> Approvals </p>
+</nav>
+
+</aside>
+
+<div class="col-sm-9 vh-100 bg-light shadow" style=" overflow-y:scroll; "> 
+  <router-outlet></router-outlet>
+</div>
+
+
+</div>

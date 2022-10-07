@@ -1,0 +1,47 @@
+<div class="container mt-5 rounded border border-2 p-4" style="font-family: 'Inder'; box-sizing: border-box;">
+
+    <h3 class="text-primary text-center"> Find your car </h3>
+
+    <div class="row align-items-end">
+
+        <div class="col-sm-3 form-group mt-3">
+
+            <label> Choose Brand </label>
+
+            <input type="text" list="brand" class="form-control" name="" [(ngModel)]="brand">
+
+            <datalist id="brand">
+                <option *ngFor="let x of carMake"> {{x}} </option>
+            </datalist>
+
+        </div>
+
+          <div class="col-sm-3 form-group mt-3">
+
+            <label> Choose Type </label>
+
+            <input type="text" list="type" class="form-control" name="" [(ngModel)]="type" >
+
+            <datalist id="type">
+                <option *ngFor="let x of carBody"> {{x}} </option>
+         </datalist>
+
+        </div>
+
+        <div class="col-sm-3 form-group mt-3">
+
+            <label class="my-3"> Price Limit <span class="bg-dark p-3 rounded text-light"> GH₵ {{price}} </span> </label>
+
+            <input [value]="price" type="range" [(ngModel)]="price" max="2000" class="form-range" name="">
+
+        </div>
+
+        <div class="col-sm-3 form-group mt-3 text-center">
+
+           <button type="button" class="btn btn-primary p-3" [routerLink]="['/cars/sort/',brand,type,price]" > Find vehicle </button>
+
+        </div>
+        
+    </div>
+
+</div>

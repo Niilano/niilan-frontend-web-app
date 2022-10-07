@@ -9,6 +9,9 @@ import { paths } from '../routes';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersInfoService } from '../users-info.service';
 
+import { environment } from 'src/environments/environment';
+import { CarsService } from '../cars.service';
+
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
@@ -16,13 +19,15 @@ import { UsersInfoService } from '../users-info.service';
 })
 export class CarsComponent implements OnInit {
 
+  p: number = 1;
+
   sidebarExpanded = true;
 
-  price:any
+  price = 100
 
   loggedIn:any
 
-  cars = cars
+  // cars = cars
 
   cars1:any
 
@@ -48,13 +53,13 @@ sortSearch(){
   this.router.navigate(['/cars/search',this.searchForm.getRawValue().location,this.searchForm.getRawValue().price,this.searchForm.getRawValue().bodyStyle])
 }
 
-loader = false
+loader = true
 
 getAllCars(){
 
   this.loader = true
 
-  this.http.get(`${paths.backHost}listings/getListings`).subscribe(
+  this.cars.getAllCars().subscribe(
       res=>{
         // console.log(res)
         this.loader = false
@@ -70,13 +75,14 @@ getAllCars(){
       }
     )
 }
-  
 
   // im = JSON.parse(cars[3].images)
 
-  constructor( private http : HttpClient, private route: ActivatedRoute, private router: Router, private fb: FormBuilder,  private users : UsersInfoService ) {
+  constructor( private http : HttpClient, private route: ActivatedRoute, private router: Router, private fb: FormBuilder,  private users : UsersInfoService, private cars : CarsService ) {
 
-    this.getAllCars()
+    // alert(environment)
+
+    // this.getAllCars()
 
     this.users.userInfo().subscribe(
       res=>{
@@ -90,47 +96,58 @@ getAllCars(){
       }
     )
 
-    this.route.paramMap.subscribe(params => {
+  //   this.route.paramMap.subscribe(params => {
       
-      // console.log(params.get('location'))
+  //     // console.log(params.get('location'))
 
-      cars.forEach((b:any)=>{
-    // this.cars = b[a]
-    if((b['location'] == params.get('location')) && (b['category'] == params.get('category')) && (b['price'] <= Number(params.get('price'))) ){
-      this.carsSorted.push(b)
-      // console.log("Categories : ",b['category'])
-    }
+  //     cars.forEach((b:any)=>{
+  //   // this.cars = b[a]
+  //   if((b['location'] == params.get('location')) && (b['category'] == params.get('category')) && (b['price'] <= Number(params.get('price'))) ){
+  //     this.carsSorted.push(b)
+  //     // console.log("Categories : ",b['category'])
+  //   }
     
-  })
+  // })
 
-    })
+  //   })
 
-
-  }
-
-  from:any
-  to:any
-
-  priceRangeFrom(){
-    let from = document.getElementById('from') as HTMLInputElement
-    this.from = from.value
-
-  }
-
-  priceRangeTo(){
-    let to = document.getElementById('to') as HTMLInputElement
-    this.to = to.value
 
   }
 
   ngOnInit(): void {
 
-    let from = document.getElementById('from') as HTMLInputElement
-    let to = document.getElementById('to') as HTMLInputElement
+    this.route.paramMap.subscribe(params => {
 
-    this.from = this.searchForm.getRawValue().price
-    this.to = to.value
+switch(true){
+  case Boolean(params.get('region')):
+    this.cars.sortCarsByRegion(params.get('region')).subscribe(
+      res=>{
+        this.loader = false
+        this.cars1 = JSON.parse(JSON.stringify(res))
+        this.cars1.forEach((a:any,index:any)=>{
+          this.cars1[index].carImagesUrl = JSON.parse(a.carImagesUrl)
+        })
+      }
+    )
+    break
 
-  }
+    case Boolean(params.get('brand') && params.get('type') && params.get('price')):
+      this.cars.sortCars(params.get('brand'),params.get('type'),params.get('price')).subscribe(
+      res=>{
+        this.loader = false
+        this.cars1 = JSON.parse(JSON.stringify(res))
+        this.cars1.forEach((a:any,index:any)=>{
+          this.cars1[index].carImagesUrl = JSON.parse(a.carImagesUrl)
+        })
+      }
+    )
+      break
+      default:
+        this.getAllCars()
+}
+
+    })
+
+   }
 
 }

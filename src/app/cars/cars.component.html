@@ -7,7 +7,7 @@
 	
 	<div class="previous-links container text-light d-flex align-items-center" style="position: relative; z-index: 2;">
 		<p> HOME >></p> 
-		<p> ABOUT US </p>
+		<p> CARS </p>
 	</div>
 
 	<div class="container text-warning rounded" style="position: relative; z-index: 2;">
@@ -16,69 +16,27 @@
 
 </div>
 
-<div class="sort container mt-3">
-	<div class="row align-items-end">
-
-        <div class="col-sm-3 form-group mt-3">
-
-            <label> Choose Brand </label>
-
-            <input type="text" list="brand" class="form-control" name="">
-
-            <datalist id="brand">
-                <option *ngFor="let x of carMake"> {{x}} </option>
-            </datalist>
-
-        </div>
-
-          <div class="col-sm-3 form-group mt-3">
-
-            <label> Choose Type </label>
-
-            <input type="text" list="type" class="form-control" >
-
-            <datalist id="type">
-                <option *ngFor="let x of carBody"> {{x}} </option>
-         </datalist>
-
-        </div>
-
-        <div class="col-sm-3 form-group mt-3">
-
-            <label class="my-3"> Price Limit <span class="bg-dark p-3 rounded text-light"> GH₵ {{price}} </span> </label>
-
-            <input [value]="price" type="range" [(ngModel)]="price" max="2000" class="form-range" name="">
-
-        </div>
-
-        <div class="col-sm-3 form-group mt-3 text-center">
-
-           <button class="btn btn-primary p-3"> Find vehicle </button>
-
-        </div>
-        
-    </div>
-</div>
+<app-sort></app-sort>
 
 <div class="mt-5 container">
 
-		<div *ngIf="loader" class="text-center text-dark bg-success"> Loading... </div>
+		<div *ngIf="loader" class="text-center text-dark bg-success p-3 font-weight-bold"> Loading Cars... </div>
 
-<div class="lists row m-0 p-0  " >
+		<div class="lists row m-0 p-0 " >
 
-	<div [routerLink]="['/cars/details', carsId ]" class="col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of cars index as carsId " style="cursor: pointer;" >
+	<div [routerLink]="['/cars/details', carsId ]" class="col-lg-3 col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of cars1 | paginate: { itemsPerPage: 4, currentPage: p } index as carsId " style="cursor: pointer;" >
 
 		<div class="card"  >
 
 			<div class="card-header d-flex justify-content-center p-0 overflow-hidden ; background-size: contain;
 			background-repeat: no-repeat;
-			background-position: center center; " style="height: 200px; box-sizing: border-box;  " [ngStyle]="{ 'background-image' : 'url('+x.images[0]+')', 'background-size':'cover','background-position': 'center center','background-repeat' : 'no-repeat'}">
+			background-position: center center; " style="height: 200px; box-sizing: border-box;  " [ngStyle]="{ 'background-image' : 'url('+x.carImagesUrl[0]+')', 'background-size':'cover','background-position': 'center center','background-repeat' : 'no-repeat'}">
 
 			</div>
 
 			<div class="card-body">
 
-				<h5 class="text-center" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > {{x.name}}  </h5>
+				<h5 class="text-center" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > {{x.carName}}  </h5>
 
 				<div class="details">
 
@@ -90,7 +48,7 @@
 
 			<div class="card-footer d-flex justify-content-center align-items-center " >
 
-				<p class="m-0 text-center" style="width: 50%;  text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > <b> GH₵{{x.price}} per day </b>  </p>
+				<p class="m-0 text-center" style="width: 50%;  text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > <b> GH₵{{x.price}} </b>  </p>
 
 				<button class="btn btn-outline-primary" style="width: 50%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > BOOK NOW </button>
 				
@@ -106,71 +64,8 @@
 
 </div>
 
-<!-- <div *ngIf="loader" class="d-flex justify-content-center align-items-center fixed-top" style=" backdrop-filter: blur(3px); width: 100%; left: 0; height: 100vh; top: 0; " >
-
-	<div class="bg-light p-3 rounded ">
-		<i class="fa-solid fa-gear fa-spin "></i>   LOADING...
+<div class="text-center bg-light border-bottom border-3 mt-5" *ngIf="cars1">
+	<pagination-controls (pageChange)="p = $event"></pagination-controls>
 	</div>
 
-
-</div> -->
-
-<!-- <router-outlet></router-outlet> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="lists row m-0 p-0 " *ngIf="(carsSorted.length > 0)" >
-
-	<div [routerLink]="['/cars/details', carsId ]" class="col-lg-3 col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of carsSorted index as carsId " style="cursor: pointer;" >
-
-		<div class="card"  >
-
-			<div class="card-header d-flex justify-content-center bg-primary p-0 overflow-hidden " style="height: 200px; box-sizing: border-box; " >
-
-				<img [src]="x.images[0]" style="height: 100%;">
-
-			</div>
-
-			<div class="card-body">
-
-				<h5 class="text-center" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > {{x.name}}  </h5>
-
-				<div class="details">
-
-					<p class="font-weight-bold m-0" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; "> {{x.description}} </p>
-
-				</div>
-
-			</div>
-
-			<div class="card-footer d-flex justify-content-center align-items-center " >
-
-				<p class="m-0 text-center" style="width: 50%;  text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > <b> GH₵{{x.price}} per day </b>  </p>
-
-				<button class="btn btn-outline-primary" style="width: 50%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > BOOK NOW </button>
-				
-						</div>
-
-		</div>
-
-		</div>
-
-		
-
-</div> -->
+<app-footer></app-footer>

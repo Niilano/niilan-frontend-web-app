@@ -10,6 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ListCarComponent implements OnInit {
 
+  title = "List Car"
+
   user = 'df'
 
   sucMsg:any
@@ -102,16 +104,17 @@ export class ListCarComponent implements OnInit {
   }
 
   constructor( private fb:FormBuilder, private http : HttpClient, private router : Router ) {
+
+
+   }
+
+  ngOnInit(): void {
     var i = 0;
 
     while(i<50){
       this.seats.push(i)
       i++
     }
-
-   }
-
-  ngOnInit(): void {
   }
 
 }

@@ -1,0 +1,51 @@
+
+aside{
+    background-image: url(../../assets/banner3.jpg);
+    background-size: cover;
+    background-position: center;
+    
+}
+
+aside h3{
+    // font-weight: bold;
+}
+
+aside h3,nav{
+    position: relative;
+    z-index: 1;
+}
+
+aside::before{
+    content: "";
+
+    position: absolute;
+
+    background-color: rgba(255, 255, 255, 0.849);
+
+    z-index: 0;
+
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+}
+
+nav p:hover{
+    background-color: #ffc107 !important;
+    cursor: pointer;
+}
+
+nav p.active{
+    background-color: #ffc107 !important;
+}
+
+.hide{
+    display: none !important;
+}
+
+@media(max-width: 576px){
+    aside.m-hide{
+        display: none;
+    }
+    
+}

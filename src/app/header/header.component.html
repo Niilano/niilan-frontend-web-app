@@ -2,18 +2,26 @@
 <header class="fixed-top">
     <div class="text-light py-3 d-flex align-items-center ">
     
-        <div class="logo text-center">
+        <div class="logo text-center" style="cursor: pointer;" routerLink="/">
             <h2> <img src="assets/niilan.png"> NIILAN </h2>
         </div>
     
-        <nav class="desktop text-center d-flex justify-content-center">
+        <nav *ngIf="!isLoggedIn" class="desktop text-center d-flex justify-content-center">
     
-            <a>Home</a>
-            <a>About</a>
-            <a>Pricing</a>
-            <a routerLink="/cars">Cars</a>
-            <a>Blog</a>
-            <a>Contact</a>
+            <a routerLink="/" routerLinkActive="activeLink">Home</a>
+            <a routerLink="/cars" routerLinkActive="activeLink">Cars</a>
+            <a>About Us</a>
+            <a>Contact Us</a>
+            <a class="bg-warning text-dark rounded" routerLink="/login">Login</a>
+            
+    
+        </nav>
+
+        <nav *ngIf="isLoggedIn" class="desktop text-center d-flex justify-content-center">            
+            
+            <a> Your Approvals </a>
+            <a class="bg-warning rounded text-dark" routerLink="/dashboard"> <i class="fa fa-user"></i> Your Profile </a>
+            
     
         </nav>
     

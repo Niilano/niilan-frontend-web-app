@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-authenticateusers',
@@ -28,38 +29,20 @@ export class AuthenticateusersComponent implements OnInit {
   submitLoginDetails(){
     this.submitted = true
 
-    console.log(this.login.getRawValue().email)
-
     if(this.login.invalid) return
-
-    // else if(this.login.getRawValue().email == "admin" && this.login.getRawValue().password == "Administrator@321" ){
-
-    //   this.SucMsg = "Log in Successful"
-
-    //     setTimeout(()=>{
-    //       this.SucMsg = ''
-    //       localStorage.setItem('username',this.login.getRawValue().email);
-    //       this.route.navigate(['cars']);
-    //     },2000)
-
-    //     return
-
-    // }
 
     else{
     
-    this.http.post('http://localhost:4000/users/login',this.login.getRawValue()).subscribe(
+    this.http.post(`${environment.apiKey}users/login`,this.login.getRawValue()).subscribe(
       res=>{
-
-        // console.log(res)
-
+        
         let result = JSON.parse(JSON.stringify(res))
 
         this.SucMsg = result.msg
 
         setTimeout(()=>{
           this.SucMsg = ''
-          localStorage.setItem('user',result.token);
+          localStorage.setItem('userT',result.token);
           this.route.navigate(['cars']);
         },2000)
 

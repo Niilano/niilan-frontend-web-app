@@ -1,3 +1,34 @@
+
+div.banner{
+	height: 400px;
+	background-image: url(../../assets/banner.jpg);
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+	z-index: 1;
+	font-family: 'Inder';
+}
+
+div.banner::before{
+	content: '';
+	background-color: black;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: .4;
+	z-index: 0;
+}
+
+div.previous-links p{
+	cursor: pointer;
+	margin: 0%;
+	padding: 1%;
+}
+
+div.previous-links p:hover{
+	color: #ffc107;
+}
+
 .des-less::after{
     height: 100px;
     // background-color: green;

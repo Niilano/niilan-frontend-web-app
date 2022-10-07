@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 import {paths} from './routes';
 
@@ -9,7 +10,7 @@ import {paths} from './routes';
 export class UsersInfoService {
 
   userInfo(){
-    return this.http.get(`${paths.backHost}users/info/${localStorage.getItem('user')}`)
+    return this.http.get(`${environment.apiKey}users/info/${localStorage.getItem('userT')}`)
   }
 
   constructor( private http : HttpClient ) { }
