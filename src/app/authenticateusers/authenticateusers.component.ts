@@ -120,7 +120,7 @@ export class AuthenticateusersComponent implements OnInit {
 
     // console.log(this.register.getRawValue())
 
-    this.http.post('http://localhost:4000/users/register',this.register.getRawValue()).subscribe(
+    this.http.post(`${environment.apiKey}users/register`,this.register.getRawValue()).subscribe(
       res=>{
 
         // console.log(res)
