@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-car',
@@ -76,7 +77,7 @@ export class ListCarComponent implements OnInit {
 
     console.log(this.listCars.getRawValue())
 
-    this.http.post(`http://localhost:4000/listings/list`,this.listCars.getRawValue()).subscribe(
+    this.http.post(`${environment.apiKey}listings/list`,this.listCars.getRawValue()).subscribe(
       res=>{
 
         let result = JSON.parse(JSON.stringify(res))
