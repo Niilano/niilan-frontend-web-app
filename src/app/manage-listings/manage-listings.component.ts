@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsersInfoService } from '../users-info.service';
 
 import { paths } from '../routes';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-manage-listings',
@@ -76,7 +77,7 @@ export class ManageListingsComponent implements OnInit {
       }
     )
 
-    this.http.get(`${paths.backHost}listings/getAllListings/${localStorage.getItem('userT')}`).subscribe(
+    this.http.get(`${environment.apiKey}listings/getAllListings/${localStorage.getItem('userT')}`).subscribe(
       res=>{
         console.log(res)
 
@@ -107,7 +108,7 @@ export class ManageListingsComponent implements OnInit {
 
       let index = Number(params.get('id'))
       
-      this.http.get(`${paths.backHost}listings/getListings/${index}`).subscribe(
+      this.http.get(`${environment.apiKey}listings/getListings/${index}`).subscribe(
       res=>{
 
         let lists = document.getElementById('lists') as HTMLElement
