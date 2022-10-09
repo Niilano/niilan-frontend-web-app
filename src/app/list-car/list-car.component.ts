@@ -50,7 +50,7 @@ export class ListCarComponent implements OnInit {
   }
 
   listCars = this.fb.group({
-    token : [localStorage.getItem('user')],
+    token : [localStorage.getItem('userT')],
     carName : [''],
     carRegion : [''],
     carLocation : [''],
@@ -93,6 +93,7 @@ export class ListCarComponent implements OnInit {
         console.log("Response",res)
       },
       err=>{
+        console.log(err)
         this.loading = false
         this.errMsg = err.error.msg
         setTimeout(() => {

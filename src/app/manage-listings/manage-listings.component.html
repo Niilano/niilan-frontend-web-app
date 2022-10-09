@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="col text-primary">
-                    <p [routerLink]="['/manage', x.id ]" style="cursor: pointer;" > <i class="fa-solid fa-pen-to-square"></i> Edit </p>
+                    <p [routerLink]="['/dashboard/manage-listings', x.id ]" style="cursor: pointer;" > <i class="fa-solid fa-pen-to-square"></i> Edit </p>
                 </div>
 
                 <div class="col text-danger">
@@ -47,17 +47,19 @@
 
 
 
-    <div class="my-3 hidden" id="uForm" >
+    <div class="my-3 hidden container" id="uForm" >
 
-        <form [formGroup]="listCars" (ngSubmit)="updateCarSubmit()" class=" p-4 bg-dark rounded ">
+        <form [formGroup]="listCars" (ngSubmit)="updateCarSubmit()" class=" p-4 rounded ">
+
+            <h1 class="text-warning "> Update Listing </h1>
 
             <div class="form-group">
-                <label> Name your Vehicle </label>
+                <label class="text-dark"> Name your Vehicle </label>
                 <input class="form-control" formControlName="carName" placeholder="Car Name" >
             </div>
 
             <div class="form-group mt-3 ">
-                <label> Region </label>
+                <label class="text-dark"> Region </label>
                 <input type="text" list="regions" formControlName="carRegion" class="form-control" placeholder="Choose Region" >
 
                 <datalist id="regions">
@@ -73,13 +75,13 @@
             </div>
 
             <div class="form-group mt-3 ">
-                <label> Location of vehicle </label>
+                <label class="text-dark"> Location of vehicle </label>
                 <input class="form-control" formControlName="carLocation" placeholder="Location" >
             </div>
 
             <div class="form-group mt-3 row ">
                 <div class="col-4">
-                    <label> Seats </label>
+                    <label class="text-dark"> Seats </label>
                     <input class="form-control" type="number" formControlName="noOfSeats" placeholder=" Seats " list="seats" >
                     <datalist id="seats">
                         <!-- <option *ngFor="let x of seats" > {{x}}  </option> -->
@@ -87,7 +89,7 @@
                 </div>
 
                 <div class="col-4">
-                    <label> Fuel type </label>
+                    <label class="text-dark"> Fuel type </label>
                     <input class="form-control" type="text" formControlName="fuel" placeholder=" Fuel " list="fuel" >
                     <datalist id="fuel">
                         <option> Petrol </option>
@@ -97,7 +99,7 @@
                 </div>
 
                 <div class="col-4">
-                    <label> Speed </label>
+                    <label class="text-dark"> Speed </label>
                     <input class="form-control" type="text" formControlName="speed" placeholder=" Speed " list="speed" >
                     <datalist id="speed">
                         <option *ngFor="let x of speed"> {{x}} </option>
@@ -108,26 +110,26 @@
 
             <div class="form-group mt-3 ">
                 <!-- <label> Vehicle color </label> -->
-                <label class="text-light"> Color: </label>
+                <label class="text-dark"> Color: </label>
                 <input class="form-control" type="text" formControlName="color" placeholder="Color" >
             </div>
 
             <div class="form-group mt-3 ">
-                <label>Price per day</label>
+                <label class="text-dark">Price per day</label>
                 <input class="form-control" type="number" formControlName="price" placeholder="Price (GH₵) " >
                 
             </div>
 
             <div class="form-group mt-3 row ">
                 <div class="col-6">
-                    <label> Car Make </label>
+                    <label class="text-dark"> Car Make </label>
                 <input class="form-control" type="text" formControlName="carMake" placeholder=" Car Make " list="carMake" >
                 <datalist id="carMake">
                     <option *ngFor="let x of carMake"> {{x}} </option>
                 </datalist>
                 </div>
                 <div class="col-6">
-                    <label> Body Style </label>
+                    <label class="text-dark"> Body Style </label>
                     <input class="form-control" type="text" list="carBody" formControlName="bodyStyle" placeholder=" Body Style " >
                     <datalist id="carBody">
                         <option *ngFor="let x of carBody"> {{x}} </option>
@@ -137,7 +139,7 @@
 
             <div class="form-group mt-3 ">
 
-                <label class="text-light"> Enter vehicle plate number: </label>
+                <label class="text-dark"> Enter vehicle plate number: </label>
                 <input class="form-control" formControlName="carPlate" type="text" placeholder=" e.g GW-9020-20 " >
                 
             </div>
@@ -163,7 +165,7 @@
                 <!-- <p class="text-light"> Yes </p>> -->
                 <!-- <label class="form-check-label text-light" for="mySwitch"> Comes With Driver </label> -->
 
-                <label class="text-light" for="driving" > Choose driving: </label>
+                <label class="text-dark" for="driving" > Choose driving: </label>
 
                 <select class="form-control" id="driving" formControlName="driver">
                     <option> Driver available </option>
@@ -173,7 +175,7 @@
             </div>
 
             <div class="form-group mt-3 " >
-                <label class="text-light m-2" > Description: </label>
+                <label class="text-dark m-2" > Description: </label>
                 <textarea formControlName="description" placeholder=" Message for your customers " style="height: 200px;" class="form-control" ></textarea>
 
             </div>
@@ -182,7 +184,7 @@
 
                 <!-- <button type="reset" class="btn btn-danger mx-2" (click)="resetForm()" > Reset Form </button> -->
                 
-                <button type="submit" class="btn btn-primary" > Update Listing </button>
+                <button type="submit" class="btn btn-warning" > Update Listing </button>
 
             </div>
 

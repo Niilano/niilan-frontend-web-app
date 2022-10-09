@@ -8,18 +8,19 @@
     
         <nav *ngIf="!isLoggedIn" class="desktop text-center d-flex justify-content-center">
     
-            <a routerLink="/" routerLinkActive="activeLink">Home</a>
-            <a routerLink="/cars" routerLinkActive="activeLink">Cars</a>
-            <a>About Us</a>
-            <a>Contact Us</a>
-            <a class="bg-warning text-dark rounded" routerLink="/login">Login</a>
+            <a class="link-item" routerLink="/" routerLinkActive="activeLink">Home</a>
+            <a class="link-item" routerLink="/cars" routerLinkActive="activeLink">Cars</a>
+            <a class="link-item">About Us</a>
+            <a class="link-item">Contact Us</a>
+            <a class="bg-warning text-dark rounded link-item" routerLink="/login">Login</a>
             
     
         </nav>
 
         <nav *ngIf="isLoggedIn" class="desktop text-center d-flex justify-content-center">            
             
-            <a> Your Approvals </a>
+            <a class="link-item" routerLink="/cars" routerLinkActive="activeLink">Cars</a>
+            <a class="link-item" > Your Approvals </a>
             <a class="bg-warning rounded text-dark" routerLink="/dashboard"> <i class="fa fa-user"></i> Your Profile </a>
             
     
@@ -35,14 +36,30 @@
         
     </div>
     
-     <nav id="m-nav" class="hide text-light d-flex flex-column" style="width: 100%;">
+     <nav *ngIf="!isLoggedIn" id="m-nav" class="hide text-light d-flex flex-column" style="width: 100%;">
     
-            <a>Home</a>
-            <a>About</a>
-            <a>Pricing</a>
-            <a routerLink="/cars">Cars</a>
-            <a>Blog</a>
-            <a>Contact</a>
+            <a class="link-item">Home</a>
+            <a class="link-item">About Us</a>
+            <!-- <a class="link-item">Pricing</a> -->
+            <a class="link-item" routerLink="/cars">Cars</a>
+            <a class="link-item">Blog</a>
+            <a class="link-item">Contact Us</a>
+
+            <p class="d-flex container justify-content-between">
+                <a class="bg-warning rounded text-center" style="width: 40%;" routerLink="/login"> Log in </a>
+                <a class="bg-warning rounded text-center" style="width: 40%;" routerLink="/register"> Register </a>
+            </p>
+    
+        </nav>
+
+        <nav *ngIf="isLoggedIn" id="m-nav" class="hide text-light d-flex flex-column" style="width: 100%;">            
+            
+            <a class="link-item" routerLink="/cars" routerLinkActive="activeLink">Cars</a>
+            <a class="link-item"> Your Approvals </a>
+            <a class="link-item" routerLink="/dashboard"> <i class="fa fa-user"></i> Your Profile </a>
+
+            <a class="link-item" class="bg-warning m-3 font-weight-bold text-center rounded" onclick="localStorage.removeItem('userT'); location.reload(); " > Log out </a>
+            
     
         </nav>
     

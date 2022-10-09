@@ -7,7 +7,6 @@ aside{
     background-image: url(../../assets/banner3.jpg);
     background-size: cover;
     background-position: center;
-    
 }
 
 aside h3,nav{
@@ -45,6 +44,7 @@ nav p.active{
 }
 
 @media(max-width: 600px){
+    
     .m-hide{
         display: none;
     }

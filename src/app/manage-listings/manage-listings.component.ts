@@ -76,7 +76,7 @@ export class ManageListingsComponent implements OnInit {
       }
     )
 
-    this.http.get(`${paths.backHost}listings/getAllListings/${localStorage.getItem('user')}`).subscribe(
+    this.http.get(`${paths.backHost}listings/getAllListings/${localStorage.getItem('userT')}`).subscribe(
       res=>{
         console.log(res)
 

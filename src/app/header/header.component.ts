@@ -31,25 +31,32 @@ export class HeaderComponent implements OnInit {
     const header = document.querySelector('header') as HTMLElement
     const mnav = document.querySelectorAll('#m-nav a')
     const nav = document.querySelectorAll('.desktop')
-    const navA = document.querySelectorAll('nav a')
+    const navA = document.getElementsByClassName('link-item')
+
 window.addEventListener('scroll', fixNav)
 
 function fixNav() {
     if(window.scrollY > header.offsetHeight + 80) {
         header.style.backgroundColor = 'white';
         header.classList.add('shadow')
-        nav.forEach((a:any)=>{
-          a.style.color = 'black';
-        })
+
+        // nav.forEach((a:any)=>{
+        //   a.style.color = 'black';
+        // })
+
         logo.style.color = 'black';
         menu.style.color = 'black';
+
         mnav.forEach((a:any)=>{
           a.style.color = 'black';
           a.style.borderColor = 'black';
         })
-        navA.forEach((a:any)=>{
-          a.style.color = 'black';
-        })
+
+        for(var i = 0; i<navA.length; i++){
+          let t = navA[i] as HTMLElement
+          t.style.color = 'black';
+        }
+
     } else {
        header.style.backgroundColor = '';
        header.classList.remove('shadow')
@@ -62,9 +69,12 @@ function fixNav() {
           a.style.color = '';
           a.style.borderColor = '';
         })
-        navA.forEach((a:any)=>{
-          a.style.color = 'white';
-        })
+        
+        for(var i = 0; i<navA.length; i++){
+          let t = navA[i] as HTMLElement
+          t.style.color = '';
+        }
+
     }
 }
   }

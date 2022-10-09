@@ -1,70 +1,177 @@
 
-<div class="login d-none vh-100 row m-0 overflow-hidden" id="login" style="background-image: url('./assets/girldrive.png'); background-size: contain; ">
+<!-- <div class="container-fluid auth d-none" id="login" > -->
 
-    <div class="col-sm-3 side text-light d-flex align-items-center justify-content-center" >
+<!-- <div class="login vh-100 m-0 overflow-hidden d-flex align-items-center justify-content-center"  > -->
 
-        <img src="./assets/niilan.png" class="img-responsive" style="width: 150px; opacity: 60%;">
+ <div class="login-page d-none login" id="login">
+    <div class="login-box ">
+        <!-- /.login-logo -->
+        <div class="card card-outline card-primary" >
+          <div class="card-header text-center">
 
-    </div>
-
-    <div class="col-sm-9 p-0 overflow-hidden" >
-
-        <div class="d-flex overflow-hidden" style=" background-color: #F2FEFF; height: 100vh; width: 100%; border-top-left-radius: 2rem; border-bottom-left-radius: 2rem; ">
-
-            <form [formGroup]="login" (ngSubmit)="submitLoginDetails()" class=" d-flex align-items-center justify-content-center flex-column " style="height: inherit; width: 98%;">
-
-                <h1 class="mb-5 pb-5"> Welcome back </h1>
-
-                <div class="form-group mb-4" style="width: 50%;">
-
-                <label > Email </label>
+            <a href="../../index2.html" class="h1 d-flex align-items-center justify-content-center"> <img src="assets/niilan.png" class="mx-2" style="width:12%"> <b>NII</b>LAN</a>
+          </div>
+          <div class="card-body">
+            <p class="login-box-msg">Sign in to start your journey</p>
+      
+            <form [formGroup]="login" (ngSubmit)="submitLoginDetails()">
 
                 <small class="text-danger font-weight-bolder" *ngIf="submitted && this.loginV['email'].errors?.['required']"> *** This field is required *** </small>
-
-                <input class="form-control bg-light" placeholder="email" formControlName="email" >
-
+              <div class="input-group mb-3">
+                <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                  </div>
                 </div>
-
-                <div class="form-group" style="width: 50%;">
-
-                <label > Password </label>
-
-                <small class="text-danger font-weight-bolder" *ngIf="submitted && this.loginV['password'].errors?.['required']"> *** This field is required *** </small>
-
-                <input class="form-control bg-light" placeholder="Password" formControlName="password" type="password" >
-
+              </div>
+              <small class="text-danger font-weight-bolder" *ngIf="submitted && this.loginV['password'].errors?.['required']"> *** This field is required *** </small>
+              <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
                 </div>
-
-                <button type="submit" class="btn text-light mt-5" style="background-color: #039ADD; width: 30%;"> Log in </button>
-
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <div class="icheck-primary">
+                    <input type="checkbox" id="remember">
+                    <!-- <label for="remember">
+                      Remember Me
+                    </label> -->
+                  </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-4">
+                  <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                </div>
+                <!-- /.col -->
+              </div>
             </form>
-
-            <div style=" background-color: #039ADD; width: 2%; ">
-                
+      
+            <div class="social-auth-links text-center mt-2 mb-3">
+              <!-- <a href="#" class="btn btn-block btn-primary">
+                <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+              </a> -->
+              <a href="#" class="btn btn-block btn-danger">
+                <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+              </a>
             </div>
-
+            <!-- /.social-auth-links -->
+      
+            <p class="mb-1">
+              <a href="forgot-password.html">I forgot my password</a>
+            </p>
+            <p class="mb-0">
+              <a href="register" class="text-center" >Register a new membership</a>
+            </p>
+          </div>
+          <!-- /.card-body -->
         </div>
+        <!-- /.card -->
+      </div>
+      </div>
 
-    </div>
-
-    <!-- <div class="col-sm-1" style=" background-color: #039ADD; "></div> -->
-
+<div class="register-page register d-none" id="register">
+    <div class="register-box">
     
-
+      <div class="card card-outline card-primary ">
+        <div class="register-logo card-header">
+            <a href="../../index2.html" class="h1 d-flex align-items-center justify-content-center"> <img src="assets/niilan.png" class="mx-2" style="width:12%"> <b>NII</b>LAN</a>
+          </div>
+        <div class="card-body">
+          <p class="login-box-msg">Register a new membership</p>
+    
+          <form [formGroup]="register" (ngSubmit)="submitRegister()">
+            <small class="text-danger" *ngIf="submitted && this.registerV['fullName'].errors?.['required']"> *** This field is required *** </small>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Full name" formControlName="fullName">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            <small class="text-danger" *ngIf="submitted && this.registerV['email'].errors?.['required']"> *** This field is required *** </small>
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Email" formControlName="email">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>
+            </div>
+            <small class="text-danger" *ngIf="submitted && this.registerV['phoneNumber'].errors?.['required']"> *** This field is required *** </small>
+            <div class="input-group mb-3">
+                <input type="email" class="form-control" placeholder="Phone Number" formControlName="phoneNumber">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-phone"></span>
+                  </div>
+                </div>
+              </div>
+              <small class="text-danger" *ngIf="submitted && this.registerV['password'].errors?.['required']"> *** This field is required *** </small>
+              <small class="text-danger" *ngIf="submitted && this.registerV['confirmPassword'].errors?.['mustmatch']"> *** Passwords do not match *** </small>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" placeholder="Password" formControlName="password">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            <small class="text-danger" *ngIf="submitted && this.registerV['confirmPassword'].errors?.['required']"> *** This field is required *** </small>
+            <small class="text-danger" *ngIf="submitted && this.registerV['confirmPassword'].errors?.['mustmatch']"> *** Passwords do not match *** </small>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" placeholder="Retype password" formControlName="confirmPassword">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <small class="text-danger" *ngIf="submitted && this.registerV['agreedTermsOfService'].errors?.['required']"> *** This field is required *** </small>
+                <div class="icheck-dark">
+                  <input type="checkbox" id="agreeTerms" formControlName="agreedTermsOfService">
+                  <label for="agreeTerms" >
+                   I agree to the <a href="#">terms</a>
+                  </label>
+                </div>
+              </div>
+              <!-- /.col -->
+              <div class="col-4">
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+    
+          <div class="social-auth-links text-center">
+            <p>- OR -</p>
+            <a href="#" class="btn btn-block btn-primary">
+              <i class="fab fa-facebook mr-2"></i>
+              Sign up using Facebook
+            </a>
+            <a href="#" class="btn btn-block btn-danger">
+              <i class="fab fa-google-plus mr-2"></i>
+              Sign up using Google+
+            </a>
+          </div>
+    
+          <a href="login" class="text-center" >I already have a membership</a>
+        </div>
+        <!-- /.form-box -->
+      </div><!-- /.card -->
+    </div>
 </div>
 
+<!-- <div class="register d-none vh-100 row m-0 overflow-hidden" id="register" style="background-image: url('./assets/girldrive.png'); background-size: contain; "> -->
 
-
-
-<div class="register d-none vh-100 row m-0 overflow-hidden" id="register" style="background-image: url('./assets/girldrive.png'); background-size: contain; ">
-
-    <div class="col-sm-3 side text-light d-flex align-items-center justify-content-center" >
-
-        <img src="./assets/niilan.png" class="img-responsive" style="width: 150px; opacity: 60%;">
-
-    </div>
-
-    <div class="col-sm-9 p-0 overflow-hidden" >
+    <!-- <div class="col-sm-9 p-0 overflow-hidden" >
 
         <div class="d-flex overflow-hidden" style=" background-color: #F2FEFF; height: 100vh; width: 100%; border-top-left-radius: 2rem; border-bottom-left-radius: 2rem; ">
 
@@ -78,7 +185,7 @@
 
                 <div class="form-group mb-3" style="width: 50%;">
 
-                <!-- <label > Full name </label> -->
+                 <label > Full name </label> 
 
                 <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['fullName'].errors?.['required']"> *** This field is required *** </small>
 
@@ -88,7 +195,7 @@
 
                 <div class="form-group mb-3" style="width: 50%;">
 
-                <!-- <label > Email </label> -->
+                 <label > Email </label> 
 
                 <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['email'].errors?.['required']"> *** This field is required *** </small>
 
@@ -100,7 +207,7 @@
 
                 <div class="form-group mb-3" style="width: 50%;">
 
-                    <!-- <label > Phone Number </label> -->
+                     <label > Phone Number </label> 
 
                     <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['phoneNumber'].errors?.['required']"> *** This field is required *** </small>
     
@@ -110,7 +217,7 @@
 
                     <div class="form-group mb-3" style="width: 50%;">
 
-                        <!-- <label > Password </label> -->
+                         <label > Password </label>
 
                         <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['password'].errors?.['required']"> *** This field is required *** </small>
 
@@ -124,7 +231,7 @@
 
                         <div class="form-group mb-3" style="width: 50%;">
 
-                            <!-- <label > Confirm Password </label> -->
+                             <label > Confirm Password </label>
 
                             <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['confirmPassword'].errors?.['required']"> *** This field is required *** </small>
 
@@ -158,18 +265,18 @@
 
         </div>
 
-    </div>
+    </div> -->
 
     <!-- <div class="col-sm-1" style=" background-color: #039ADD; "></div> -->
 
     
 
-</div>
+<!-- </div> -->
 
 <div *ngIf="SucMsg" class="fixed-top d-flex justify-content-center align-items-center" style=" top: 5%;"> 
-    <p class="bg-success rounded p-2 d-flex justify-content-center align-items-center text-light" > <i class="fa-solid fa-circle-check fa-2x m-2 "></i> {{SucMsg}} </p>
+    <p class="bg-success rounded p-2 d-flex justify-content-center align-items-center text-light" > <i class="fa-solid fa-circle-check m-2 "></i> {{SucMsg}} </p>
  </div>
 
 <div *ngIf="ErrMsg" class="fixed-top d-flex justify-content-center align-items-center" style=" top: 5%;"> 
-    <p class="bg-danger rounded p-2 d-flex justify-content-center align-items-center text-light" > <i class="fa-solid fa-circle-exclamation fa-2x m-2 "> </i> {{ErrMsg}} </p>
+    <p class="bg-danger rounded p-2 d-flex justify-content-center align-items-center text-light" > <i class="fa-solid fa-circle-exclamation m-2 "> </i> {{ErrMsg}} </p>
  </div>

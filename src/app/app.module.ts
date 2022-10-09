@@ -28,6 +28,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { DashHeaderComponent } from './dash-header/dash-header.component';
 import { OverviewComponent } from './overview/overview.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ApprovalsComponent } from './approvals/approvals.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatBadgeModule} from '@angular/material/badge';
 
 // import { NgbdCarouselPause } from './carousel-pause';
 
@@ -47,7 +50,8 @@ import { ProfileComponent } from './profile/profile.component';
     DashboardComponent,
     DashHeaderComponent,
     OverviewComponent,
-    ProfileComponent
+    ProfileComponent,
+    ApprovalsComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,9 @@ import { ProfileComponent } from './profile/profile.component';
     BrowserAnimationsModule,
     MatSliderModule,
     MatProgressSpinnerModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTableModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

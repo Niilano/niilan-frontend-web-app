@@ -62,6 +62,8 @@ export class CarDetailsComponent implements OnInit {
   successMessage:any
   errorMessage:any
 
+  driver = true
+
   rent(){
     // alert("Please Log in!!!")
     this.errorMessage = "Kindly login to submit this request"

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiKey: 'http://localhost:4000/',
+  apiKey: 'https://niilan.herokuapp.com/',
   token : ''
 };

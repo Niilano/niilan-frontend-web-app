@@ -131,7 +131,7 @@ export class AuthenticateusersComponent implements OnInit {
 
         setTimeout(()=>{
           this.SucMsg = ''
-          localStorage.setItem('user',result.token);
+          localStorage.setItem('userT',result.token);
           this.route.navigate(['cars']);
         },2000)
 
@@ -154,19 +154,23 @@ export class AuthenticateusersComponent implements OnInit {
   constructor( private fb : FormBuilder, private http : HttpClient, private route : Router ) {
    }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
     let login = document.getElementById('login') as HTMLElement
 
     let register = document.getElementById('register') as HTMLElement
 
-    if(location.pathname=='/login'){
-      login.classList.toggle('d-none')
-    }
+    location.pathname == '/register'  && register.classList.remove('d-none')
 
-    else if(location.pathname == '/register'){
-      register.classList.toggle('d-none')
-    }
+    location.pathname == '/login'  && login.classList.remove('d-none')
+
+    // if(location.pathname=='/login'){
+    //   login.classList.toggle('d-none')
+    // }
+
+    // else if(location.pathname == '/register'){
+    //   register.classList.toggle('d-none')
+    // }
 
   }
 

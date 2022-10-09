@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashHeaderComponent } from './dash-header/dash-header.component';
 import { OverviewComponent } from './overview/overview.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ApprovalsComponent } from './approvals/approvals.component';
 
 const routes: Routes = [
 {path : 'home' , component: LandingpageComponent },
@@ -27,10 +28,12 @@ const routes: Routes = [
 { path: 'manage/:id', component: ManageListingsComponent },
 { path: 'dashboard', component: DashboardComponent,
 children:[
+  {path:'approvals',component: ApprovalsComponent},
   {path:'overview',component: OverviewComponent},
   {path:'list-car',component: ListCarComponent},
   { path: 'profile', component: ProfileComponent },
   { path: 'manage-listings', component: ManageListingsComponent },
+  { path: 'manage-listings/:id', component: ManageListingsComponent },
   {path:'',component: OverviewComponent}
 
 ]

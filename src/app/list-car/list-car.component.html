@@ -75,14 +75,14 @@
 
             <div class="form-group mt-3 row ">
                 <div class="col-6">
-                    <label class="text-dark"> Car Make </label>
+                    <label class="text-dark"> Brand </label>
                 <input class="form-control" type="text" formControlName="carMake" placeholder=" Car Make " list="carMake" >
                 <datalist id="carMake">
                     <option *ngFor="let x of carMake"> {{x}} </option>
                 </datalist>
                 </div>
                 <div class="col-6">
-                    <label class="text-dark"> Body Style </label>
+                    <label class="text-dark"> Type </label>
                     <input class="form-control" type="text" list="carBody" formControlName="bodyStyle" placeholder=" Body Style " >
                     <datalist id="carBody">
                         <option *ngFor="let x of carBody"> {{x}} </option>

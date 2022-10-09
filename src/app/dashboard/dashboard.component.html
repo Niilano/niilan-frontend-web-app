@@ -9,10 +9,14 @@
 <nav style="font-size: 1em;">
   <p class="m-0 rounded p-2 " routerLinkActive="active"  routerLink="/dashboard/overview"> <i class="fa-solid fa-boxes-stacked"></i> Dashboard </p>
   <p class="m-0 rounded p-2 mt-3 " routerLinkActive="active"  routerLink="/dashboard/profile" > <i class="fa-solid fa-user-circle"></i> User Profile </p>
-  <p class="m-0 rounded p-2 mt-3 " routerLinkActive="active"  routerLink="/dashboard/list-car"> <i class="fa-solid fa-car"></i> List Car </p>
-  <p class="m-0 rounded p-2 mt-3 " routerLinkActive="active"  routerLink="/dashboard/manage-listings"> <i class="fa-solid fa-list-check"></i> Manage Listings </p>
-  <p class="m-0 rounded p-2 mt-3 " > <i class="fa-solid fa-thumbs-up"></i> Approvals </p>
+  <p *ngIf="role=='host'" class="m-0 rounded p-2 mt-3 " routerLinkActive="active"  routerLink="/dashboard/list-car"> <i class="fa-solid fa-car"></i> List Car </p>
+  <p *ngIf="role=='host'" class="m-0 rounded p-2 mt-3 " routerLinkActive="active"  routerLink="/dashboard/manage-listings"> <i class="fa-solid fa-list-check"></i> Manage Listings </p>
+  <p class="m-0 rounded p-2 mt-3 " routerLinkActive="active"  routerLink="/dashboard/approvals" > <i class="fa-solid fa-thumbs-up"></i> Approvals </p>
 </nav>
+
+<p style="position: absolute; bottom: 0; right: 0; width: 100%;" class=" bg-warning m-0 p-2 text-center font-weight-bold ">
+  &copy; 2022 Niilan
+</p>
 
 </aside>
 
@@ -22,3 +26,9 @@
 
 
 </div>
+
+<!-- <div class="fixed-top bg-light text-danger">
+
+  <p> Your session has expired. </p>
+
+</div> -->

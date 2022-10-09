@@ -9,7 +9,12 @@ import { UsersInfoService } from '../users-info.service';
 })
 export class DashboardComponent implements OnDestroy {
 
+  errorMsg = ''
+  successMsg = ''
+
   loggedIn = false
+
+  role : any
 
   constructor(changeDetectorRef: ChangeDetectorRef, private user:UsersInfoService, private route:Router) {
 
@@ -17,11 +22,13 @@ export class DashboardComponent implements OnDestroy {
       res=>{
         this.loggedIn = true
         console.log(res)
+        let result = JSON.parse(JSON.stringify(res))
+        this.role = result.role
       },
       err=>{
         // this.err
-        // this.route.navigate(['cars'])
-        console.log(err)
+        this.route.navigate(['cars'])
+        alert(err.error.msg)
 
       }
     )
