@@ -40,7 +40,9 @@
 
 				<div class="details">
 
-					<p class="font-weight-bold m-0" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; "> {{x.description}} </p>
+					<p class="font-weight-bold m-0" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; ">  {{x.description}} </p>
+
+					<p *ngIf="!x.description" class="font-weight-bold m-0" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; "> <span style="color: transparent;">a</span> {{x.description}} </p>
 
 				</div>
 
