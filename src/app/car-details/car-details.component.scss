@@ -19,6 +19,10 @@ div.banner::before{
 	z-index: 0;
 }
 
+.hidden{
+	display: none;
+}
+
 div.previous-links p{
 	cursor: pointer;
 	margin: 0%;

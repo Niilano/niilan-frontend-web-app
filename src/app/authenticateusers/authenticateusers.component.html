@@ -65,7 +65,7 @@
               <a href="forgot-password.html">I forgot my password</a>
             </p>
             <p class="mb-0">
-              <a href="register" class="text-center" >Register a new membership</a>
+              <!-- <a href="register" class="text-center" >Register a new membership</a> -->
             </p>
           </div>
           <!-- /.card-body -->
@@ -169,109 +169,6 @@
     </div>
 </div>
 
-<!-- <div class="register d-none vh-100 row m-0 overflow-hidden" id="register" style="background-image: url('./assets/girldrive.png'); background-size: contain; "> -->
-
-    <!-- <div class="col-sm-9 p-0 overflow-hidden" >
-
-        <div class="d-flex overflow-hidden" style=" background-color: #F2FEFF; height: 100vh; width: 100%; border-top-left-radius: 2rem; border-bottom-left-radius: 2rem; ">
-
-            <form [formGroup]="register" (ngSubmit)="submitRegister()" class=" d-flex align-items-center justify-content-center flex-column " style="height: inherit; width: 98%;">
-
-                <h1 class="mb-4"> Welcome </h1>
-
-                <div class="mb-3" style="width: 50%;">
-
-                <span class="text-center font-weight-bolder p-2 " style="width: 30%; background-color: lightgrey; border-radius: 1rem; display: inline-block; "> G  </span> </div>
-
-                <div class="form-group mb-3" style="width: 50%;">
-
-                 <label > Full name </label> 
-
-                <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['fullName'].errors?.['required']"> *** This field is required *** </small>
-
-                <input class="form-control bg-light" placeholder="Full name" formControlName="fullName" >
-
-                </div>
-
-                <div class="form-group mb-3" style="width: 50%;">
-
-                 <label > Email </label> 
-
-                <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['email'].errors?.['required']"> *** This field is required *** </small>
-
-                <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['email'].errors?.['email']"> *** Please provide a valid email *** </small>
-
-                <input class="form-control bg-light" placeholder="Email" formControlName="email" >
-
-                </div>
-
-                <div class="form-group mb-3" style="width: 50%;">
-
-                     <label > Phone Number </label> 
-
-                    <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['phoneNumber'].errors?.['required']"> *** This field is required *** </small>
-    
-                    <input class="form-control bg-light" placeholder="Phone Number" formControlName="phoneNumber" >
-    
-                    </div>
-
-                    <div class="form-group mb-3" style="width: 50%;">
-
-                         <label > Password </label>
-
-                        <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['password'].errors?.['required']"> *** This field is required *** </small>
-
-                        <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['password'].errors?.['max']"> *** Password must be at least 6. *** </small>
-
-                        <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['confirmPassword'].errors?.['mustmatch']"> *** Passwords do not match *** </small>
-        
-                        <input type="password" class="form-control bg-light" placeholder="Password" formControlName="password" >
-        
-                        </div>
-
-                        <div class="form-group mb-3" style="width: 50%;">
-
-                             <label > Confirm Password </label>
-
-                            <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['confirmPassword'].errors?.['required']"> *** This field is required *** </small>
-
-                            <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['confirmPassword'].errors?.['mustmatch']"> *** Passwords do not match *** </small>
-            
-                            <input type="password" class="form-control bg-light" placeholder="Confirm Password" formControlName="confirmPassword" >
-            
-                            </div>
-
-                        <div class="mb-3 form-group " style="width: 50%;">
-            
-                            <input id="agreedTermsOfService" class="bg-light d-inline" type="checkbox" formControlName="agreedTermsOfService" >
-
-                            <label for="agreedTermsOfService" class="d-inline"> By creating an account, I have accepted and agree to the Terms of service and Privacy Policy of Niilan </label>
-
-                            <small class="text-danger font-weight-bolder" *ngIf="submitted && this.registerV['agreedTermsOfService'].errors?.['required']"> *** This field is required *** </small>
-            
-                            </div>
-
-                            <div  style="width: 50%;">
-
-                <button class="btn text-light " style="  background-color: #039ADD; "> Create Account </button>
-
-                </div>
-
-            </form>
-
-            <div style=" background-color: #039ADD; width: 2%; ">
-                
-            </div>
-
-        </div>
-
-    </div> -->
-
-    <!-- <div class="col-sm-1" style=" background-color: #039ADD; "></div> -->
-
-    
-
-<!-- </div> -->
 
 <div *ngIf="SucMsg" class="fixed-top d-flex justify-content-center align-items-center" style=" top: 5%;"> 
     <p class="bg-success rounded p-2 d-flex justify-content-center align-items-center text-light" > <i class="fa-solid fa-circle-check m-2 "></i> {{SucMsg}} </p>

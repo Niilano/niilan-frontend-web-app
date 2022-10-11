@@ -62,7 +62,7 @@ export class CarDetailsComponent implements OnInit {
   successMessage:any
   errorMessage:any
 
-  driver = true
+  driving:any
 
   rent(){
     // alert("Please Log in!!!")
@@ -88,6 +88,12 @@ export class CarDetailsComponent implements OnInit {
         this.car1 = JSON.parse(JSON.stringify(res))
         // console.log(this.car1.carImagesUrl)
         this.car1.carImagesUrl = JSON.parse(this.car1.carImagesUrl)
+        if(JSON.parse(JSON.stringify(res)).driver == 'Self driving' ){
+          this.driving = false
+        }
+        else{
+          this.driving = true
+        }
         // console.log(this.car1.carImagesUrl)
         
       },

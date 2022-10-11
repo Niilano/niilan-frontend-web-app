@@ -16,7 +16,7 @@
 </div>
 
 
-<div class="" style="font-family: 'Inder';">
+<div class="pb-5" style="font-family: 'Inder';">
 
   
     <div class="row m-0 p-0 mt-3 container-fluid mx-auto ">
@@ -85,16 +85,53 @@
       </div>
 </div>
 
-<div class="row mx-0 my-3 ">
 
-    <div class="col-lg-12 text-center d-flex align-items-center justify-content-center flex-column mb-5">
 
-        <form (ngSubmit)="rent()" class="" >
 
-          <h2 class="m-0"> Submit your request </h2>
+<div class="fixed-bottom bg-warning text-center rounded mb-1 p-2 font-weight-bold " (click)="this.requestForm.classList.toggle('hidden')">
+   Book here
+</div>
+
+
+
+
+<div class="fixed-top pt-5 hidden" #requestForm style=" backdrop-filter: blur(3px); overflow-y: scroll; height: 100vh; " >
+
+    <div class="col-lg-12 d-flex align-items-center justify-content-center flex-column mb-5" >
+
+        <form (ngSubmit)="rent()" class="bg-warning rounded p-3" >
+
+          <h2 class="m-0"> Client details </h2>
+
+          <div class="form-group">
+            <label> Email address </label>
+            <input type="text" class="form-control">
+            <small> So we can send your confirmation email </small>
+          </div>
+
+          <div class="form-group">
+            <label> First Name </label>
+            <input type="text" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label> Last Name </label>
+            <input type="text" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label> Contact number </label>
+            <input type="text" class="form-control">
+            <small> So we can call you if any problems come up </small>
+          </div>
+
+          <div class="form-group">
+            <label> Where do you live? </label>
+            <input type="text" class="form-control">
+          </div>
 
             <div class="row">
-                <label class="my-3 font-weight-bolder"> Trip start </label>
+                <label class="my-3 font-weight-bolder"> When do you need the car? </label>
                 <div class="col">
                 <input type="date" class="form-control " value="2022-10-02" >
             </div>
@@ -103,19 +140,30 @@
                 <input type="time" value="08:00" class="form-control ">
                 </div>
 
+                <small> So we can arrange your pickup </small>
             </div>
 
-            <div class="row my-3">
-                <label class="my-3 font-weight-bolder"> Trip end </label>
+            <div class="row">
+              <label class="my-3 font-weight-bolder"> When are you returning the car? </label>
+              <div class="col">
+              <input type="date" class="form-control " value="2022-10-02" >
+          </div>
 
-                <div class="col">
-                <input type="date" class="form-control " value="2023-01-01" >
+          <div class="col">
+              <input type="time" value="08:00" class="form-control ">
+              </div>
+
+              <small> Must match duration of rental </small>
+          </div>
+
+            <div class="form-group mt-3">
+              <label> How many days do you need the car? </label>
+              <input type="text" class="form-control" placeholder="Duration of rental">
             </div>
 
-            <div class="col">
-                <input type="time" value="08:00" class="form-control ">
-                </div>
-
+            <div class="form-group">
+              <label> Location use of car? </label>
+              <input type="text" class="form-control">
             </div>
 
             <div class="row my-3">
@@ -132,32 +180,54 @@
 
             </div>
 
-            <div class="row container ">
+            <!-- <div class="row container ">
 
             <div class="form-check col">
-                <input class="form-check-input" type="radio" id="check1" name="option1" disabled  checked>
+                <input class="form-check-input" type="radio" id="check1" name="option1"  checked>
                 <label class="form-check-label">With Driver</label>
               </div>
 
               <div class="form-check col">
-                <input class="form-check-input" type="radio" id="check1" name="option1" disabled  >
-                <label class="form-check-label">Without Driver</label>
+                <input class="form-check-input" type="radio" id="check1" name="option1"  >
+                <label class="form-check-label" #a >Without Driver</label>
               </div>
 
-              </div>
-
-              <!-- <div class="form-group mt-3">
-                <label> Enter your license number </label>
-                <input class="form-control" type="text">
               </div> -->
 
-              <div class="form-group mt-3" *ngIf="!driver">
+              <div class="form-group" *ngIf="driving" >
+                  ' Vehicle comes with driver, continue to submit your request '
+              </div>
+
+              <div class="form-group" *ngIf="!driving" >
+                ' Vehicle does not come with a driver, so provide your driving details '
+            </div>
+
+              <div class="form-group mt-3" *ngIf="!driving">
+                <label> Enter your license number </label>
+                <input class="form-control" type="number">
+              </div>
+
+              <div class="form-group mt-3" *ngIf="!driving">
                 <p class="m-0 mb-2"> Upload an image of your driving license </p>
-                <div class=" border border-2 text-dark rounded p-3 d-flex align-items-center justify-content-center" style="height: 300px; border-style: dashed !important;"> <label for="license" class="bg-dark rounded text-light p-3"> <i class="fa-solid fa-plus"></i> Upload image </label> </div>
+                <div class=" border-primary border-5 text-dark rounded p-3 d-flex align-items-center justify-content-center" style="height: 300px; border-style: dashed !important;"> <label for="license" class="bg-dark rounded text-light p-3"> <i class="fa-solid fa-plus"></i> Upload image </label> </div>
                 <input class="form-control d-none" type="file" id="license" >
               </div>
 
-            <button (click)="rent()" type="submit" class="btn btn-outline-primary mt-3"> Rent Vehicle </button>
+              <div class="row">
+
+                <div class="col-4">
+                  <button (click)="rent()" type="submit" class="btn btn-outline-primary"> Submit request </button>
+                </div>
+
+                <div class="col-4">
+                  <button class="btn btn-outline-primary"> reset request </button>
+                </div>
+
+                <div class="col-4">
+                  <button class="btn btn-outline-danger" (click)="this.requestForm.classList.toggle('hidden')"> Cancel request </button>
+                </div>
+
+              </div>
 
         </form>
 
