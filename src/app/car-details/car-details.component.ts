@@ -64,9 +64,22 @@ export class CarDetailsComponent implements OnInit {
 
   driving:any
 
+  files: File[] = [];
+
+onSelect(event: { addedFiles: any; }) {
+  console.log(event);
+  this.files.push(...event.addedFiles);
+}
+
+onRemove(event: File) {
+  console.log(event);
+  this.files.splice(this.files.indexOf(event), 1);
+}
+
   rent(){
     // alert("Please Log in!!!")
-    this.errorMessage = "Kindly login to submit this request"
+    // this.errorMessage = "Kindly login to submit this request"
+    this.successMessage='mn'
 
     setTimeout(() => {
       this.errorMessage = ""

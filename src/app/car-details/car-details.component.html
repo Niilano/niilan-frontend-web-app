@@ -209,8 +209,19 @@
 
               <div class="form-group mt-3" *ngIf="!driving">
                 <p class="m-0 mb-2"> Upload an image of your driving license </p>
-                <div class=" border-primary border-5 text-dark rounded p-3 d-flex align-items-center justify-content-center" style="height: 300px; border-style: dashed !important;"> <label for="license" class="bg-dark rounded text-light p-3"> <i class="fa-solid fa-plus"></i> Upload image </label> </div>
-                <input class="form-control d-none" type="file" id="license" >
+                <ngx-dropzone (change)="onSelect($event)">
+                  <ngx-dropzone-label>Upload image</ngx-dropzone-label>
+                  <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                    <ngx-dropzone-label class="bg-dark">{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                  </ngx-dropzone-preview>
+                </ngx-dropzone>
+            
+                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
+                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                  </ngx-dropzone-image-preview>
+            
+                <!-- <div class=" border-primary border-5 text-dark rounded p-3 d-flex align-items-center justify-content-center" style="height: 300px; border-style: dashed !important;"> <label for="license" class="bg-dark rounded text-light p-3"> <i class="fa-solid fa-plus"></i> Upload image </label> </div>
+                <input class="form-control d-none" type="file" id="license" > -->
               </div>
 
               <div class="row">

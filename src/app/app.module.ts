@@ -32,6 +32,9 @@ import { ApprovalsComponent } from './approvals/approvals.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatBadgeModule} from '@angular/material/badge';
 
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import {CloudinaryModule} from '@cloudinary/ng';
+
 // import { NgbdCarouselPause } from './carousel-pause';
 
 @NgModule({
@@ -66,7 +69,9 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatProgressSpinnerModule,
     MatSidenavModule,
     MatTableModule,
-    MatBadgeModule
+    MatBadgeModule,
+    NgxDropzoneModule,
+    CloudinaryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
