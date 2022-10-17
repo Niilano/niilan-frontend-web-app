@@ -56,6 +56,7 @@ export class ApprovalsComponent implements OnInit {
   ngOnInit(): void {
     this.cars.requests().subscribe(
       res=>{
+        console.log(res)
         let result = JSON.parse(JSON.stringify(res))
         console.log(result.r)
         this.requests = result.r
