@@ -34,6 +34,8 @@ import {MatBadgeModule} from '@angular/material/badge';
 
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {CloudinaryModule} from '@cloudinary/ng';
+import { Page404Component } from './page404/page404.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 // import { NgbdCarouselPause } from './carousel-pause';
 
@@ -54,7 +56,9 @@ import {CloudinaryModule} from '@cloudinary/ng';
     DashHeaderComponent,
     OverviewComponent,
     ProfileComponent,
-    ApprovalsComponent
+    ApprovalsComponent,
+    Page404Component,
+    ContactusComponent
   ],
   imports: [
     BrowserModule,

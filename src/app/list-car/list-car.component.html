@@ -8,11 +8,13 @@
 
             <div class="form-group">
                 <label class="text-dark"> Name your Vehicle </label>
+                <small *ngIf="submitted && this.listCarsV['carName'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input class="form-control" formControlName="carName" placeholder="Car Name" >
             </div>
 
             <div class="form-group mt-3 ">
                 <label class="text-dark"> Region </label>
+                <small *ngIf="submitted && this.listCarsV['carRegion'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input type="text" list="regions" formControlName="carRegion" class="form-control" placeholder="Choose Region" >
 
                 <datalist id="regions">
@@ -29,12 +31,14 @@
 
             <div class="form-group mt-3 ">
                 <label class="text-dark"> Location of vehicle </label>
+                <small *ngIf="submitted && this.listCarsV['carLocation'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input class="form-control" formControlName="carLocation" placeholder="Location" >
             </div>
 
             <div class="form-group mt-3 row ">
                 <div class="col-4">
                     <label class="text-dark"> Seats </label>
+                    <small *ngIf="submitted && this.listCarsV['noOfSeats'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                     <input class="form-control" type="number" formControlName="noOfSeats" placeholder=" Seats " list="seats" >
                     <datalist id="seats">
                         <option *ngFor="let x of seats" > {{x}}  </option>
@@ -43,6 +47,7 @@
 
                 <div class="col-4">
                     <label class="text-dark"> Fuel type </label>
+                    <small *ngIf="submitted && this.listCarsV['fuel'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                     <input class="form-control" type="text" formControlName="fuel" placeholder=" Fuel " list="fuel" >
                     <datalist id="fuel">
                         <option> Petrol </option>
@@ -53,6 +58,7 @@
 
                 <div class="col-4">
                     <label class="text-dark"> Speed </label>
+                    <small *ngIf="submitted && this.listCarsV['speed'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                     <input class="form-control" type="text" formControlName="speed" placeholder=" Speed " list="speed" >
                     <datalist id="speed">
                         <option *ngFor="let x of speed"> {{x}} </option>
@@ -64,11 +70,13 @@
             <div class="form-group mt-3 ">
                 <!-- <label> Vehicle color </label> -->
                 <label class="text-dark"> Color: </label>
+                <small *ngIf="submitted && this.listCarsV['color'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input class="form-control" type="text" formControlName="color" placeholder="Color" >
             </div>
 
             <div class="form-group mt-3 ">
                 <label class="text-dark">Price per day</label>
+                <small *ngIf="submitted && this.listCarsV['price'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input class="form-control" type="number" formControlName="price" placeholder="Price (GH₵) " >
                 
             </div>
@@ -76,6 +84,7 @@
             <div class="form-group mt-3 row ">
                 <div class="col-6">
                     <label class="text-dark"> Brand </label>
+                    <small *ngIf="submitted && this.listCarsV['carMake'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input class="form-control" type="text" formControlName="carMake" placeholder=" Car Make " list="carMake" >
                 <datalist id="carMake">
                     <option *ngFor="let x of carMake"> {{x}} </option>
@@ -83,6 +92,7 @@
                 </div>
                 <div class="col-6">
                     <label class="text-dark"> Type </label>
+                    <small *ngIf="submitted && this.listCarsV['bodyStyle'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                     <input class="form-control" type="text" list="carBody" formControlName="bodyStyle" placeholder=" Body Style " >
                     <datalist id="carBody">
                         <option *ngFor="let x of carBody"> {{x}} </option>
@@ -93,6 +103,7 @@
             <div class="form-group mt-3 ">
 
                 <label class="text-dark"> Enter vehicle plate number: </label>
+                <small *ngIf="submitted && this.listCarsV['carPlate'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input class="form-control" formControlName="carPlate" type="text" placeholder=" e.g GW-9020-20 " >
                 
             </div>
@@ -101,6 +112,8 @@
             <div class="d-flex justify-content-center align-items-center p-3 m-0  " style="height: 200px; overflow-x: scroll; scroll-behavior: smooth; scroll-margin-inline-end: 0; ">
 
                 <label class="p-2 rounded bg-dark text-light " style=" width: max-content; " for="images"  > <i class="fa-solid fa-plus"></i> Add Images </label>
+
+                <small *ngIf="submitted && this.listCarsV['carImagesUrl'].errors?.['required']" class="text-danger font-weight-bold mx-2 " > Add at least one image of vehicle </small>
 
                 <div *ngIf="src" class="d-flex align-items-center" style="height: 100%; width: 80%; ">
                 <img class="rounded mx-3" *ngFor="let x of src" [src]="x" style="height: 100%; " >
@@ -120,6 +133,8 @@
 
                 <label class="text-dark" for="driving" > Choose driving: </label>
 
+                <small *ngIf="submitted && this.listCarsV['driver'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
+
                 <select class="form-control" id="driving" formControlName="driver">
                     <option> Driver available </option>
                     <option> Self driving </option>
@@ -129,6 +144,7 @@
 
             <div class="form-group mt-3 " >
                 <label class="text-dark m-2" > Description: </label>
+                <small *ngIf="submitted && this.listCarsV['description'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <textarea formControlName="description" placeholder=" Message for your customers " style="height: 200px;" class="form-control" ></textarea>
 
             </div>

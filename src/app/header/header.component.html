@@ -10,9 +10,9 @@
     
             <a class="link-item" routerLink="/" routerLinkActive="activeLink">Home</a>
             <a class="link-item" routerLink="/cars" routerLinkActive="activeLink">Cars</a>
-            <a class="link-item">About Us</a>
+            <!-- <a class="link-item">About Us</a> -->
             <a class="link-item">Contact Us</a>
-            <a class="bg-warning text-dark rounded link-item" routerLink="/login">Login</a>
+            <a class="bg-warning text-dark rounded link-item" routerLink="/login"> List your car </a>
             
     
         </nav>
@@ -20,8 +20,8 @@
         <nav *ngIf="isLoggedIn" class="desktop text-center d-flex justify-content-center">            
             
             <a class="link-item" routerLink="/cars" routerLinkActive="activeLink">Cars</a>
-            <a class="link-item" > Your Approvals </a>
-            <a class="bg-warning rounded text-dark" routerLink="/dashboard"> <i class="fa fa-user"></i> Your Profile </a>
+            <a class="link-item" routerLink="/dashboard/approvals" > Approvals </a>
+            <a class="bg-warning rounded text-dark" routerLink="/dashboard"> <i class="fa fa-user"></i> Your Dashboard </a>
             
     
         </nav>
@@ -38,15 +38,16 @@
     
      <nav *ngIf="!isLoggedIn" id="m-nav" class="hide text-light d-flex flex-column" style="width: 100%;">
     
-            <a class="link-item">Home</a>
-            <a class="link-item">About Us</a>
+            <a class="link-item" routerLink="/">Home</a>
+            <!-- <a class="link-item">About Us</a> -->
             <!-- <a class="link-item">Pricing</a> -->
             <a class="link-item" routerLink="/cars">Cars</a>
-            <a class="link-item">Blog</a>
+            <!-- <a class="link-item">Blog</a> -->
             <a class="link-item">Contact Us</a>
 
-            <p class="d-flex container justify-content-between">
-                <a class="bg-warning rounded text-center" style="width: 40%;" routerLink="/login"> Log in </a>
+            <p class="d-flex container justify-content-between mt-3">
+                <span style="width: 40%;"></span>
+                <a class="bg-warning rounded text-center" style="width: 40%;" routerLink="/login"> List your car </a>
                 <!-- <a class="bg-warning rounded text-center" style="width: 40%;" routerLink="/register"> Register </a> -->
             </p>
     
@@ -55,8 +56,8 @@
         <nav *ngIf="isLoggedIn" id="m-nav" class="hide text-light d-flex flex-column" style="width: 100%;">            
             
             <a class="link-item" routerLink="/cars" routerLinkActive="activeLink">Cars</a>
-            <a class="link-item"> Your Approvals </a>
-            <a class="link-item" routerLink="/dashboard"> <i class="fa fa-user"></i> Your Profile </a>
+            <a class="link-item" routerLink="/dashboard/approvals"> Approvals </a>
+            <a class="link-item" routerLink="/dashboard"> <i class="fa fa-user"></i> Your Dashboard </a>
 
             <a class="link-item" class="bg-warning m-3 font-weight-bold text-center rounded" onclick="localStorage.removeItem('userT'); location.reload(); " > Log out </a>
             

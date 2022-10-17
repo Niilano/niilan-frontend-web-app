@@ -1,0 +1,54 @@
+<app-header></app-header>
+
+<div class="head d-flex flex-column justify-content-end ">
+
+    <div class="previous-links container text-light d-flex align-items-center" style="position: relative; z-index: 2;">
+		<p routerLink="/"> HOME >></p> 
+		<p> CONTACT US </p>
+	</div>
+
+	<div class="container text-warning rounded" style="position: relative; z-index: 2;">
+		<h3> | CONTACT US </h3>
+	</div>
+
+</div>
+
+<form class="container mt-5">
+
+    <h1 class="text-center"> SEND US A MESSAGE </h1>
+
+    <div class="form-group row text-end d-flex align-items-center">
+        <label class="control-label col-sm-2" for="fullname">Full Name:</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control shadow" id="fullname" placeholder="Enter your full name">
+        </div>
+      </div>
+
+      <div class="form-group row text-end d-flex align-items-center mt-4">
+        <label class="control-label col-sm-2" for="email">Email:</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control shadow" id="email" placeholder="Enter email address">
+        </div>
+      </div>
+
+      <div class="form-group row text-end d-flex align-items-center mt-4">
+        <label class="control-label col-sm-2" for="email">Phone:</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control shadow" id="email" placeholder="Enter email address">
+        </div>
+      </div>
+
+      <div class="form-group row text-end d-flex align-items-center mt-4">
+        <label class="control-label col-sm-2" for="email">Message:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control shadow" rows="5" id="comment" placeholder="Your Comments"></textarea>
+        </div>
+      </div>
+
+      <div class="mt-4 text-center">
+        <button class="btn btn-warning"> Submit <i class="fa-solid fa-arrow-right-long"></i> </button>
+      </div>
+
+</form>
+
+<app-footer></app-footer>

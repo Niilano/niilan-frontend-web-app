@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CarsService } from '../cars.service';
+import { UsersInfoService } from '../users-info.service';
 
 export interface PeriodicElement {
   name: string;
@@ -33,15 +35,32 @@ export class ApprovalsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
+  dataSource1 = [
+    { vehicle : 'v12' , customerName : 'Abdul-Latif', status : 'Awaiting Approval' },
+    { vehicle : 'v13' , customerName : 'Abdul-Latif', status : 'Awaiting Approval' },
+    { vehicle : 'v14' , customerName : 'Abdul-Latif', status : 'Awaiting Approval' },
+    { vehicle : 'v15' , customerName : 'Abdul-Latif', status : 'Awaiting Approval' },
+    { vehicle : 'v16' , customerName : 'Abdul-Latif', status : 'Awaiting Approval' }
+  ]
+
+  requests : any
+
   hidden = false;
 
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
   }
 
-  constructor() { }
+  constructor( private cars : CarsService ) { }
 
   ngOnInit(): void {
+    this.cars.requests().subscribe(
+      res=>{
+        let result = JSON.parse(JSON.stringify(res))
+        console.log(result.r)
+        this.requests = result.r
+      }
+    )
   }
 
 }

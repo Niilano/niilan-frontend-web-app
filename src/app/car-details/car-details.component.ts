@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 
@@ -16,7 +17,69 @@ export class CarDetailsComponent implements OnInit {
 
   user = localStorage.getItem('username')
 
+  email = ''
+
   opp:any
+
+  request = this.fb.group({
+    hostId : [''],
+    propertyId : [''],
+    email : ['',Validators.email],
+    contact : [''],
+    firstName : ['',Validators.required],
+    lastName : ['',Validators.required],
+    pickUpDate : ['',Validators.required],
+    pickUpTime : ['',Validators.required],
+    days : ['',Validators.required],
+    locationUSe : ['',Validators.required],
+    pLocation : ['',Validators.required],
+    dLincense : [''],
+    dLincenseImage : ['']
+})
+
+get requestsControls(){
+  return this.request.controls
+}
+
+loading = false
+submitted = false
+
+con = true
+
+rent(){
+  this.submitted = true
+
+  if(this.request.getRawValue().email=="" && this.request.getRawValue().contact=="") return
+  if(this.request.invalid) return
+
+  this.loading = true
+
+  this.cars.requestCar(this.request.getRawValue()).subscribe(
+    res=>{
+      this.loading = false
+      // console.log(res)
+      let result = JSON.parse(JSON.stringify(res))
+      this.successMessage = result.msg
+
+      setTimeout(() => {
+      this.changeRoute.navigate(['/cars'])
+      },4100)
+
+    },
+    err=>{
+      // console.log(err)
+      this.errorMessage = err.error.msg
+    }
+  )
+
+  console.log(this.request.getRawValue())
+
+  setTimeout(() => {
+    this.successMessage = ""
+    this.errorMessage = ""
+  }, 4000);
+
+}
 
   // images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
@@ -76,19 +139,8 @@ onRemove(event: File) {
   this.files.splice(this.files.indexOf(event), 1);
 }
 
-  rent(){
-    // alert("Please Log in!!!")
-    // this.errorMessage = "Kindly login to submit this request"
-    this.successMessage='mn'
 
-    setTimeout(() => {
-      this.errorMessage = ""
-    }, 2000);
-
-  }
-
-
-  constructor(  private route: ActivatedRoute, private http : HttpClient, private cars : CarsService ) {  }
+  constructor(  private route: ActivatedRoute, private changeRoute : Router, private http : HttpClient, private cars : CarsService, private fb : FormBuilder ) {  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -97,9 +149,14 @@ onRemove(event: File) {
 
       this.cars.getOneCar(index).subscribe(
       res=>{
-        // console.log(res)
+
+        if(!res){
+          this.changeRoute.navigate(['/404'])
+        }
+
+        console.log(res)
         this.car1 = JSON.parse(JSON.stringify(res))
-        // console.log(this.car1.carImagesUrl)
+        
         this.car1.carImagesUrl = JSON.parse(this.car1.carImagesUrl)
         if(JSON.parse(JSON.stringify(res)).driver == 'Self driving' ){
           this.driving = false
@@ -107,11 +164,14 @@ onRemove(event: File) {
         else{
           this.driving = true
         }
+
+        this.request.controls['hostId'].setValue(this.car1.userId);
+        this.request.controls['propertyId'].setValue(this.car1.id);
         // console.log(this.car1.carImagesUrl)
         
       },
       err=>{
-
+        this.changeRoute.navigate(['/404'])
       }
     )
 

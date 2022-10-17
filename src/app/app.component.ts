@@ -19,6 +19,10 @@ export class AppComponent {
 
   files: File[] = [];
 
+  constructor(){
+
+  }
+
 onSelect(event: { addedFiles: any; }) {
   console.log(event);
   this.files.push(...event.addedFiles);

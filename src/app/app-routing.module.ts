@@ -13,6 +13,8 @@ import { DashHeaderComponent } from './dash-header/dash-header.component';
 import { OverviewComponent } from './overview/overview.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ApprovalsComponent } from './approvals/approvals.component';
+import { Page404Component } from './page404/page404.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 const routes: Routes = [
 {path : 'home' , component: LandingpageComponent },
@@ -39,7 +41,11 @@ children:[
 ]
 },
 
-{ path: '' , component: Landingpage2Component }  
+{path:'contact-us',component: ContactusComponent},
+{path:'404',component: Page404Component},
+
+{ path: '' , component: Landingpage2Component },
+{path:'**',component: Page404Component}
 // {path : '' , redirectTo: 'home' , pathMatch: 'full' }
 ];
 

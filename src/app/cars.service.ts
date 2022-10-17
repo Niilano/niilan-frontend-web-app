@@ -24,6 +24,14 @@ export class CarsService {
     return this.http.get(`${environment.apiKey}listings/sortListings/${brand}/${type}/${price}`)
   }
 
+  requestCar(data:any){
+    return this.http.post(`${environment.apiKey}requests`,data)
+  }
+
+  requests(){
+    return this.http.get(`${environment.apiKey}approvals/requests/${localStorage.getItem('userT')}`)
+  }
+
   constructor( private http: HttpClient ) { }
 
 }
