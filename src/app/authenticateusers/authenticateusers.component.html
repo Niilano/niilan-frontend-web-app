@@ -87,7 +87,7 @@
           <form [formGroup]="register" (ngSubmit)="submitRegister()">
             <small class="text-danger" *ngIf="submitted && this.registerV['fullName'].errors?.['required']"> *** This field is required *** </small>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Full name" formControlName="fullName">
+              <input type="text" class="form-control" placeholder="Enter your full name" formControlName="fullName">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -95,6 +95,7 @@
               </div>
             </div>
             <small class="text-danger" *ngIf="submitted && this.registerV['email'].errors?.['required']"> *** This field is required *** </small>
+            <small class="text-danger" *ngIf="submitted && this.registerV['email'].errors?.['email']"> *** Enter a valid email *** </small>
             <div class="input-group mb-3">
               <input type="email" class="form-control" placeholder="Email" formControlName="email">
               <div class="input-group-append">
@@ -105,16 +106,19 @@
             </div>
             <small class="text-danger" *ngIf="submitted && this.registerV['phoneNumber'].errors?.['required']"> *** This field is required *** </small>
             <div class="input-group mb-3">
-                <input type="email" class="form-control" placeholder="Phone Number" formControlName="phoneNumber">
+                <input type="number" class="form-control" placeholder="Phone Number" formControlName="phoneNumber">
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-phone"></span>
                   </div>
                 </div>
               </div>
+
               <small class="text-danger" *ngIf="submitted && this.registerV['password'].errors?.['required']"> *** This field is required *** </small>
               <small class="text-danger" *ngIf="submitted && this.registerV['confirmPassword'].errors?.['mustmatch']"> *** Passwords do not match *** </small>
-            <div class="input-group mb-3">
+              <small class="text-danger" *ngIf="submitted && this.registerV['password'].errors?.['minlength']"> *** Passwords length must at least be 8 *** </small>
+              
+            <div class="input-group mb-3">  
               <input type="password" class="form-control" placeholder="Password" formControlName="password">
               <div class="input-group-append">
                 <div class="input-group-text">

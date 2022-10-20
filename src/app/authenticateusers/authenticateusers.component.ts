@@ -97,8 +97,8 @@ export class AuthenticateusersComponent implements OnInit {
     fullName : ['',Validators.required],
     email : ['',[Validators.required,Validators.email]],
     phoneNumber : ['',Validators.required],
-    password : ['',Validators.required],
-    confirmPassword : ['',[Validators.required,Validators.max(6)]],
+    password : ['',[Validators.required,Validators.minLength(8)]],
+    confirmPassword : ['',[Validators.required]],
     agreedTermsOfService : ['',Validators.required]
   },
     {
