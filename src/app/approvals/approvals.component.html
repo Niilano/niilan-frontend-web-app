@@ -1,90 +1,94 @@
 <app-dash-header title="Approvals"></app-dash-header>
 
-<div class="container mt-5">
+<div class="container mt-5" style="font-family: 'Inder';">
 
     <!-- mat-raised-button matBadge="7" -->
 
     <div class="card">
 
         <div class="card-header d-flex align-items-center justify-content-between" style="cursor: pointer;" (click)="approvals.toggle();  this.ic.classList.toggle('fa-chevron-up');" [attr.aria-expanded]="!isCollapsed" >
-            <p class="p-0 m-0 " style="width: 70%;"> Pending Approval Requests </p>
+            <p class="p-0 m-0 font-weight-bold text-warning " style="width: 70%;"> Pending Approval Requests </p>
             <i class="fa-solid fa-chevron-down text-end text-warning font-weight-bold" #ic style="width: 30%;"></i>
         </div>
 
-        <div class="card-body" #approvals="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div class="card-body" #approvals="ngbCollapse" [(ngbCollapse)]="isCollapsed" >
 
-          <ng-container *ngFor="let x of requests, index as i ">
+          <ng-container *ngIf="requests">
 
-            <div class="row py-3">
+          <ng-container *ngFor="let x of requests ">
+
+            <ng-container *ngFor="let y of x.requests">
+
+            <div class="row py-3 border-bottom border-5 ">
 
               <div class="col-2 text-center">
                 <b> # </b> <br>
-{{i+1}}
+                {{ y.createdAt }}
               </div>
 
               <div class="col-3 text-center">
                 <b> Vehicle </b> <br>
-{{x.vehicle}}
+{{x.carName}}
               </div>
 
               <div class="col-4 text-center">
                 <b> Client Name </b> <br>
-{{x.firstName}}
-              </div>
+{{y.firstName}}
+              </div> 
 
               <div class="col-3 text-center">
                 <b> Details </b> <br>
-<a class="text-primary text-underline" data-bs-toggle="collapse" [attr.data-bs-target]="'#x'+i"> view details </a>
+<a class="text-primary text-underline" style="cursor: pointer;" data-bs-toggle="collapse" [attr.data-bs-target]="'#x'+y.id"> view details </a>
               </div>
 
             </div>
 
-            <div class="bg-dark rounded p-1 collapse" [id]="'x'+i" >
+            <div class="bg-dark rounded p-1 collapse" [id]="'x'+y.id" >
               
               <div class="row text-center">
 
                 <div class="col-6 mt-3">
-                  First Name : {{x.firstName}}
+                  First Name : {{y.firstName}}
                 </div>
 
                 <div class="col-6 mt-3">
-                  Last Name : {{x.lastName}}
+                  Last Name : {{y.lastName}}
                 </div>
 
                 <div class="col-6 mt-3">
-                  Vehicle : v12
+                  Vehicle : {{x.carName}}
                 </div>
 
                 <div class="col-6 mt-3">
-                  Days : {{x.days}}
+                  Days : {{y.days}}
                 </div>
 
                 <div class="col-6 mt-3">
-                  Location of use : {{x.locationUSe}}
+                  Location of use : {{y.locationUSe}}
                 </div>
 
                 <div class="col-6 mt-3">
-                  Pickup Location : {{x.pLocation}}
+                  Pickup Location : {{y.pLocation}}
                 </div>
 
                 <div class="col-6 mt-3">
-                  Pickup Date : {{x.pickUpDate}}
+                  Pickup Date : {{y.pickUpDate}}
                 </div>
 
                 <div class="col-6 mt-3">
-                  Pickup Time : {{x.pickUpTime}}
+                  Pickup Time : {{y.pickUpTime}}
                 </div>
 
                 <div class="col-6 mt-3">
-                  Contact : {{x.contact}}
+                  Contact : {{y.contact}}
                 </div>
 
                 <div class="col-6 mt-3">
-                  Email : {{x.email}}
+                  Email : {{y.email}}
                 </div>
 
                 <div class="col-6 mt-3">
-                  <button class="btn btn-warning"> Approve </button>
+                  <button class="btn btn-warning" (click)="approveRequest({hostId:y.hostId,propertyId:y.propertyId,requestId:y.id})" > Approve </button>
                 </div>
 
                 <div class="col-6 mt-3">
@@ -97,12 +101,21 @@
 
             </ng-container>
 
+            </ng-container>
+
+          </ng-container>
+
+          <div *ngIf="!requests">
+            No Pending Approval Requests
+          </div>
+
             
 
         </div>
+        
 
         <div class="card-footer text-center">
-            <span class="bg-warning rounded-circle p-2"> {{requests.length}} </span>
+            <span class="bg-warning rounded-circle p-2"> {{requestsLen}} </span>
         </div>
 
     </div>
@@ -110,18 +123,126 @@
     <div class="card">
 
         <div class="card-header d-flex justify-content-between align-items-center" (click)="approved.toggle();  this.id.classList.toggle('fa-chevron-up');" [attr.aria-expanded]="!isCollapsed1">
-            <p class="p-0 m-0 " style="width: 70%;"> Approved Requests </p>
-            <i class="fa-solid fa-chevron-down text-end text-warning font-weight-bold" #id style="width: 30%;"></i>
+            <p class="p-0 m-0 font-weight-bolder text-success " style="width: 70%;"> Approved Requests </p>
+            <i class="fa-solid fa-chevron-down text-end text-success font-weight-bold" #id style="width: 30%;"></i>
         </div>
 
         <div class="card-body" #approved="ngbCollapse" [(ngbCollapse)]="isCollapsed1">
 
+          <ng-container *ngIf="approvedRequests">
+
+            <ng-container *ngFor="let x of approvedRequests ">
+  
+              <ng-container *ngFor="let y of x.requests">
+  
+              <div class="row py-3 border-bottom border-5">
+  
+                <div class="col-2 text-center">
+                  <b> # </b> <br>
+                  {{ y.createdAt }}
+                </div>
+  
+                <div class="col-3 text-center">
+                  <b> Vehicle </b> <br>
+  {{x.carName}}
+                </div>
+  
+                <div class="col-4 text-center">
+                  <b> Client Name </b> <br>
+  {{y.firstName}}
+                </div> 
+  
+                <div class="col-3 text-center">
+                  <b> Details </b> <br>
+  <a class="text-primary text-underline" style="cursor: pointer;" data-bs-toggle="collapse" [attr.data-bs-target]="'#x'+y.id"> view details </a>
+                </div>
+  
+              </div>
+  
+              <div class="bg-dark rounded p-1 collapse" [id]="'x'+y.id" >
+                
+                <div class="row text-center">
+  
+                  <div class="col-6 mt-3">
+                    First Name : {{y.firstName}}
+                  </div>
+  
+                  <div class="col-6 mt-3">
+                    Last Name : {{y.lastName}}
+                  </div>
+  
+                  <div class="col-6 mt-3">
+                    Vehicle : {{x.carName}}
+                  </div>
+  
+                  <div class="col-6 mt-3">
+                    Days : {{y.days}}
+                  </div>
+  
+                  <div class="col-6 mt-3">
+                    Location of use : {{y.locationUSe}}
+                  </div>
+  
+                  <div class="col-6 mt-3">
+                    Pickup Location : {{y.pLocation}}
+                  </div>
+  
+                  <div class="col-6 mt-3">
+                    Pickup Date : {{y.pickUpDate}}
+                  </div>
+  
+                  <div class="col-6 mt-3">
+                    Pickup Time : {{y.pickUpTime}}
+                  </div>
+  
+                  <div class="col-6 mt-3">
+                    Contact : {{y.contact}}
+                  </div>
+  
+                  <div class="col-6 mt-3">
+                    Email : {{y.email}}
+                  </div>
+  
+                  <!-- <div class="col-6 mt-3">
+                    <button class="btn btn-warning" (click)="approveRequest({hostId:y.hostId,propertyId:y.propertyId,requestId:y.id})" > Approve </button>
+                  </div>
+  
+                  <div class="col-6 mt-3">
+                    <button class="btn btn-danger"> Reject </button>
+                  </div> -->
+  
+                </div>
+  
+              </div>
+  
+              </ng-container>
+  
+              </ng-container>
+  
+            </ng-container>
+
+            <div *ngIf="!approvedRequests">
+              No Approved Requests
+            </div>
+
         </div>
 
         <div class="card-footer text-center">
-            <span class="bg-success rounded-circle p-2"> 15 </span>
+            <span class="bg-success rounded-circle p-2"> {{approvedRequestsLen}} </span>
         </div>
 
     </div>
 
 </div>
+
+<div *ngIf="successMessage" class="animate__zoomIn position-fixed vh-100 d-flex flex-column align-items-center justify-content-center " style="background-color: rgba(0, 0, 0, 0.507); top: 0%; width: 100%; left: 0;" >
+
+  <div class="d-flex flex-column align-items-center justify-content-center bg-dark rounded mx-auto p-3  " style=" width: max-content; " >
+
+    <i class="fa-solid fa-circle-check text-success mx-2 fa-3x" ></i>
+
+    <h4 class="m-0 mt-2 text-center"> {{successMessage}} <br> Thank you for choosing niilan. </h4>
+
+  </div>
+
+  </div>

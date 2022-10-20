@@ -12,7 +12,7 @@ export class CarsService {
   }
 
   getOneCar(index:any){
-    return this.http.get(`${environment.apiKey}listings/getListings/${index+1}`)
+    return this.http.get(`${environment.apiKey}listings/getListings/${index}`)
   }
 
   sortCarsByRegion(region:any){
@@ -30,6 +30,10 @@ export class CarsService {
 
   requests(){
     return this.http.get(`${environment.apiKey}approvals/requests/${localStorage.getItem('userT')}`)
+  }
+
+  approvedRequests(){
+    return this.http.get(`${environment.apiKey}approvals/approvedRequests/${localStorage.getItem('userT')}`)
   }
 
   constructor( private http: HttpClient ) { }

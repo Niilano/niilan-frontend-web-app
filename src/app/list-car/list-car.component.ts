@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -68,8 +68,12 @@ export class ListCarComponent implements OnInit {
     carImagesUrl : ['',Validators.required],
     description : ['',Validators.required],
     driver : ['',Validators.required],
-    carPlate : ['',Validators.required]
+    carPlate : ['',Validators.required],
+    status : ['',Validators.required],
+    s : ['']
   })
+
+  availableDate:any
 
   get listCarsV(){
     return this.listCars.controls
@@ -79,11 +83,23 @@ export class ListCarComponent implements OnInit {
     this.listCars.controls['carImagesUrl'].setValue(JSON.stringify(this.src))
   }
 
+  @ViewChild('no')
+  no!: HTMLElement;
+
   listCarSubmit(){
     
     this.submitted = true
 
-    if(this.listCars.invalid) return
+    let no = document.getElementById("no") as HTMLInputElement
+
+    if(this.availableDate){
+      this.listCars.controls['status'].setValue(`Vehicle will be avialable on ${new Date(this.availableDate).toDateString()
+    }`)
+    }
+
+    if(no.checked && !this.availableDate) { this.availableDate=''; return }
+
+    if(this.listCars.invalid) {  this.availableDate=''; return }
 
     this.loading = true
 
@@ -106,6 +122,7 @@ export class ListCarComponent implements OnInit {
         console.log("Response",res)
       },
       err=>{
+        this.availableDate = ''
         console.log(err)
         this.loading = false
         this.errMsg = err.error.msg
@@ -118,7 +135,7 @@ export class ListCarComponent implements OnInit {
   }
 
   constructor( private fb:FormBuilder, private http : HttpClient, private router : Router ) {
-
+// this.no.ariaChecked = true
 
    }
 

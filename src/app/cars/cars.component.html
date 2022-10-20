@@ -24,7 +24,7 @@
 
 		<div class="lists row m-0 p-0 " >
 
-	<div [routerLink]="['/cars/details', carsId ]" class="col-lg-3 col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of cars1 | paginate: { itemsPerPage: 4, currentPage: p } index as carsId " style="cursor: pointer;" >
+	<div [routerLink]="['/cars/details', x.id ]" class="col-lg-3 col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of cars1 | paginate: { itemsPerPage: 4, currentPage: p } index as carsId " style="cursor: pointer;" >
 
 		<div class="card"  >
 
@@ -50,7 +50,7 @@
 
 			<div class="card-footer d-flex justify-content-between align-items-center " >
 
-				<p class="m-0 text-center" style="width: 50%;  text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > <b> GH₵{{x.price}} </b>  </p>
+				<p class="m-0 text-center" style="width: 50%;  text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > <b> GH₵{{x.price}}/day </b>  </p>
 
 				<button class="rounded btn-outline-primary" style=" text-overflow: ellipsis; white-space: nowrap; overflow: hidden; " > BOOK NOW </button>
 				

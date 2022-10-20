@@ -69,6 +69,10 @@
           </div>
                
     </div>
+    
+    <h4 class=" bg-success rounded p-2 text-center ">
+      {{car1.status}}
+    </h4>
 
         <div id="ee" class="des-less">
             <h5 class="text-left" > Description: </h5>
@@ -103,19 +107,20 @@
           <h2 class="m-0"> Client details </h2>
 
           <div class="form-group">
-            <label> Provide your email address </label>
-            <small class="text-danger font-weight-bold" *ngIf="submitted && this.request.getRawValue().email =='' && this.request.getRawValue().contact =='' " > Please provide either your mail or contact number. </small>
+            <label> Provide your email address <span class="bg-primary p-2 rounded"> Optional </span> </label>
+            <!-- <small class="text-danger font-weight-bold" *ngIf="submitted && this.requestsControls['email'].errors?.['required']" > Please provide your mail. </small> -->
+            <small class="text-danger font-weight-bold" *ngIf="submitted && this.requestsControls['email'].errors?.['email']" > Please provide a valid email address. </small>
             <input type="text" class="form-control" formControlName="email" [(ngModel)]="email" >
             <small> So we can send your confirmation message </small>
           </div>
 
-          <h1 class="text-center m-0"> OR </h1>
+          <!-- <h1 class="text-center m-0"> OR </h1> -->
 
           <div class="form-group">
             <label> Provide your contact number </label>
-            <small class="text-danger font-weight-bold" *ngIf="submitted && this.request.getRawValue().email =='' && this.request.getRawValue().contact =='' " >  Please provide either your mail or contact number. </small>
+            <small class="text-danger font-weight-bold" *ngIf="submitted && this.requestsControls['contact'].errors?.['required']" >  Please provide your contact number. </small>
             <input type="text" class="form-control" formControlName="contact" >
-            <small> So we can send your confirmation message </small>
+            <small> So we can contact you </small>
           </div>
 
           <div class="form-group">

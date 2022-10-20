@@ -24,8 +24,8 @@ export class CarDetailsComponent implements OnInit {
   request = this.fb.group({
     hostId : [''],
     propertyId : [''],
-    email : ['',Validators.email],
-    contact : [''],
+    email : ['',[Validators.email]],
+    contact : ['',Validators.required],
     firstName : ['',Validators.required],
     lastName : ['',Validators.required],
     pickUpDate : ['',Validators.required],

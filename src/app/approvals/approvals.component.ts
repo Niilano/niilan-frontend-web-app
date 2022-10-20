@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { CarsService } from '../cars.service';
 import { UsersInfoService } from '../users-info.service';
 
@@ -45,23 +47,89 @@ export class ApprovalsComponent implements OnInit {
 
   requests : any
 
+  approvedRequests:any
+
   hidden = false;
 
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
   }
 
-  constructor( private cars : CarsService ) { }
+  i=0
+
+  requestsLen = 0
+  approvedRequestsLen = 0
+
+  successMessage = ''
+
+  approveRequest(body:any){
+
+    console.log(body)
+
+    this.http.post(`${environment.apiKey}approvals/aprove`,body).subscribe(
+      (res)=>{
+        this.successMessage = "Request successfully approved"
+
+        setTimeout(() => {
+          this.successMessage = ''
+          location.reload()
+        }, 3000);
+
+        console.log(res)
+      }
+    )
+
+  }
+
+  constructor( private cars : CarsService, private http : HttpClient ) { }
 
   ngOnInit(): void {
+
     this.cars.requests().subscribe(
       res=>{
         console.log(res)
         let result = JSON.parse(JSON.stringify(res))
         console.log(result.r)
         this.requests = result.r
+
+        this.requests.forEach((a:any)=>{
+          if(a.requests){
+            this.requestsLen += a.requests.length
+            
+            a.requests.forEach((b:any)=>{
+              b.createdAt = `${new Date(b.createdAt).toDateString()} @ ${new Date(b.createdAt).toLocaleTimeString()}`
+              // b.pickUpTime = new Date(b.pickUpTime).toLocaleTimeString()
+            })
+
+          }
+        })
+
       }
     )
+
+    this.cars.approvedRequests().subscribe(
+      res=>{
+        console.log(res)
+        let result = JSON.parse(JSON.stringify(res))
+        console.log(result.r)
+        
+        this.approvedRequests = result.r
+        
+        this.approvedRequests.forEach((a:any)=>{
+          if(a.requests){
+            this.approvedRequestsLen += a.requests.length
+            
+            a.requests.forEach((b:any)=>{
+              b.createdAt = `${new Date(b.createdAt).toDateString()} @ ${new Date(b.createdAt).toLocaleTimeString()}`
+              // b.pickUpTime = new Date(b.pickUpTime).toLocaleTimeString()
+            })
+
+          }
+        })
+
+      }
+    )
+
   }
 
 }

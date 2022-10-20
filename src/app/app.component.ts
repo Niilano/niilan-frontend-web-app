@@ -15,6 +15,8 @@ export class AppComponent {
     }
   });
 
+  // date = new Date('2022-09-09').toDateString()
+
   img:any
 
   files: File[] = [];
