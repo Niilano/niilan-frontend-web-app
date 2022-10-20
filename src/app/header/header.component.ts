@@ -40,10 +40,6 @@ function fixNav() {
         header.style.backgroundColor = 'white';
         header.classList.add('shadow')
 
-        // nav.forEach((a:any)=>{
-        //   a.style.color = 'black';
-        // })
-
         logo.style.color = 'black';
         menu.style.color = 'black';
 
