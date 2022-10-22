@@ -19,9 +19,9 @@ export class CarsService {
     return this.http.get(`${environment.apiKey}listings/sortListingsByRegion/${region}`)
   }
 
-  sortCars(brand:any,type:any,price:any){
+  sortCars(brand:any,type:any){
     // listings/sortListings/
-    return this.http.get(`${environment.apiKey}listings/sortListings/${brand}/${type}/${price}`)
+    return this.http.get(`${environment.apiKey}listings/sortListings/${brand}/${type}`)
   }
 
   requestCar(data:any){

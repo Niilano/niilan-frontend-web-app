@@ -76,7 +76,8 @@ getAllCars(){
     )
 }
 
-  // im = JSON.parse(cars[3].images)
+noCarAvailable:any
+popup:any
 
   constructor( private http : HttpClient, private route: ActivatedRoute, private router: Router, private fb: FormBuilder,  private users : UsersInfoService, private cars : CarsService ) {
 
@@ -96,21 +97,6 @@ getAllCars(){
       }
     )
 
-  //   this.route.paramMap.subscribe(params => {
-      
-  //     // console.log(params.get('location'))
-
-  //     cars.forEach((b:any)=>{
-  //   // this.cars = b[a]
-  //   if((b['location'] == params.get('location')) && (b['category'] == params.get('category')) && (b['price'] <= Number(params.get('price'))) ){
-  //     this.carsSorted.push(b)
-  //     // console.log("Categories : ",b['category'])
-  //   }
-    
-  // })
-
-  //   })
-
 
   }
 
@@ -127,18 +113,31 @@ switch(true){
         this.cars1.forEach((a:any,index:any)=>{
           this.cars1[index].carImagesUrl = JSON.parse(a.carImagesUrl)
         })
+
+        if(!(this.cars1.length > 0)){
+          this.noCarAvailable = `No vehicle available for your search "Region: ${params.get('region')}"`
+          this.popup = `No vehicle available for your search "Region: ${params.get('region')}"`
+        }
+
       }
     )
     break
 
-    case Boolean(params.get('brand') && params.get('type') && params.get('price')):
-      this.cars.sortCars(params.get('brand'),params.get('type'),params.get('price')).subscribe(
+    case Boolean(params.get('brand') && params.get('type')):
+      this.cars.sortCars(params.get('brand'),params.get('type')).subscribe(
       res=>{
+        console.log(res)
         this.loader = false
         this.cars1 = JSON.parse(JSON.stringify(res))
         this.cars1.forEach((a:any,index:any)=>{
           this.cars1[index].carImagesUrl = JSON.parse(a.carImagesUrl)
         })
+
+        if(!(this.cars1.length > 0)){
+          this.noCarAvailable = `No vehicle available for your search "Brand: ${params.get('brand')}", "Type: ${params.get('type')}"`
+          this.popup = `No vehicle available for your search "Brand: ${params.get('brand')}", "Type: ${params.get('type')}"`
+        }
+
       }
     )
       break
@@ -147,6 +146,10 @@ switch(true){
 }
 
     })
+
+    setTimeout(() => {
+      this.popup = ''
+    }, 3000);
 
    }
 

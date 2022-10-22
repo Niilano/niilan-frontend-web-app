@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sort',
@@ -15,7 +16,18 @@ export class SortComponent implements OnInit {
 
   price = 100
 
-  constructor() { }
+  riderect(){
+    if(!this.brand){
+      this.brand = '...'
+    }
+    if(!this.type){
+      this.type = '...'
+    }
+
+   this.route.navigate(['/cars/sort/',this.brand,this.type])
+  }
+
+  constructor( private route : Router ) { }
 
   ngOnInit(): void {
   }

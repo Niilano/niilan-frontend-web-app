@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 // import { FormsModule } from '@angular/forms';
 import { CarsService } from '../cars.service';
 
@@ -21,7 +22,11 @@ export class Landingpage2Component implements OnInit {
 
   cars1:any
 
-  constructor( private cars : CarsService ) {
+  moreCars = ()=>{
+    this.route.navigateByUrl('cars#cars')
+  }
+
+  constructor( private cars : CarsService, private route : Router ) {
 
     this.cars.getAllCars().subscribe(
       res=>{
