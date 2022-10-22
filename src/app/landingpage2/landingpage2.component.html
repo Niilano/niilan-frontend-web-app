@@ -26,6 +26,7 @@ rent a car </h1> -->
 
                     <div class="form-group">
                         <label>Select region</label>
+                        <small *ngIf="fill" class="text-center text-danger font-weight-bold " > {{fill}}</small>
                         <input type="text" class="form-control" list="region" [(ngModel)]="region">
                         <datalist id="region"> 
                             <option *ngFor="let x of regions">{{x}} </option>
@@ -33,7 +34,7 @@ rent a car </h1> -->
                     </div>
 
                     <div class="form-group mt-3">
-                        <button class="btn btn-primary" [routerLink]="['/cars/region',region]"> Search vehicle </button>
+                        <button class="btn btn-primary" (click)="sortRegion()" > Search vehicle </button>
                     </div>
 
                 </div>

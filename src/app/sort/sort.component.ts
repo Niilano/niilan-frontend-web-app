@@ -11,12 +11,20 @@ export class SortComponent implements OnInit {
   brand = ''
   type = ''
 
+  fill:any
+
   carBody = (["Convertible","Sports Car & Coupe","Crossover","Sedan","SUV","Pickup Truck","Van/Minivan","Hatchback"]).sort()
   carMake = (["Buick","INFINITI","Mitsubishi","Chevrolet","Jaguar","Nissan","Chrysler","Jeep","Ram","Dodge","Kia","Toyota","Ford","Lincoln","Volkswagen","GMC","Mazda","Volvo","Hyundai","Mercedes-Benz"]).sort()
 
   price = 100
 
   riderect(){
+
+    if(!this.brand && !this.type){
+      this.fill = "Please choose type or brand";
+      return
+    }
+
     if(!this.brand){
       this.brand = '...'
     }

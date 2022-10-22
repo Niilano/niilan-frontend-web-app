@@ -13,6 +13,7 @@ export class Landingpage2Component implements OnInit {
   p: number = 1;
 
   region:any
+  fill:any
 
   regions = (["Western North Region","Western Region","Volta Region","Greater Accra Region","Eastern Region","Ashanti Region","Central Region","Northern Region","Upper East Region","Upper West Region","Oti Region","Bono East Region","Ahafo Region","Bono Region","North East Region","Savannah Region"]).sort()
   carBody = (["Convertible","Sports Car & Coupe","Crossover","Sedan","SUV","Pickup Truck","Van/Minivan","Hatchback"]).sort()
@@ -24,6 +25,15 @@ export class Landingpage2Component implements OnInit {
 
   moreCars = ()=>{
     this.route.navigateByUrl('cars#cars')
+  }
+
+  sortRegion(){
+    if(!this.region){
+      this.fill = "Please select your region"
+      return
+    }
+
+    this.route.navigateByUrl('cars/region',this.region)
   }
 
   constructor( private cars : CarsService, private route : Router ) {
