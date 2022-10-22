@@ -33,7 +33,7 @@ export class Landingpage2Component implements OnInit {
       return
     }
 
-    this.route.navigateByUrl('cars/region',this.region)
+    this.route.navigateByUrl(`cars/region/${this.region}`)
   }
 
   constructor( private cars : CarsService, private route : Router ) {
