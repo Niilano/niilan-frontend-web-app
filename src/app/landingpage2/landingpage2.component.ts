@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 // import { FormsModule } from '@angular/forms';
 import { CarsService } from '../cars.service';
+import { SeoService } from '../seo.service';
 
 @Component({
   selector: 'app-landingpage2',
@@ -37,7 +37,7 @@ export class Landingpage2Component implements OnInit {
     this.route.navigateByUrl(`cars/region/${this.region}`)
   }
 
-  constructor( private cars : CarsService, private route : Router, private title: Title ) {
+  constructor( private cars : CarsService, private route : Router, private seo : SeoService ) {
 
     this.cars.getAllCars().subscribe(
       res=>{
@@ -51,9 +51,7 @@ export class Landingpage2Component implements OnInit {
    }
 
   ngOnInit(): void {
-
-    this.title.setTitle('Niilano | Gh Car Rentals')
- 
+ this.seo.addTag()
   }
 
 }

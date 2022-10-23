@@ -61,7 +61,7 @@ import { ContactusComponent } from './contactus/contactus.component';
     ContactusComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
