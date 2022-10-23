@@ -16,5 +16,11 @@ export class SeoService {
     ])
   }
 
+  // updateSeoTag(title:any){
+  //   this.title.setTitle(title)
+
+  //   this.meta.updateTag([])
+  // }
+
   constructor(private title : Title, private meta : Meta) { }
 }
