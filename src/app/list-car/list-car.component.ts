@@ -116,7 +116,7 @@ export class ListCarComponent implements OnInit {
 
         setTimeout(() => {
           this.sucMsg = ""
-          this.router.navigate([`/cars/details/${result.id-1}`])
+          this.router.navigate([`/cars/details/${result.id}`])
         }, 2000);
 
         console.log("Response",res)
