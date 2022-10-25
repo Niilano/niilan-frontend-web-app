@@ -1,5 +1,9 @@
 <app-dash-header [title]="title" ></app-dash-header>
 
+<pre (click)="arrayRemove()" >
+    {{carMake | json}}
+</pre>
+
     <div class="my-3" >
 
         <form [formGroup]="listCars" (ngSubmit)="listCarSubmit()" class=" p-4 rounded " style="font-family: 'Inder';">
@@ -116,7 +120,12 @@
                 <small *ngIf="submitted && this.listCarsV['carImagesUrl'].errors?.['required']" class="text-danger font-weight-bold mx-2 " > Add at least one image of vehicle </small>
 
                 <div *ngIf="src" class="d-flex align-items-center" style="height: 100%; width: 80%; ">
-                <img class="rounded mx-3" *ngFor="let x of src" [src]="x" style="height: 100%; " >
+                    
+                    <div *ngFor="let x of src index as i" class="bg-dark mx-3" style="height: 100%; position: relative;">
+                        <span class="notify-badge fa-2x fa-solid fa-circle-xmark" (click)="removeImage(i)" ></span>
+                <img class="rounded" [src]="x" style="height: 100%; " >
+                </div>
+
                 </div>
                 
             </div>

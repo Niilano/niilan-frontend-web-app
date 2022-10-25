@@ -23,6 +23,10 @@ export class ListCarComponent implements OnInit {
   carBody = (["Convertible","Sports Car & Coupe","Crossover","Sedan","SUV","Pickup Truck","Van/Minivan","Hatchback"]).sort()
   carMake = (["Buick","INFINITI","Mitsubishi","Chevrolet","Jaguar","Nissan","Chrysler","Jeep","Ram","Dodge","Kia","Toyota","Ford","Lincoln","Volkswagen","GMC","Mazda","Volvo","Hyundai","Mercedes-Benz"]).sort()
 
+  arrayRemove(){
+    this.carMake.splice(0,1)
+  }
+
   src:any = []
 
   seats:any = []
@@ -41,6 +45,15 @@ export class ListCarComponent implements OnInit {
       this.imgToForm()
     }
 
+
+    let x = document.getElementById('images') as HTMLInputElement
+    x.value = ''
+
+  }
+
+  removeImage(index:number){
+    this.src.splice(index,1)
+    return
   }
 
   resetForm(){
