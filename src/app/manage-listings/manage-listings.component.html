@@ -201,8 +201,8 @@
             <div class="form-group mt-3 " >
                 <label class="text-dark m-2" > Description: </label>
                 <small *ngIf="submitted && this.listCarsV['description'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
-                <textarea formControlName="description" placeholder=" Message for your customers " style="height: 200px;" class="form-control" maxlength="40" ></textarea>
-                <span> {{listCars.getRawValue().description.length}} / 40 </span>
+                <textarea formControlName="description" placeholder=" Message for your customers " style="height: 200px;" class="form-control" maxlength="600" ></textarea>
+                <span> {{listCars.getRawValue().description.length}} / 600 </span>
             </div>
 
             <div *ngIf="!changeAvailable">
