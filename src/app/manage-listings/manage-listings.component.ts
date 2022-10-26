@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersInfoService } from '../users-info.service';
 
@@ -21,6 +21,28 @@ export class ManageListingsComponent implements OnInit {
   noListings:any
 
   src:any = []
+  newsrc:any = []
+
+  //ngModel
+  availableDate:any
+
+  removeImageFromSrc(index:number){
+    this.src.splice(index,1)
+    // this.imgToForm()
+    return
+  }
+
+  removeImageFromNewSrc(index:number){
+    this.newsrc.splice(index,1)
+    // this.imgToForm()
+    return
+  }
+
+  imgToForm(){
+    this.listCars.controls['token'].setValue(localStorage.getItem('userT'))
+    this.listCars.controls['newImageSrc'].setValue(JSON.stringify(this.newsrc))
+    this.listCars.controls['oldImageSrc'].setValue(JSON.stringify(this.src))
+  }
 
   cars:any = []
 
@@ -31,25 +53,99 @@ export class ManageListingsComponent implements OnInit {
 
   speed = ["100km/hr","120km/hr","150km/hr","200km/hr","250km/hr"]
 
+  sucMsg:any
+  errMsg:any
+  loading:any
+
+  status:any
+
+  changeAvailable=false
+
+  changeAvailableDate(){
+
+    this.changeAvailable = true
+    
+  }
+
   listCars = this.fb.group({
-    token : [localStorage.getItem('user')],
-    carName : [''],
-    carRegion : [''],
-    carLocation : [''],
-    noOfSeats: [''],
-    fuel: [''],
-    speed: [''],
-    color : [''],
-    price : [''],
-    carMake : [''],
-    bodyStyle : [''],
+    token : ['',Validators.required],
+    listingId : ['',Validators.required],
+    carName : ['',Validators.required],
+    carRegion : ['',Validators.required],
+    carLocation : ['',Validators.required],
+    noOfSeats: ['',Validators.required],
+    fuel: ['',Validators.required],
+    speed: ['',Validators.required],
+    color : ['',Validators.required],
+    price : ['',Validators.required],
+    carMake : ['',Validators.required],
+    bodyStyle : ['',Validators.required],
     carImagesUrl : [''],
-    description : [''],
-    driver : [''],
-    carPlate : ['']
+    description : ['',Validators.required],
+    driver : ['',Validators.required],
+    carPlate : ['',Validators.required],
+    newImageSrc : [''],
+    oldImageSrc : [''],
+    s : [''],
+    status : ['']
   })
 
+  get listCarsV(){
+    return this.listCars.controls
+  }
+
+  submitted = false
+
   updateCarSubmit(){
+    this.submitted = true
+    this.imgToForm()
+console.log(this.listCars.getRawValue())
+
+    // let no = document.getElementById("no") as HTMLInputElement
+
+    if(this.availableDate){
+      this.listCars.controls['status'].setValue(`Vehicle will be avialable on ${new Date(this.availableDate).toDateString()
+    }`)
+    }
+
+    if(!this.availableDate && this.changeAvailable){
+      return
+    }
+
+    // if(no.checked && !this.availableDate) { this.availableDate=''; return }
+
+    if(this.listCars.invalid) {  this.availableDate=''; return }
+
+    this.loading = true
+
+    console.log(this.listCars.getRawValue())
+
+    this.http.post(`${environment.apiKey}listings/update`,this.listCars.getRawValue()).subscribe(
+      res=>{
+
+        let result = JSON.parse(JSON.stringify(res))
+
+        this.loading = false
+
+        this.sucMsg = result.msg
+
+        setTimeout(() => {
+          this.sucMsg = ""
+          // this.router.navigate([`/cars/details/${result.id}`])
+        }, 2000);
+
+        console.log("Response",res)
+      },
+      err=>{
+        // this.availableDate = ''
+        console.log(err)
+        this.loading = false
+        this.errMsg = err.error.msg
+        setTimeout(() => {
+          this.errMsg = ""
+        }, 2000);
+      }
+    )
 
   }
 
@@ -59,8 +155,13 @@ export class ManageListingsComponent implements OnInit {
     let reader= new FileReader();
     reader.readAsDataURL(files[0]);
     reader.onload=(_event)=>{
-      this.src.push(reader.result)
+      this.newsrc.push(reader.result)
     }
+
+    this.imgToForm()
+
+    let x = document.getElementById('images') as HTMLInputElement
+    x.value = ''
 
   }
 
@@ -119,6 +220,7 @@ export class ManageListingsComponent implements OnInit {
 
         let results = JSON.parse(JSON.stringify(res))
 
+        this.listCars.controls['listingId'].setValue(results.id)
         this.listCars.controls['carName'].setValue(results.carName)
         this.listCars.controls['carRegion'].setValue(results.carRegion)
         this.listCars.controls['carLocation'].setValue(results.carLocation)
@@ -129,10 +231,19 @@ export class ManageListingsComponent implements OnInit {
         this.listCars.controls['price'].setValue(results.price)
         this.listCars.controls['carMake'].setValue(results.carMake)
         this.listCars.controls['bodyStyle'].setValue(results.bodyStyle)
-        this.listCars.controls['carImagesUrl'].setValue(results.carImagesUrl)
         this.listCars.controls['description'].setValue(results.description)
         this.listCars.controls['driver'].setValue(results.driver)
         this.listCars.controls['carPlate'].setValue(results.carPlate)
+
+        this.status = results.status
+
+        if(results.status != "Vehicle is available"){
+        this.listCars.controls['status'].setValue("Vehicle will be available on")
+        }
+
+        else{
+          this.listCars.controls['status'].setValue(results.status)
+        }
 
         let src = JSON.parse(results.carImagesUrl)
 

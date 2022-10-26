@@ -49,6 +49,7 @@ export class ListCarComponent implements OnInit {
 
   removeImage(index:number){
     this.src.splice(index,1)
+    this.imgToForm()
     return
   }
 

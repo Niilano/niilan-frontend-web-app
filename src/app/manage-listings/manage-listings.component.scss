@@ -56,6 +56,13 @@ label{
     color: white;
 }
 
+.notify-badge{
+    position: absolute;
+    left: -8%;
+    top: -8%;
+    color: red;
+}
+
 @media(max-width : 500px){
 	div.logo{
 		width: 100%;

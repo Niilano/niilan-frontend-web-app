@@ -55,11 +55,13 @@
 
             <div class="form-group">
                 <label class="text-dark"> Name your Vehicle </label>
+                <small *ngIf="submitted && this.listCarsV['carName'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input class="form-control" formControlName="carName" placeholder="Car Name" >
             </div>
 
             <div class="form-group mt-3 ">
                 <label class="text-dark"> Region </label>
+                <small *ngIf="submitted && this.listCarsV['carRegion'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input type="text" list="regions" formControlName="carRegion" class="form-control" placeholder="Choose Region" >
 
                 <datalist id="regions">
@@ -76,12 +78,14 @@
 
             <div class="form-group mt-3 ">
                 <label class="text-dark"> Location of vehicle </label>
+                <small *ngIf="submitted && this.listCarsV['carLocation'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input class="form-control" formControlName="carLocation" placeholder="Location" >
             </div>
 
             <div class="form-group mt-3 row ">
                 <div class="col-4">
                     <label class="text-dark"> Seats </label>
+                    <small *ngIf="submitted && this.listCarsV['noOfSeats'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                     <input class="form-control" type="number" formControlName="noOfSeats" placeholder=" Seats " list="seats" >
                     <datalist id="seats">
                         <!-- <option *ngFor="let x of seats" > {{x}}  </option> -->
@@ -90,6 +94,7 @@
 
                 <div class="col-4">
                     <label class="text-dark"> Fuel type </label>
+                    <small *ngIf="submitted && this.listCarsV['fuel'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                     <input class="form-control" type="text" formControlName="fuel" placeholder=" Fuel " list="fuel" >
                     <datalist id="fuel">
                         <option> Petrol </option>
@@ -100,6 +105,7 @@
 
                 <div class="col-4">
                     <label class="text-dark"> Speed </label>
+                    <small *ngIf="submitted && this.listCarsV['speed'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                     <input class="form-control" type="text" formControlName="speed" placeholder=" Speed " list="speed" >
                     <datalist id="speed">
                         <option *ngFor="let x of speed"> {{x}} </option>
@@ -111,25 +117,29 @@
             <div class="form-group mt-3 ">
                 <!-- <label> Vehicle color </label> -->
                 <label class="text-dark"> Color: </label>
+                <small *ngIf="submitted && this.listCarsV['color'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input class="form-control" type="text" formControlName="color" placeholder="Color" >
             </div>
 
             <div class="form-group mt-3 ">
                 <label class="text-dark">Price per day</label>
+                <small *ngIf="submitted && this.listCarsV['price'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input class="form-control" type="number" formControlName="price" placeholder="Price (GH₵) " >
                 
             </div>
 
             <div class="form-group mt-3 row ">
                 <div class="col-6">
-                    <label class="text-dark"> Car Make </label>
+                    <label class="text-dark"> Brand </label>
+                    <small *ngIf="submitted && this.listCarsV['carMake'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input class="form-control" type="text" formControlName="carMake" placeholder=" Car Make " list="carMake" >
                 <datalist id="carMake">
                     <option *ngFor="let x of carMake"> {{x}} </option>
                 </datalist>
                 </div>
                 <div class="col-6">
-                    <label class="text-dark"> Body Style </label>
+                    <label class="text-dark"> Type </label>
+                    <small *ngIf="submitted && this.listCarsV['bodyStyle'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                     <input class="form-control" type="text" list="carBody" formControlName="bodyStyle" placeholder=" Body Style " >
                     <datalist id="carBody">
                         <option *ngFor="let x of carBody"> {{x}} </option>
@@ -140,6 +150,7 @@
             <div class="form-group mt-3 ">
 
                 <label class="text-dark"> Enter vehicle plate number: </label>
+                <small *ngIf="submitted && this.listCarsV['carPlate'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
                 <input class="form-control" formControlName="carPlate" type="text" placeholder=" e.g GW-9020-20 " >
                 
             </div>
@@ -150,7 +161,17 @@
                 <label class="p-2 rounded bg-light text-dark " style=" width: max-content; " for="images"  > <i class="fa-solid fa-plus"></i> Add Images </label>
 
                 <div *ngIf="src" class="d-flex align-items-center" style="height: 100%; width: 80%; ">
-                <img class="rounded mx-3" *ngFor="let x of src" [src]="x" style="height: 100%; " >
+                
+                    <div *ngFor="let x of src index as i" class="bg-dark mx-3" style="height: 100%; position: relative;">
+                        <span class="notify-badge fa-2x fa-solid fa-circle-xmark" (click)="removeImageFromSrc(i)" ></span>
+                <img class="rounded" [src]="x" style="height: 100%; " >
+                </div>
+
+                <div *ngFor="let x of newsrc index as i" class="bg-dark mx-3" style="height: 100%; position: relative;">
+                    <span class="notify-badge fa-2x fa-solid fa-circle-xmark" (click)="removeImageFromNewSrc(i)" ></span>
+            <img class="rounded" [src]="x" style="height: 100%; " >
+            </div>
+                    
                 </div>
                 
             </div>
@@ -166,6 +187,7 @@
                 <!-- <label class="form-check-label text-light" for="mySwitch"> Comes With Driver </label> -->
 
                 <label class="text-dark" for="driving" > Choose driving: </label>
+                <small *ngIf="submitted && this.listCarsV['driver'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
 
                 <select class="form-control" id="driving" formControlName="driver">
                     <option> Driver available </option>
@@ -176,9 +198,34 @@
 
             <div class="form-group mt-3 " >
                 <label class="text-dark m-2" > Description: </label>
-                <textarea formControlName="description" placeholder=" Message for your customers " style="height: 200px;" class="form-control" ></textarea>
+                <small *ngIf="submitted && this.listCarsV['description'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small>
+                <textarea formControlName="description" placeholder=" Message for your customers " style="height: 200px;" class="form-control" maxlength="40" ></textarea>
+                <span> {{listCars.getRawValue().description.length}} / 40 </span>
+            </div>
+
+            <div *ngIf="!changeAvailable">
+                {{status}}<br>
+                <button class="btn btn-secondary" (click)="changeAvailableDate()" > Change available date </button>
+                                    </div>
+
+
+            <div class="form-group mt-3 " *ngIf="changeAvailable" >
+
+                <label class="text-dark m-2" > Is vehicle available at the moment: </label>
+                Yes <input type="radio" value="Vehicle is available" formControlName="status"  >
+                No <input type="radio" id="no" [value]="'Vehicle will be available on' " formControlName="status" #no >
+
+                <div class="row" *ngIf=" this.no.checked " >
+                    <small *ngIf="submitted && changeAvailable && this.no.checked && !availableDate " class="text-danger font-weight-bold " > *** This field is required </small>
+                    <label class=" font-weight-bolder text-dark"> When will the vehicle be available </label>
+                   
+                    <input class="form-control" type="date" formControlName="s" [(ngModel)]="availableDate" >
+                    <!-- <h1> {{ availableDate }}</h1> -->
+                </div>
 
             </div>
+
+
 
             <div class="form-group mt-3 text-end ">
 
@@ -189,5 +236,24 @@
             </div>
 
         </form>
+
+    </div>
+
+
+
+    <div *ngIf="sucMsg" class="fixed-top text-light animate__animated animate__zoomIn d-flex justify-content-center " style=" transition: all 2s ease-in-out; font-family: 'Inder'; " > 
+        <div class="d-flex justify-content-center bg-success rounded p-2 align-items-center" style="width:max-content;"> <i class="fa-solid fa-2x mx-1 fa-circle-check"></i>  {{sucMsg}} </div>
+      </div>
+
+      <div *ngIf="errMsg" class="fixed-top text-light animate__animated animate__zoomIn d-flex justify-content-center " style=" transition: all 2s ease-in-out; font-family: 'Inder';" > 
+        <div class="d-flex justify-content-center bg-danger rounded p-2 align-items-center" style="width:max-content;"> <i class="fa-solid fa-2x mx-1 fa-circle-xmark"></i> {{errMsg}} </div>
+      </div>
+
+    <div *ngIf="loading" class="d-flex justify-content-center align-items-center fixed-top" style=" backdrop-filter: blur(3px); width: 100%; left: 0; height: 100vh; top: 0; " >
+
+        <div class="bg-light p-3 rounded ">
+            <i class="fa-solid fa-gear fa-spin "></i>   UPDATING...
+        </div>
+
 
     </div>
