@@ -136,7 +136,7 @@ console.log(this.listCars.getRawValue())
 
         setTimeout(() => {
           this.sucMsg = ""
-          this.route.navigate([`/manage`])
+          this.route.navigate([`/dashboard/manage-listings`])
         }, 2000);
 
         console.log("Response",res)
