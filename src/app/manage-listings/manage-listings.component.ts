@@ -107,6 +107,11 @@ console.log(this.listCars.getRawValue())
       this.listCars.controls['status'].setValue(`Vehicle will be avialable on ${new Date(this.availableDate).toDateString()
     }`)
     }
+    
+    if(this.listCars.getRawValue().newImageSrc.length <= 2 && this.listCars.getRawValue().oldImageSrc.length <= 2 ){
+      // alert(this.listCars.getRawValue().newImageSrc.length)
+      return
+    }
 
     if(!this.availableDate && this.changeAvailable){
       return
@@ -131,7 +136,7 @@ console.log(this.listCars.getRawValue())
 
         setTimeout(() => {
           this.sucMsg = ""
-          // this.router.navigate([`/cars/details/${result.id}`])
+          this.route.navigate([`/manage`])
         }, 2000);
 
         console.log("Response",res)

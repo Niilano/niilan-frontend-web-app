@@ -160,6 +160,8 @@
 
                 <label class="p-2 rounded bg-light text-dark " style=" width: max-content; " for="images"  > <i class="fa-solid fa-plus"></i> Add Images </label>
 
+                <small *ngIf="listCars.getRawValue().newImageSrc.length<=2 && listCars.getRawValue().oldImageSrc.length<=2 " class="text-danger font-weight-bold mx-2 " > Add at least one image of vehicle </small>
+
                 <div *ngIf="src" class="d-flex align-items-center" style="height: 100%; width: 80%; ">
                 
                     <div *ngFor="let x of src index as i" class="bg-dark mx-3" style="height: 100%; position: relative;">
