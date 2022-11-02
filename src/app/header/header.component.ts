@@ -14,12 +14,15 @@ export class HeaderComponent implements OnInit {
     this.users.userInfo().subscribe(
       res=>{
 
+        console.log(res)
+
         let result = JSON.parse(JSON.stringify(res))
 
         this.isLoggedIn = result.status
 
       },
       err=>{
+        console.log(err)
         this.isLoggedIn = false
       }
     )

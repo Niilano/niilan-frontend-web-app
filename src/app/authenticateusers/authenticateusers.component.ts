@@ -44,7 +44,7 @@ export class AuthenticateusersComponent implements OnInit {
           this.SucMsg = ''
           localStorage.setItem('userT',result.token);
           this.route.navigate(['cars']);
-        },2000)
+        },3000)
 
       },
       err=>{
@@ -59,7 +59,7 @@ export class AuthenticateusersComponent implements OnInit {
 
         setTimeout(()=>{
           this.ErrMsg = ''
-        },3000)
+        },5000)
 
       }
     )
