@@ -36,6 +36,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import {CloudinaryModule} from '@cloudinary/ng';
 import { Page404Component } from './page404/page404.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { PropertyListingComponent } from './property-listing/property-listing.component';
 
 // import { NgbdCarouselPause } from './carousel-pause';
 
@@ -58,7 +59,8 @@ import { ContactusComponent } from './contactus/contactus.component';
     ProfileComponent,
     ApprovalsComponent,
     Page404Component,
-    ContactusComponent
+    ContactusComponent,
+    PropertyListingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

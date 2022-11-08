@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ApprovalsComponent } from './approvals/approvals.component';
 import { Page404Component } from './page404/page404.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { PropertyListingComponent } from './property-listing/property-listing.component';
 
 const routes: Routes = [
 {path : 'home' , component: LandingpageComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
 { path: 'cars/details/:carsId', component: CarDetailsComponent},
 { path: 'cars/region/:region', component: CarsComponent},
 { path: 'cars/sort/:brand/:type', component: CarsComponent},
+{ path: 'list', component: PropertyListingComponent },
 { path: 'list-cars', component: ListCarComponent },
 { path: 'manage', component: ManageListingsComponent },
 { path: 'manage/:id', component: ManageListingsComponent },

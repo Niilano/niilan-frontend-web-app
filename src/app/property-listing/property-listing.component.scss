@@ -1,0 +1,89 @@
+
+.hostChoice:hover{
+    background-color: black;
+    // color: black;
+}
+
+.active{
+    background-color: #ffc107 !important;
+    color: black !important;
+}
+
+.selectHost-hide{
+    display: none !important;
+}
+
+// :root {
+//     --primary-color: rgb(11, 78, 179);
+//   }
+
+.form-group{
+    display: none;
+    transform: all 3s;
+}
+
+.form-group-active{
+    display: block;
+    transform: all 3s;
+}
+
+// /* Progressbar */
+// .progressbar {
+//     position: relative;
+//     display: flex;
+//     justify-content: space-between;
+//     counter-reset: step;
+//     margin: 2rem 0 4rem;
+//   }
+  
+//   .progressbar::before,
+//   .progress {
+//     content: "";
+//     position: absolute;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     height: 4px;
+//     width: 100%;
+//     background-color: #dcdcdc;
+//     z-index: 0;
+//   }
+  
+//   .progress {
+//     // background-color: var(--primary-color);
+//     background-color: blue;
+//     width: 0%;
+//     transition: 0.3s;
+//     // z-index: ;
+//   }
+  
+//   .progress-step {
+//     width: 2.1875rem;
+//     height: 2.1875rem;
+//     background-color: #dcdcdc;
+//     border-radius: 50%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     color: black;
+//     position: relative;
+//   }
+  
+//   .progress-step::before {
+//     counter-increment: step;
+//     content: counter(step);
+//   }
+  
+//   .progress-step::after {
+//     content: attr(data-title);
+//     position: absolute;
+//     top: calc(100% + 0.5rem);
+//     font-size: 0.85rem;
+//     color: #666;
+//     z-index: 0;
+//   }
+  
+//   .progress-step-active {
+//     background-color: blue;
+//     color: #f3f3f3;
+//   }
+  
