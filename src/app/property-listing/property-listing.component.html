@@ -22,47 +22,156 @@
 </div>
 
 
-<div id="Vehicle" class="bg-dark vh-100 d-none justify-content-center align-items-center ">
+<div id="Vehicle" class="bg-light vh-100 d-none justify-content-center align-items-center ">
     
     <form class="p-3 border container rounded">
 
+        <h1 class="text-warning font-weight-bold "> List your {{category}} </h1>
+
         <div class="form-group form-group-active ">
+            <label class="text-dark"> Choose a name for you {{category}} </label>
+            <!-- <small *ngIf="submitted && this.listCarsV['carName'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small> -->
+            <input class="form-control"  placeholder="Car Name" >
 
-            <label for="title"> Name your {{category}} listing </label>
-
-            <input type="text" maxlength="50" id="title" class="form-control" placeholder="e.g Toyota Hiace 2020"  />
-
-            <div class="d-flex justify-content-end mt-3">
-                <!-- <button type="button" class="btn btn-primary btn-prev">Back</button> -->
-                <button type="button" class="btn btn-primary btn-next">Next</button>
+            <div class="d-flex justify-content-between align-items-center mt-5">
+                <button class="btn btn-danger btn-prev" > Previous </button>
+                <button class="btn btn-primary btn-next" > Next </button>
             </div>
 
         </div>
 
-        <div class="form-group">
+        <div class="form-group ">
+            <label class="text-dark"> Which region is your {{category}} located? </label>
+            <!-- <small *ngIf="submitted && this.listCarsV['carRegion'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small> -->
+            <input type="text" list="regions"  class="form-control" placeholder="Choose Region" >
 
-            <div>
+            <datalist id="regions">
+                <option *ngFor="let x of regions"> {{x}} </option>
+            </datalist>
 
-            <label for="title"> Which region is your {{category}}? </label>
 
-            <input type="text" id="title" class="form-control" placeholder="choose region"  />
+            <div class="d-flex justify-content-between align-items-center mt-5">
+                <button class="btn btn-danger btn-prev" > Previous </button>
+                <button class="btn btn-primary btn-next" > Next </button>
+            </div>
+            
+        </div>
 
+
+        <div class="form-group mt-3 ">
+            <label class="text-dark"> Location of {{category}} </label>
+            <!-- <small *ngIf="submitted && this.listCarsV['carLocation'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small> -->
+            <input class="form-control"  placeholder="Location" >
+
+            <div class="d-flex justify-content-between align-items-center mt-5">
+                <button class="btn btn-danger btn-prev" > Previous </button>
+                <button class="btn btn-primary btn-next" > Next </button>
             </div>
 
-            <div class="mt-3">
+        </div>
 
-                <label for="title"> Enter Location of your {{category}}? </label>
-    
-                <input type="text" id="title" class="form-control" placeholder="enter location"  />
-    
+        <div class="form-group ">
+
+            <div class="row">
+
+                <div class="col-sm-4">
+                    <label class="text-dark"> Seats </label>
+                    <!-- <small *ngIf="submitted && this.listCarsV['noOfSeats'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small> -->
+                    <input class="form-control" type="number"  placeholder=" Seats " list="seats" >
+                    <datalist id="seats">
+                        <option *ngFor="let x of seats" > {{x}}  </option>
+                    </datalist>
                 </div>
 
-            <div class="d-flex justify-content-between mt-3">
-                <button type="button" class="btn btn-primary btn-prev">Previous</button>
-                <!-- <button type="button" class="btn btn-primary btn-next">Next</button> -->
+                <div class="col-sm-4">
+                    <label class="text-dark"> Fuel type </label>
+                    <!-- <small *ngIf="submitted && this.listCarsV['fuel'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small> -->
+                    <input class="form-control" type="text" placeholder=" Fuel " list="fuel" >
+                    <datalist id="fuel">
+                        <option> Petrol </option>
+                        <option> Diesel </option>
+                        <option> Gas </option>
+                    </datalist>
+                </div>
+
+                <div class="col-sm-4">
+                    <label class="text-dark"> Speed </label>
+                    <!-- <small *ngIf="submitted && this.listCarsV['speed'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small> -->
+                    <input class="form-control" type="text" formControlName="speed" placeholder=" Speed " list="speed" >
+                    <datalist id="speed">
+                        <option *ngFor="let x of speed"> {{x}} </option>
+                    </datalist>
+                </div>
+
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-5">
+                    <button class="btn btn-danger btn-prev" > Previous </button>
+                    <button class="btn btn-primary btn-next" > Next </button>
+                </div>
+                
             </div>
 
-        </div>
+
+            <div class="form-group mt-3 ">
+                <!-- <label> Vehicle color </label> -->
+                <label class="text-dark"> Color of your {{category}}: </label>
+                <!-- <small *ngIf="submitted && this.listCarsV['color'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small> -->
+                <input class="form-control" type="text" placeholder="Color" >
+
+                <div class="d-flex justify-content-between align-items-center mt-5">
+                    <button class="btn btn-danger btn-prev" > Previous </button>
+                    <button class="btn btn-primary btn-next" > Next </button>
+                </div>
+
+            </div>
+
+            <div class="form-group mt-3 ">
+                <label class="text-dark">Price per day</label>
+                <!-- <small *ngIf="submitted && this.listCarsV['price'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small> -->
+                <input class="form-control" type="number" placeholder="Price (GH₵) " >
+
+                <div class="d-flex justify-content-between align-items-center mt-5">
+                    <button class="btn btn-danger btn-prev" > Previous </button>
+                    <button class="btn btn-primary btn-next" > Next </button>
+                </div>
+                
+            </div>
+
+            <div class="form-group mt-3 row ">
+                <div class="col-md-6">
+                    <label class="text-dark"> Brand of your {{category}} </label>
+                    <!-- <small *ngIf="submitted && this.listCarsV['carMake'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small> -->
+                <input class="form-control" type="text" placeholder=" Car Make " list="carMake" >
+                <datalist id="carMake">
+                    <option *ngFor="let x of carMake"> {{x}} </option>
+                </datalist>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <label class="text-dark"> Vehicle type </label>
+                    <!-- <small *ngIf="submitted && this.listCarsV['bodyStyle'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small> -->
+                    <input class="form-control" type="text" list="carBody" placeholder=" Body Style " >
+                    <datalist id="carBody">
+                        <option *ngFor="let x of carBody"> {{x}} </option>
+                    </datalist>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-5">
+                        <button class="btn btn-danger btn-prev" > Previous </button>
+                        <button class="btn btn-primary btn-next" > Next </button>
+                    </div>
+
+            </div>
+
+            <div class="form-group mt-3 ">
+
+                <label class="text-dark"> Enter vehicle plate number: </label>
+                <!-- <small *ngIf="submitted && this.listCarsV['carPlate'].errors?.['required']" class="text-danger font-weight-bold " > This field is required </small> -->
+                <input class="form-control"  type="text" placeholder=" e.g GW-9020-20 " >
+                
+            </div>
+
+
 
     </form>
 

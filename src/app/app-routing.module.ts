@@ -27,6 +27,7 @@ const routes: Routes = [
 { path: 'cars/region/:region', component: CarsComponent},
 { path: 'cars/sort/:brand/:type', component: CarsComponent},
 { path: 'list', component: PropertyListingComponent },
+{ path: 'list/:category', component: PropertyListingComponent },
 { path: 'list-cars', component: ListCarComponent },
 { path: 'manage', component: ManageListingsComponent },
 { path: 'manage/:id', component: ManageListingsComponent },
