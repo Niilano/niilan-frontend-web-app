@@ -58,7 +58,7 @@ export class SortComponent implements OnInit {
       logo : '../../assets/types/pickup.jpg'
     },
     {
-      name : 'Van/Minivan',
+      name : 'Van',
       logo : '../../assets/types/van.jpg'
     },
     {
