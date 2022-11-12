@@ -2,6 +2,7 @@
     background-image: url(../../assets/pexels-matheus-bertelli-799443.jpg);
     background-size: cover;
     background-position: center;
+    height: calc(var(--vh, 1vh) * 100) !important;
 }
 
 .card{

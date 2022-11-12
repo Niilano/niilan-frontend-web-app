@@ -156,6 +156,14 @@ export class AuthenticateusersComponent implements OnInit {
 
   ngOnInit() {
 
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    window.addEventListener('resize', () => {
+      vh = window.innerHeight * 0.01;
+      // console.log(vh)
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    });
+
     let login = document.getElementById('login') as HTMLElement
 
     let register = document.getElementById('register') as HTMLElement
