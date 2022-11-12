@@ -138,6 +138,11 @@ switch(true){
           this.popup = `No vehicle available for your search "Brand: ${params.get('brand')}", "Type: ${params.get('type')}"`
         }
 
+        else{
+          this.noCarAvailable = ""
+          this.popup = ""
+        }
+
       }
     )
       break
