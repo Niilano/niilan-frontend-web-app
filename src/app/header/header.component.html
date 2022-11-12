@@ -9,9 +9,10 @@
         <nav *ngIf="!isLoggedIn" class="desktop text-center d-flex justify-content-center">
     
             <a class="link-item" routerLink="/" routerLinkActive="activeLink">Home</a>
-            <a class="link-item" routerLink="/cars" routerLinkActive="activeLink">Cars</a>
+            <!-- <a class="link-item" routerLink="/cars" routerLinkActive="activeLink">Cars</a> -->
             <!-- <a class="link-item">About Us</a> -->
-            <a class="link-item" routerLink="/contact-us"> Contact Us</a>
+            <a class="link-item  " routerLink="/contact-us"> Contact Us</a>
+            <a class="bg-dark link-item rounded text-center mx-3" routerLink="/cars"> Rent a car </a>
             <a class="bg-warning text-dark rounded link-item" routerLink="/login"> List your car </a>
             
     
@@ -28,8 +29,8 @@
     
         <div class="menu-bar d-flex justify-content-center" style="width: 80%;">
     
-            <p style="color: rgba(255, 255, 255, 0.5); cursor: pointer;" class="m-0" onclick="document.getElementById('m-nav').classList.toggle('hide')" >
-                <i class="fa fa-bars"></i> MENU
+            <p style="color: rgba(255, 255, 255, 0.5); cursor: pointer;" class="m-0 border rounded p-2" onclick="document.getElementById('m-nav').classList.toggle('hide')" >
+                <i class="fa fa-bars m-2 "></i> MENU
             </p>
     
         </div>
@@ -46,9 +47,10 @@
             <a class="link-item" routerLink="/contact-us">Contact Us</a>
 
             <p class="d-flex container justify-content-between mt-3">
-                <span style="width: 40%;"></span>
-                <a class="bg-warning rounded text-center" style="width: 40%;" routerLink="/login"> List your car </a>
-                <!-- <a class="bg-warning rounded text-center" style="width: 40%;" routerLink="/register"> Register </a> -->
+                
+                <a class="bg-dark text-center" routerLink="/cars"> Rent a car </a>
+                <a class="bg-warning text-center" routerLink="/dashboard/list-car"> Host your car </a>
+                
             </p>
     
         </nav>

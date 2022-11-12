@@ -27,7 +27,7 @@ export class DashboardComponent implements OnDestroy {
       },
       err=>{
         // this.err
-        this.route.navigate(['cars'])
+        this.route.navigate(['login'])
         alert(err.error.msg)
 
       }

@@ -27,3 +27,11 @@ div.previous-links p{
 div.previous-links p:hover{
 	color: #ffc107;
 }
+
+.activeLlink{
+	color: #ffc107 !important;
+
+	i{
+		border-color: #ffc107 !important;
+	}
+}

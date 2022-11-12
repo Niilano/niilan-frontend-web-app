@@ -1,6 +1,42 @@
-<div class="container mt-5 rounded border border-2 p-4" style="font-family: 'Inder'; box-sizing: border-box;">
 
-    <h3 class="text-primary text-center"> Find your car </h3>
+
+<div class="container mt-3 p-0 rounded border border-2 " style="font-family: 'Inder'; box-sizing: border-box;">
+
+    <div class="bg-light m-0 p-3">
+
+    <h2 class="text-primary mb-0"> Look for your favorite brand. </h2>
+
+    <div class="d-flex py-2" style="overflow-x: scroll; "  >
+
+        <div class="border mx-2 p-2 rounded font-weight-bold text-center " *ngFor="let x of brandData" style="width: max-content; flex-shrink: 0; cursor: pointer; " (click)="chooseBrandOrType(x.name,'...')" >
+    
+            <img [src]="x.logo" style="width: 50px;" /> <br>
+            {{x.name}}
+    
+        </div>
+    
+    </div>
+
+    </div>
+
+    <div class="bg-light m-0 p-3">
+
+    <h2 class="text-primary mb-0"> Pick the type you prefer. </h2>
+
+    <div class="d-flex align-items-center py-2" style="overflow-x: scroll; " >
+
+        <div class="border mx-2 p-2 rounded font-weight-bold text-center " *ngFor="let x of typeData" style="width: max-content; flex-shrink: 0; cursor: pointer; " (click)="chooseBrandOrType('...',x.name)" >
+    
+            <img [src]="x.logo" class="rounded-circle" style="width: 70px;" /> <br>
+            {{x.name}}
+    
+        </div>
+    
+    </div>
+
+    </div>
+
+    <!-- <h2 class="text-primary"> Find your car </h2>
 <p *ngIf="fill" class="text-primary text-center m-0" > *** {{fill}} *** </p>
     <div class="row align-items-end">
 
@@ -28,20 +64,28 @@
 
         </div>
 
-        <!-- <div class="col-sm-3 form-group mt-3">
-
-            <label class="my-3"> Price Limit <span class="bg-dark p-3 rounded text-light"> GH₵ {{price}} </span> </label>
-
-            <input [value]="price" type="range" [(ngModel)]="price" max="2000" class="form-range" name="">
-
-        </div> -->
-
         <div class="col-sm-2 form-group mt-3 text-center">
 
            <button type="button" class="btn btn-primary p-3" (click)="riderect()" > Find vehicle </button>
 
         </div>
         
-    </div>
+    </div> -->
 
 </div>
+
+<!-- <div class=" bg-secondary p-2">
+
+    <h3 class="m-0" > Choose from various brands </h3>
+    
+    <div class="d-flex text-center align-items-center " style="overflow-x: scroll;  ">
+
+        <div *ngFor="let x of brandData" class="mx-2 rounded brand " style="  flex-shrink: 0;">
+
+            <div>
+
+            <img [src]="x.logo" class="w-100" />
+
+            </div>
+
+</div> -->
