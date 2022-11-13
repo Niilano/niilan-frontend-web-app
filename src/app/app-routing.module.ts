@@ -16,6 +16,10 @@ import { ApprovalsComponent } from './approvals/approvals.component';
 import { Page404Component } from './page404/page404.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { PropertyListingComponent } from './property-listing/property-listing.component';
+import { ControlsComponent } from './Admin/controls/controls.component';
+import { UsersComponent } from './Admin/users/users.component';
+import { ListingsComponent } from './Admin/listings/listings.component';
+import { AdminComponent } from './Admin/admin/admin.component';
 
 const routes: Routes = [
 {path : 'home' , component: LandingpageComponent },
@@ -33,6 +37,15 @@ const routes: Routes = [
 { path: 'manage/:id', component: ManageListingsComponent },
 { path: 'dashboard', component: DashboardComponent,
 children:[
+  {path:'admin',component: AdminComponent,
+children:[
+  {path:'users',component: UsersComponent},
+  {path:'users/:id',component: UsersComponent},
+  {path:'listings',component: ListingsComponent},
+  {path:'',component: ControlsComponent}
+]
+},
+
   {path:'approvals',component: ApprovalsComponent},
   {path:'overview',component: OverviewComponent},
   {path:'list-car',component: ListCarComponent},

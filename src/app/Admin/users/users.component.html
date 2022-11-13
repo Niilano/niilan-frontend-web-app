@@ -1,0 +1,111 @@
+
+<app-dash-header [title]="title"></app-dash-header>
+
+<div class="container mt-3" style="position: relative;" >
+
+    <div class=" text-primary d-flex align-items-center" >
+		<p routerLink="/dashboard/admin" style=" cursor: pointer; " > ADMIN << </p> 
+		<p routerLink="/dashboard/admin/users" style=" cursor: pointer; " > << USERS </p>
+	</div>
+
+    <table class="table table-striped" id="users" >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">User</th>
+            <th scope="col">Role</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let user of allUsers index as i" class="user" style="cursor: pointer;" (click)="redirect(user.id)" >
+            <th scope="row"> {{i+1}} </th>
+            <td style=" text-overflow: ellipsis;   " > {{user.fullName}} </td>
+            <td> {{user.role}} </td>
+            <td> 0{{user.phoneNumber}} </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <div *ngIf="user" id="user">
+
+        <div class="my-3 text-end">
+
+            <button class="btn btn-danger" (click)="showConfirmation(user.id)" > <i class="fa-solid fa-trash"></i> Remove User </button>
+
+        </div>
+
+        <div class="row gx-5 gy-3">
+
+            <div class="col-md-4 col-sm-12">
+                <div class="card m-0 bg-secondary">
+    
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold"> User </h3>
+                        <p class="card-text"> {{user.fullName}} </p>
+                      </div>
+                
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-12">
+                <div class="card m-0 bg-secondary">
+    
+                    <div class="card-body">
+                        <h3 class="card-title">Email </h3>
+                        <p class="card-text"> {{user.email}} </p>
+                      </div>
+                
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-12">
+                <div class="card m-0 bg-secondary">
+    
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Contact </h3>
+                        <p class="card-text"> {{user.phoneNumber}} </p>
+                      </div>
+                
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-12">
+                <div class="card m-0 bg-secondary">
+    
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Role </h3>
+                        <p class="card-text"> {{user.role}} </p>
+                      </div>
+                
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-12">
+                <div class="card m-0 bg-secondary">
+    
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold">Joined on </h3>
+                        <p class="card-text"> {{user.createdAt}} </p>
+                      </div>
+                
+                </div>
+            </div>
+
+        </div>
+
+      </div>
+
+      <div *ngIf="confirmDelete" class=" bg-light fixed-top  text-center shadow-lg p-2">
+
+        <h3> Removing this user will delete all data of this user such as Listed items, requests, e.t.c <br> This action can be risky. Are you sure you want to remove this user. </h3>
+        <button class="mx-2 btn btn-primary" (click)="confirmation(1)" > Yes </button> <button class="btn btn-danger" (click)="confirmation(0)" > No </button> 
+                </div>
+
+                <div *ngIf="sucMsg" class="fixed-top text-light animate__animated animate__zoomIn d-flex justify-content-center " style=" transition: all 2s ease-in-out; font-family: 'Inder'; " > 
+                    <div class="d-flex justify-content-center bg-success rounded p-2 align-items-center" style="width:max-content;"> <i class="fa-solid fa-2x mx-1 fa-circle-check"></i>  {{sucMsg}} </div>
+                  </div>
+
+</div>

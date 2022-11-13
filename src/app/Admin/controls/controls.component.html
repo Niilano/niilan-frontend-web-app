@@ -1,0 +1,44 @@
+
+<app-dash-header [title]="title"></app-dash-header>
+
+<h3 class="user mt-3 container text-center">
+    <i class="fa-solid fa-circle-user fa-4x"></i> <br>
+    Administrator Account <br>
+    {{userName}}
+</h3>
+
+<!-- <div class="container my-3">
+
+    <div class="d-flex justify-content-between" style="cursor: pointer;"  >
+        <p> <i class="fa-solid fa-gear bg-dark rounded-circle p-2 "></i> Account </p>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+
+</div> -->
+
+<div class="hosting container bg-light rounded p-3" style="box-sizing: border-box; border: 2px solid; " >
+
+    <h3> Users </h3>
+
+    <div class="d-flex justify-content-between" style="cursor: pointer;" routerLink="/dashboard/admin/users" >
+        <p> <i class="fa-solid fa-list-check bg-dark rounded-circle p-2 "></i> Manage users </p>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+
+    <div class="d-flex justify-content-between mt-3" style="cursor: pointer;" routerLink="/dashboard/admin/listings" >
+        <p> <i class="fa-solid fa-list-check bg-dark rounded-circle p-2 "></i> Manage Listings </p>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+
+    <div class="d-flex justify-content-between mt-3" style="cursor: pointer;" onclick="alert('Under works')" >
+        <p> <i class="fa-solid fa-list-check bg-dark rounded-circle p-2 "></i> Activities </p>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+    
+</div>
+
+<div class="container mt-4">
+    <button class="btn btn-light w-100 " style=" border: 2px solid; " routerLink="/" onclick="localStorage.clear()" >
+        Log out
+    </button>
+</div>

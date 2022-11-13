@@ -37,6 +37,10 @@ import {CloudinaryModule} from '@cloudinary/ng';
 import { Page404Component } from './page404/page404.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { PropertyListingComponent } from './property-listing/property-listing.component';
+import { ControlsComponent } from './Admin/controls/controls.component';
+import { UsersComponent } from './Admin/users/users.component';
+import { ListingsComponent } from './Admin/listings/listings.component';
+import { AdminComponent } from './Admin/admin/admin.component';
 
 // import { NgbdCarouselPause } from './carousel-pause';
 
@@ -60,7 +64,11 @@ import { PropertyListingComponent } from './property-listing/property-listing.co
     ApprovalsComponent,
     Page404Component,
     ContactusComponent,
-    PropertyListingComponent
+    PropertyListingComponent,
+    ControlsComponent,
+    UsersComponent,
+    ListingsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

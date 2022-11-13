@@ -21,7 +21,7 @@ export class DashboardComponent implements OnDestroy {
     this.user.userInfo().subscribe(
       res=>{
         this.loggedIn = true
-        console.log(res)
+        // console.log(res)
         let result = JSON.parse(JSON.stringify(res))
         this.role = result.role
       },
