@@ -26,6 +26,54 @@ export class ManageListingsComponent implements OnInit {
   //ngModel
   availableDate:any
 
+  confirmDelete = false
+  delListingId:any
+
+  showConfirmation(listingId:any){
+    this.delListingId = listingId
+    this.confirmDelete = true
+  }
+
+  confirmation(confirm:any){
+
+    confirm && ( this.confirmDelete = false, this.removeListing(this.delListingId) )
+
+    !confirm && ( this.confirmDelete = false )
+
+  }
+
+  removeListing(listingId:any){
+
+    this.http.get(`${environment.apiKey}listings/removeListing/${localStorage.getItem('userT')}/${listingId}`).subscribe(
+      res=>{
+
+        this.cars = []
+
+        this.getAllListings()
+        
+        let result = JSON.parse(JSON.stringify(res))
+
+        this.sucMsg = result.msg
+
+        setTimeout(() => {
+
+          this.sucMsg = ""
+
+        }, 3000);
+
+      },
+      err=>{
+        
+        this.errMsg = err.error.msg
+        setTimeout(() => {
+          this.errMsg = ""
+        }, 3000);
+
+      }
+    )
+
+  }
+
   removeImageFromSrc(index:number){
     this.src.splice(index,1)
     // this.imgToForm()
@@ -170,18 +218,7 @@ console.log(this.listCars.getRawValue())
 
   }
 
-  constructor( private user: UsersInfoService, private route : Router, private gRoute : ActivatedRoute, private http : HttpClient, private fb:FormBuilder ) {
-
-    this.user.userInfo().subscribe(
-      res=>{
-        this.loggedIn = true
-      },
-      err=>{
-        // this.err
-        // this.route.navigate(['cars'])
-
-      }
-    )
+  getAllListings(){
 
     this.http.get(`${environment.apiKey}listings/getAllListings/${localStorage.getItem('userT')}`).subscribe(
       res=>{
@@ -204,6 +241,24 @@ console.log(this.listCars.getRawValue())
         this.noListings = "No Vehicles Listed"
       }
     )
+
+  }
+
+  constructor( private user: UsersInfoService, private route : Router, private gRoute : ActivatedRoute, private http : HttpClient, private fb:FormBuilder ) {
+
+    this.user.userInfo().subscribe(
+      res=>{
+        this.loggedIn = true
+        this.getAllListings()
+      },
+      err=>{
+        // this.err
+        // this.route.navigate(['cars'])
+
+      }
+    )
+
+   
 
    }
 

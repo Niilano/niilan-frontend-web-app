@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="col text-danger">
-                    <p style="cursor: pointer;"> <i class="fa-solid fa-trash" ></i> Delete </p>
+                    <p style="cursor: pointer;" (click)="showConfirmation(x.id)"> <i class="fa-solid fa-trash" ></i> Delete </p>
                 </div>
 
         </div>
@@ -240,6 +240,12 @@
         </form>
 
     </div>
+
+    <div *ngIf="confirmDelete" class=" bg-light fixed-top  text-center shadow-lg p-2">
+
+        <h3> This action can be risky. Are you sure you want to remove this vehicle. </h3>
+        <button class="mx-2 btn btn-primary" (click)="confirmation(1)" > Yes </button> <button class="btn btn-danger" (click)="confirmation(0)" > No </button> 
+                </div>
 
 
 
