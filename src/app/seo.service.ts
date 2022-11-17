@@ -15,7 +15,7 @@ export class SeoService {
       { name: 'robots', content: 'index,follow'},
       {name:'author', content: 'Abdul-Latif Mohammed'},
       {name:'twitter:card', content: 'summary_large_image'},
-      {name:'twitter:image', content: 'http://niilan.herokuapp.com/niilan.png'},
+      {name:'twitter:image', content: 'https://niilan.herokuapp.com/niilan.png'},
       {name:'twitter:title', content: 'Niilano, car rentals based in Ghana'},
       {name:'twitter:description', content: 'A car rental website based in Ghana. Niilano helps you get access to different varieties of cars to book for renting.'}
     ])
