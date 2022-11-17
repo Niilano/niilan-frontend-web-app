@@ -82,7 +82,7 @@ export class UsersComponent implements OnInit {
 
           this.user = result.user
 
-          this.user.createdAt = `${new Date(this.user.createdAt).toDateString()} @ ${new Date('2022-10-24T13:16:00.784Z').toLocaleTimeString()}`
+          this.user.createdAt = `${new Date(this.user.createdAt).toDateString()} @ ${new Date(this.user.createdAt).toLocaleTimeString()}`
 
           console.log(this.user)
 

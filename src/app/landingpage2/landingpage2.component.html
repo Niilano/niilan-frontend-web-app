@@ -27,7 +27,7 @@ rent a car </h1> -->
                     <div class="form-group">
                         <label>Select region</label>
                         <small *ngIf="fill" class="text-center text-danger font-weight-bold " > {{fill}}</small>
-                        <input type="text" class="form-control" list="region" [(ngModel)]="region">
+                        <input type="text" class="form-control" list="region" [(ngModel)]="region" autofocus >
                         <datalist id="region"> 
                             <option *ngFor="let x of regions">{{x}} </option>
                         </datalist>

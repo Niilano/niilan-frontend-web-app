@@ -20,5 +20,9 @@ export class AdminService {
 return this.http.get(`${environment.apiKey}admin/users/removeUser${userId}`)
   }
 
+  getListings(){
+    return this.http.get(`${environment.apiKey}admin/listings/allListings`)
+  }
+
   constructor( private http : HttpClient ) { }
 }

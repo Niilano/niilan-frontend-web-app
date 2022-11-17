@@ -1,4 +1,32 @@
 
 <app-dash-header [title]="title"></app-dash-header>
 
-<p>listings works!</p>
+<div class="container mt-3">
+
+    <div class=" text-primary d-flex align-items-center" >
+		<p routerLink="/dashboard/admin" style=" cursor: pointer; " > ADMIN << </p> 
+		<p routerLink="/dashboard/admin/listings" style=" cursor: pointer; " > << LISTINGS </p>
+	</div>
+
+    <table class="table table-striped" id="users" >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Listing</th>
+            <th scope="col">Number Plate</th>
+            <th scope="col">Type</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr class="lists" *ngFor="let lists of listing index as i" style="cursor: pointer;" >
+            <th scope="row"> {{i+1}} </th>
+            <td style=" text-overflow: ellipsis;   " > {{lists.carName}} </td>
+            <td> {{lists.carPlate}} </td>
+            <td> {{lists.bodyStyle}} </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+</div>

@@ -96,6 +96,41 @@
 
         </div>
 
+        <div class="mt-5">
+
+          <h3> Listings by <b class="text-warning"> {{user.fullName}} </b> </h3>
+
+          <table class="table table-striped" id="users" >
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Listing</th>
+                <th scope="col">Number Plate</th>
+                <th scope="col">Type</th>
+              </tr>
+            </thead>
+            <tbody>
+    
+              <tr class="lists" *ngFor="let lists of user.listings index as i" style="cursor: pointer;" >
+                <th scope="row"> {{i+1}} </th>
+                <td style=" text-overflow: ellipsis;   " > {{lists.carName}} </td>
+                <td> {{lists.carPlate}} </td>
+                <td> {{lists.bodyStyle}} </td>
+              </tr>
+
+              <tr *ngIf="user.listings.length < 1" class="lists" style="cursor: pointer;" >
+                <th scope="row"> 1 </th>
+                <td style=" text-overflow: ellipsis;   " > No Listing </td>
+                <td> No Listing </td>
+                <td> No Listing </td>
+              </tr>
+    
+            </tbody>
+          </table>
+
+
+        </div>
+
       </div>
 
       <div *ngIf="confirmDelete" class=" bg-light fixed-top  text-center shadow-lg p-2">
