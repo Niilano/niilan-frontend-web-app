@@ -15,7 +15,7 @@ const fs = require('fs');
 
 const path = require('path');
 
-const template = fs.readFileSync(path.join('.', 'dist/demo-seo/browser', 'index.html')).toString();
+const template = fs.readFileSync(path.join('.', 'dist/niilan/browser', 'index.html')).toString();
 
 const win = domino.createWindow(template);
 
