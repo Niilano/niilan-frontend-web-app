@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import {Cloudinary, CloudinaryImage} from '@cloudinary/url-gen';
 
 @Component({
@@ -21,7 +22,7 @@ export class AppComponent {
 
   files: File[] = [];
 
-  constructor(){
+  constructor(@Inject(PLATFORM_ID) private platformid : object){
 
   }
 
@@ -38,6 +39,9 @@ onRemove(event: File) {
 }
 
   ngAfterViewInit(){
+
+    if(isPlatformBrowser(this.platformid)){
+      
     let preloader = document.getElementById("preloader") as HTMLElement
 
     let content = document.getElementById("content") as HTMLElement
@@ -48,5 +52,7 @@ onRemove(event: File) {
     // },2000)
   
   }
+
+}
 
 }

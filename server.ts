@@ -58,8 +58,4 @@ if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
   run();
 }
 
-const MockBrowser = require('mock-browser').mocks.MockBrowser;
-const mock = new MockBrowser();
-global['window'] = mock.getWindow();
-
 export * from './src/main.server';

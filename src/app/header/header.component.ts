@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { UsersInfoService } from '../users-info.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn:any
 
-  constructor( private users : UsersInfoService ) {
+  constructor( private users : UsersInfoService, @Inject(PLATFORM_ID) private platformid : object ) {
     this.users.userInfo().subscribe(
       res=>{
 
@@ -29,12 +30,16 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    if(isPlatformBrowser(this.platformid)){
+      
     const menu = document.querySelector('.menu-bar p') as HTMLElement
     const logo = document.querySelector('.logo') as HTMLElement
     const header = document.querySelector('header') as HTMLElement
     const mnav = document.querySelectorAll('#m-nav a')
     const nav = document.querySelectorAll('.desktop')
     const navA = document.getElementsByClassName('link-item')
+    
 
 window.addEventListener('scroll', fixNav)
 
@@ -76,6 +81,7 @@ function fixNav() {
 
     }
 }
+    }
   }
 
 }
