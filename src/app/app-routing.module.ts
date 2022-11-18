@@ -22,46 +22,46 @@ import { ListingsComponent } from './Admin/listings/listings.component';
 import { AdminComponent } from './Admin/admin/admin.component';
 
 const routes: Routes = [
-// {path : 'home' , component: Landingpage2Component },
-// {path : 'login' , component : AuthenticateusersComponent },
-// { path : 'register' , component : AuthenticateusersComponent },
+{path : 'home' , component: Landingpage2Component },
+{path : 'login' , component : AuthenticateusersComponent },
+{ path : 'register' , component : AuthenticateusersComponent },
 
-// { path: 'cars', component: CarsComponent},
-// { path: 'cars/details/:carsId', component: CarDetailsComponent},
-// { path: 'cars/region/:region', component: CarsComponent},
-// { path: 'cars/sort/:brand/:type', component: CarsComponent},
-// { path: 'list', component: PropertyListingComponent },
-// { path: 'list/:category', component: PropertyListingComponent },
-// { path: 'list-cars', component: ListCarComponent },
-// { path: 'manage', component: ManageListingsComponent },
-// { path: 'manage/:id', component: ManageListingsComponent },
-// { path: 'dashboard', component: DashboardComponent,
-// children:[
-  // {path:'admin',component: AdminComponent,
-// children:[
-//   {path:'users',component: UsersComponent},
-//   {path:'users/:id',component: UsersComponent},
-//   {path:'listings',component: ListingsComponent},
-//   {path:'',component: ControlsComponent}
-// ]
-// },
+{ path: 'cars', component: CarsComponent},
+{ path: 'cars/details/:carsId', component: CarDetailsComponent},
+{ path: 'cars/region/:region', component: CarsComponent},
+{ path: 'cars/sort/:brand/:type', component: CarsComponent},
+{ path: 'list', component: PropertyListingComponent },
+{ path: 'list/:category', component: PropertyListingComponent },
+{ path: 'list-cars', component: ListCarComponent },
+{ path: 'manage', component: ManageListingsComponent },
+{ path: 'manage/:id', component: ManageListingsComponent },
+{ path: 'dashboard', component: DashboardComponent,
+children:[
+  {path:'admin',component: AdminComponent,
+children:[
+  {path:'users',component: UsersComponent},
+  {path:'users/:id',component: UsersComponent},
+  {path:'listings',component: ListingsComponent},
+  {path:'',component: ControlsComponent}
+]
+},
 
-//   {path:'approvals',component: ApprovalsComponent},
-//   {path:'overview',component: OverviewComponent},
-//   {path:'list-car',component: ListCarComponent},
-//   { path: 'profile', component: ProfileComponent },
-//   { path: 'manage-listings', component: ManageListingsComponent },
-//   { path: 'manage-listings/:id', component: ManageListingsComponent },
-  // {path:'',component: OverviewComponent}
+  {path:'approvals',component: ApprovalsComponent},
+  {path:'overview',component: OverviewComponent},
+  {path:'list-car',component: ListCarComponent},
+  { path: 'profile', component: ProfileComponent },
+  { path: 'manage-listings', component: ManageListingsComponent },
+  { path: 'manage-listings/:id', component: ManageListingsComponent },
+  {path:'',component: OverviewComponent}
 
-// ]
-// },
+]
+},
 
-// {path:'contact-us',component: ContactusComponent},
-// {path:'404',component: Page404Component},
+{path:'contact-us',component: ContactusComponent},
+{path:'404',component: Page404Component},
 
 { path: '' , component: Landingpage2Component },
-// {path:'**',component: Page404Component}
+{path:'**',component: Page404Component}
 // {path : '' , redirectTo: 'home' , pathMatch: 'full' }
 ];
 
