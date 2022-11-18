@@ -37,6 +37,7 @@ export function app(): express.Express {
   return server;
 }
 
+
 function run(): void {
   const port = process.env['PORT'] || 4000;
 
@@ -56,5 +57,9 @@ const moduleFilename = mainModule && mainModule.filename || '';
 if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
   run();
 }
+
+const MockBrowser = require('mock-browser').mocks.MockBrowser;
+const mock = new MockBrowser();
+global['window'] = mock.getWindow();
 
 export * from './src/main.server';
