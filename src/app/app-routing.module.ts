@@ -22,7 +22,7 @@ import { ListingsComponent } from './Admin/listings/listings.component';
 import { AdminComponent } from './Admin/admin/admin.component';
 
 const routes: Routes = [
-{path : 'home' , component: LandingpageComponent },
+{path : 'home' , component: Landingpage2Component },
 {path : 'login' , component : AuthenticateusersComponent },
 { path : 'register' , component : AuthenticateusersComponent },
 
