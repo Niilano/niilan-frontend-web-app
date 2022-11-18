@@ -12,6 +12,11 @@ export class HeaderComponent implements OnInit {
   isLoggedIn:any
 
   constructor( private users : UsersInfoService, @Inject(PLATFORM_ID) private platformid : object ) {
+
+    if(isPlatformBrowser(this.platformid)){
+
+    if(localStorage.getItem('userT')){
+
     this.users.userInfo().subscribe(
       res=>{
 
@@ -27,12 +32,17 @@ export class HeaderComponent implements OnInit {
         this.isLoggedIn = false
       }
     )
+
+    }
+
+  }
+
    }
 
   ngOnInit(): void {
 
     if(isPlatformBrowser(this.platformid)){
-      
+
     const menu = document.querySelector('.menu-bar p') as HTMLElement
     const logo = document.querySelector('.logo') as HTMLElement
     const header = document.querySelector('header') as HTMLElement

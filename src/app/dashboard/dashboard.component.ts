@@ -18,6 +18,7 @@ export class DashboardComponent implements OnDestroy {
 
   constructor(changeDetectorRef: ChangeDetectorRef, private user:UsersInfoService, private route:Router) {
 
+    if(localStorage.getItem('userT')){
     this.user.userInfo().subscribe(
       res=>{
         this.loggedIn = true
@@ -32,6 +33,7 @@ export class DashboardComponent implements OnDestroy {
 
       }
     )
+    }
   }
   ngOnInit(): void {
     throw new Error('Method not implemented.');
