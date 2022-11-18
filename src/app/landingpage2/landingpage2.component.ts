@@ -53,7 +53,7 @@ export class Landingpage2Component implements OnInit {
 
   ngOnInit(): void {
 
-    this.seo.addTag()
+    // this.seo.addTag()
     
   }
 
