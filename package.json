@@ -8,8 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run niilan:serve-ssr",
-    "serve:ssr": "node dist/niilan/server/main.js",
-    "build:ssr": "ng build && ng run niilan:server",
+    "serve:ssr": "PORT=3333 node dist/niilan/server/main.js",
+    "build:ssr": "ng build --configuration development && ng run niilan:server",
+    "build:ssr-prod": "ng build --configuration production && ng run niilan:server",
     "prerender": "ng run niilan:prerender"
   },
   "private": true,

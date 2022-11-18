@@ -1,6 +1,11 @@
 [build]
-  command = "ng build --configuration production && ng run niilan:serverless:production"
+  command = "npm run prerender -- --c production && ng run niilan:serverless:production"
   publish = "dist/niilan/browser"
 
 [[plugins]]
   package = "@netlify/plugin-angular-universal"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
