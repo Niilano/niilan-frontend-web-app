@@ -21,11 +21,25 @@ export class SeoService {
     ])
   }
 
-  // updateSeoTag(title:any){
-  //   this.title.setTitle(title)
+  updateSeoTag(){
 
-  //   this.meta.updateTag([])
-  // }
+    this.meta.updateTag(
+      {name:'twitter:card', content: 'summary_large_image'}
+          )
+
+          this.meta.updateTag(
+            {name:'twitter:title', content: 'Niilano, car rentals based in Ghana'}
+                )
+
+                this.meta.updateTag(
+                  {name:'twitter:image', content: 'https://niilan.herokuapp.com/niilan.png'}
+                      )
+
+                      this.meta.updateTag(
+                        {name:'twitter:description', content: 'A car rental website based in Ghana. Niilano helps you get access to different varieties of cars to book for renting.'}
+                            )
+
+  }
 
   constructor(private title : Title, private meta : Meta) { }
 }
