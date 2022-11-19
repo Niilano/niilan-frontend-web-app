@@ -11,6 +11,7 @@ import { UsersInfoService } from '../users-info.service';
 
 import { environment } from 'src/environments/environment';
 import { CarsService } from '../cars.service';
+import { SeoService } from '../seo.service';
 
 @Component({
   selector: 'app-cars',
@@ -79,7 +80,7 @@ getAllCars(){
 noCarAvailable:any
 popup:any
 
-  constructor( private http : HttpClient, private route: ActivatedRoute, private router: Router, private fb: FormBuilder,  private users : UsersInfoService, private cars : CarsService ) {
+  constructor( private seo : SeoService,  private http : HttpClient, private route: ActivatedRoute, private router: Router, private fb: FormBuilder,  private users : UsersInfoService, private cars : CarsService ) {
 
     // alert(environment)
 
@@ -101,6 +102,8 @@ popup:any
   }
 
   ngOnInit(): void {
+
+    this.seo.addTag()
 
     this.route.paramMap.subscribe(params => {
 
