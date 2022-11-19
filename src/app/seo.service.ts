@@ -32,7 +32,7 @@ export class SeoService {
                 )
 
                 this.meta.updateTag(
-                  {name:'twitter:image', content: 'https://niilan.herokuapp.com/niilan.png'}
+                  {name:'twitter:image', content: 'https://niilan.herokuapp.com/ban.png'}
                       )
 
                       this.meta.updateTag(
