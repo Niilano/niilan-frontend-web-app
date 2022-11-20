@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 // import { FormsModule } from '@angular/forms';
 import { CarsService } from '../cars.service';
 import { SeoService } from '../seo.service';
 // import { SeoService } from '../seo.service';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-landingpage2',
@@ -102,7 +103,7 @@ export class Landingpage2Component implements OnInit {
     this.route.navigateByUrl(`cars/region/${this.region}`)
   }
 
-  constructor( private cars : CarsService, private route : Router, private seo : SeoService ) {
+  constructor( private cars : CarsService, private route : Router, private seo : SeoService, @Inject(PLATFORM_ID) private platformid : object ) {
 
     this.cars.getAllCars().subscribe(
       res=>{
@@ -123,6 +124,8 @@ export class Landingpage2Component implements OnInit {
 
   ngAfterViewInit(){
 
+    if(isPlatformBrowser(this.platformid)){
+
     let scroll = document.getElementById('scroll') as HTMLElement
 
   setInterval(()=>{
@@ -130,6 +133,8 @@ export class Landingpage2Component implements OnInit {
     scroll.scrollBy(1,0);
 
   },100)
+
+}
 
   }
 
