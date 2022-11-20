@@ -24,5 +24,9 @@ return this.http.get(`${environment.apiKey}admin/users/removeUser${userId}`)
     return this.http.get(`${environment.apiKey}admin/listings/allListings`)
   }
 
+  broadcastMessage(data:any){
+    return this.http.post(`${environment.apiKey}admin/message/broadcast`,data)
+  }
+
   constructor( private http : HttpClient ) { }
 }

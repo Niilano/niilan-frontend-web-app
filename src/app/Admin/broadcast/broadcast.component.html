@@ -1,0 +1,72 @@
+<app-dash-header [title]="title"></app-dash-header>
+
+<div class="container mt-3 ">
+
+    <div class="container mt-3" style="position: relative;" >
+
+        <div class=" text-primary d-flex align-items-center" >
+            <p routerLink="/dashboard/admin" style=" cursor: pointer; " > ADMIN << </p> 
+            <p routerLink="/dashboard/admin/broadcast" style=" cursor: pointer; " > << BROADCAST </p>
+        </div>
+
+    <div class=" text-center "  >
+
+        <p> This will send a message to all users </p>
+
+        <h4 class=" font-weight-bold "> How would you like to broadcast? </h4>
+
+        <button class="btn btn-warning d-block mx-auto" routerLink="/dashboard/admin/broadcast/email" > Email </button>
+
+        <button class="btn btn-warning d-block mx-auto mt-3" routerLink="/dashboard/admin/broadcast/sms" > SMS </button>
+
+    </div>
+
+    <form [formGroup]="smsForm" (ngSubmit)="sendSMS()" class="d-none mt-3" id="sms" >
+
+        <h4 class="text-center" > Broadcast your sms message </h4>
+
+        <div class="form-group ">
+            <label> Message body </label>
+            <small class="text-danger" *ngIf="submitted && this.smsV['message'].errors?.['required']"> *** Type your message *** </small>
+            <textarea class="form-control" rows="10" formControlName="message" ></textarea>
+        </div>
+
+        <div class="form-group mt-3 text-center">
+            <button class="btn btn-warning" > Send <i class="fa-solid fa-arrow-right-long"></i> </button>
+        </div>
+
+
+    </form>
+
+    <form [formGroup]="emailForm" (ngSubmit)="sendEmail()" class="d-none mt-3" id="email" >
+
+        <h4 class="text-center" > Broadcast your email message </h4>
+
+        <div class="form-group">
+            <label> Subject </label>
+            <small class="text-danger" *ngIf="submitted && this.emailV['subject'].errors?.['required']"> *** Type your Subject *** </small>
+            <input type="text" class="form-control" formControlName="subject" />
+        </div>
+
+        <div class="form-group mt-3 ">
+            <label> Message body </label>
+            <small class="text-danger" *ngIf="submitted && this.emailV['message'].errors?.['required']"> *** Type your message *** </small>
+            <textarea class="form-control" rows="10" formControlName="message" ></textarea>
+        </div>
+
+        <div class="form-group mt-3 text-center">
+            <button class="btn btn-warning" > Send <i class="fa-solid fa-arrow-right-long"></i> </button>
+        </div>
+
+
+    </form>
+
+</div>
+
+<div *ngIf="success" class="fixed-top d-flex justify-content-center align-items-center" style=" top: 5%;"> 
+    <p class="bg-success rounded p-2 d-flex justify-content-center align-items-center text-light" > <i class="fa-solid fa-circle-check m-2 "></i> {{success}} </p>
+ </div>
+
+<div *ngIf="error" class="fixed-top d-flex justify-content-center align-items-center" style=" top: 5%;"> 
+    <p class="bg-danger rounded p-2 d-flex justify-content-center align-items-center text-light" > <i class="fa-solid fa-circle-exclamation m-2 "> </i> {{error}} </p>
+ </div>
