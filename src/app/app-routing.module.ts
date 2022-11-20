@@ -20,7 +20,7 @@ import { ControlsComponent } from './Admin/controls/controls.component';
 import { UsersComponent } from './Admin/users/users.component';
 import { ListingsComponent } from './Admin/listings/listings.component';
 import { AdminComponent } from './Admin/admin/admin.component';
-import { BroadcastComponent } from './admin/broadcast/broadcast.component';
+import { BroadcastMessageComponent } from './Admin/broadcast-message/broadcast-message.component';
 
 const routes: Routes = [
 {path : 'home' , component: Landingpage2Component },
@@ -43,8 +43,8 @@ children:[
   {path:'users',component: UsersComponent},
   {path:'users/:id',component: UsersComponent},
   {path:'listings',component: ListingsComponent},
-  {path:'broadcast',component: BroadcastComponent},
-  {path:'broadcast/:channel',component: BroadcastComponent},
+  {path:'broadcast',component: BroadcastMessageComponent},
+  {path:'broadcast/:channel',component: BroadcastMessageComponent},
   {path:'',component: ControlsComponent}
 ]
 },

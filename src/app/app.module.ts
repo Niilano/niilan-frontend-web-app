@@ -41,7 +41,8 @@ import { ControlsComponent } from './Admin/controls/controls.component';
 import { UsersComponent } from './Admin/users/users.component';
 import { ListingsComponent } from './Admin/listings/listings.component';
 import { AdminComponent } from './Admin/admin/admin.component';
-import { BroadcastComponent } from './admin/broadcast/broadcast.component';
+
+import { BroadcastMessageComponent } from './Admin/broadcast-message/broadcast-message.component';
 
 // import { NgbdCarouselPause } from './carousel-pause';
 
@@ -70,7 +71,7 @@ import { BroadcastComponent } from './admin/broadcast/broadcast.component';
     UsersComponent,
     ListingsComponent,
     AdminComponent,
-    BroadcastComponent
+    BroadcastMessageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

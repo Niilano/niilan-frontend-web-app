@@ -6,11 +6,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-broadcast',
-  templateUrl: './broadcast.component.html',
-  styleUrls: ['./broadcast.component.scss']
+  selector: 'app-broadcast-message',
+  templateUrl: './broadcast-message.component.html',
+  styleUrls: ['./broadcast-message.component.scss']
 })
-export class BroadcastComponent implements OnInit {
+export class BroadcastMessageComponent implements OnInit {
 
   title = " Broadcast Message "
 
@@ -124,3 +124,20 @@ export class BroadcastComponent implements OnInit {
   }
 
 }
+
+
+// import { Component, OnInit } from '@angular/core';
+
+// @Component({
+//   selector: 'app-broadcast-message',
+//   templateUrl: './broadcast-message.component.html',
+//   styleUrls: ['./broadcast-message.component.scss']
+// })
+// export class BroadcastMessageComponent implements OnInit {
+
+//   constructor() { }
+
+//   ngOnInit(): void {
+//   }
+
+// }
