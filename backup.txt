@@ -1,0 +1,430 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.5 (Ubuntu 14.5-2.pgdg20.04+2)
+-- Dumped by pg_dump version 14.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: heroku_ext; Type: SCHEMA; Schema: -; Owner: uceifiecq4vr64
+--
+
+CREATE SCHEMA heroku_ext;
+
+
+ALTER SCHEMA heroku_ext OWNER TO uceifiecq4vr64;
+
+--
+-- Name: citext; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA heroku_ext;
+
+
+--
+-- Name: EXTENSION citext; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION citext IS 'data type for case-insensitive character strings';
+
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: SequelizeMeta; Type: TABLE; Schema: public; Owner: zkynyudbzthstm
+--
+
+CREATE TABLE public."SequelizeMeta" (
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public."SequelizeMeta" OWNER TO zkynyudbzthstm;
+
+--
+-- Name: comments; Type: TABLE; Schema: public; Owner: zkynyudbzthstm
+--
+
+CREATE TABLE public.comments (
+    id integer NOT NULL,
+    "listingId" integer,
+    comment character varying(255),
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.comments OWNER TO zkynyudbzthstm;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: zkynyudbzthstm
+--
+
+CREATE SEQUENCE public.comments_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.comments_id_seq OWNER TO zkynyudbzthstm;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER SEQUENCE public.comments_id_seq OWNED BY public.comments.id;
+
+
+--
+-- Name: listings; Type: TABLE; Schema: public; Owner: zkynyudbzthstm
+--
+
+CREATE TABLE public.listings (
+    id integer NOT NULL,
+    "userId" integer,
+    "carName" character varying(255) NOT NULL,
+    "carPlate" character varying(255) NOT NULL,
+    "carLocation" character varying(255) NOT NULL,
+    "carRegion" character varying(255) NOT NULL,
+    "noOfSeats" integer NOT NULL,
+    fuel character varying(255) NOT NULL,
+    speed character varying(255) NOT NULL,
+    color character varying(255) NOT NULL,
+    price integer NOT NULL,
+    "carMake" heroku_ext.citext NOT NULL,
+    "bodyStyle" heroku_ext.citext NOT NULL,
+    "carImagesUrl" character varying(2000) NOT NULL,
+    description character varying(3000) NOT NULL,
+    driver character varying(255) NOT NULL,
+    status character varying(255) NOT NULL,
+    "createdAt" character varying(255) NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.listings OWNER TO zkynyudbzthstm;
+
+--
+-- Name: listings_id_seq; Type: SEQUENCE; Schema: public; Owner: zkynyudbzthstm
+--
+
+CREATE SEQUENCE public.listings_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.listings_id_seq OWNER TO zkynyudbzthstm;
+
+--
+-- Name: listings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER SEQUENCE public.listings_id_seq OWNED BY public.listings.id;
+
+
+--
+-- Name: requests; Type: TABLE; Schema: public; Owner: zkynyudbzthstm
+--
+
+CREATE TABLE public.requests (
+    id integer NOT NULL,
+    "hostId" integer NOT NULL,
+    "propertyId" integer NOT NULL,
+    "firstName" character varying(255) NOT NULL,
+    "lastName" character varying(255) NOT NULL,
+    contact character varying(255),
+    email character varying(255),
+    "pickUpDate" character varying(255) NOT NULL,
+    "pickUpTime" character varying(255) NOT NULL,
+    days integer NOT NULL,
+    "locationUSe" character varying(255) NOT NULL,
+    "pLocation" character varying(255) NOT NULL,
+    "dLincense" character varying(255),
+    "dLincenseImage" character varying(255),
+    approved boolean NOT NULL,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.requests OWNER TO zkynyudbzthstm;
+
+--
+-- Name: requests_id_seq; Type: SEQUENCE; Schema: public; Owner: zkynyudbzthstm
+--
+
+CREATE SEQUENCE public.requests_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.requests_id_seq OWNER TO zkynyudbzthstm;
+
+--
+-- Name: requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER SEQUENCE public.requests_id_seq OWNED BY public.requests.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: zkynyudbzthstm
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    "fullName" character varying(255) NOT NULL,
+    email heroku_ext.citext NOT NULL,
+    "phoneNumber" character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    role character varying(255) NOT NULL,
+    "agreedTermsOfService" boolean NOT NULL,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO zkynyudbzthstm;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: zkynyudbzthstm
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO zkynyudbzthstm;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: comments id; Type: DEFAULT; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER TABLE ONLY public.comments ALTER COLUMN id SET DEFAULT nextval('public.comments_id_seq'::regclass);
+
+
+--
+-- Name: listings id; Type: DEFAULT; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER TABLE ONLY public.listings ALTER COLUMN id SET DEFAULT nextval('public.listings_id_seq'::regclass);
+
+
+--
+-- Name: requests id; Type: DEFAULT; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER TABLE ONLY public.requests ALTER COLUMN id SET DEFAULT nextval('public.requests_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: SequelizeMeta; Type: TABLE DATA; Schema: public; Owner: zkynyudbzthstm
+--
+
+COPY public."SequelizeMeta" (name) FROM stdin;
+20220813170027-create-users.js
+20220828122727-create-listings.js
+20220918142622-create-comments.js
+20221015053008-create-requests.js
+\.
+
+
+--
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: zkynyudbzthstm
+--
+
+COPY public.comments (id, "listingId", comment, "createdAt", "updatedAt") FROM stdin;
+\.
+
+
+--
+-- Data for Name: listings; Type: TABLE DATA; Schema: public; Owner: zkynyudbzthstm
+--
+
+COPY public.listings (id, "userId", "carName", "carPlate", "carLocation", "carRegion", "noOfSeats", fuel, speed, color, price, "carMake", "bodyStyle", "carImagesUrl", description, driver, status, "createdAt", "updatedAt") FROM stdin;
+1	1	Toyota Hiace 	GS-7064-21	Madina	Greater Accra Region	15	Petrol	250km/hr	White	800	Toyota	Van	["http://res.cloudinary.com/dpi89fe6z/image/upload/v1666617519/niilan/listings/mc3kjkiflm0x1vg8zrk4.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1666617520/niilan/listings/esh8o1jz3g2bzvtougkw.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1666617520/niilan/listings/zemdfkquihz36j4s8n28.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1666617521/niilan/listings/zoxbhhamlbum5n7flcq2.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1666617521/niilan/listings/gguemex9qyhqnasr5cke.jpg"]	¢800 within Accra\n¢1000 cedis outside Accra.\nCar will come on a full tank and the customer will be responsible for buying the fuel Incase of shortage and also fill the fuel tank after all the rounds have been made.\n1. Comfortable seats\n2. Spacious\n3. A/c available\n4. Music\n5. Seat belts\n	Driver available	Vehicle is available	2022-10-24 13:18:42.159 +00:00	2022-10-26 14:07:26.694+00
+2	1	Toyota Hiace 	GB - 3126 -21	Kpando 	Volta Region	15	Diesel	250km/hr	Cream 	800	Toyota 	Van	["http://res.cloudinary.com/dpi89fe6z/image/upload/v1666874066/niilan/listings/czzhxehjvw9snqj6pngk.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1666874067/niilan/listings/renvu8jq52gibxrrpzi5.jpg"]	Car will come on a full tank and the customer will be responsible for buying the fuel Incase of shortage and also fill the fuel tank after all the rounds have been made.\n1. Comfortable seats\n2. Spacious\n3. A/c available\n4. Music\n5. Seat belts	Driver available	Vehicle is available	2022-10-27 12:34:27.626 +00:00	2022-10-27 12:34:27.626+00
+8	1	Toyota land cruiser 	HM-5312-22	Legon	Greater Accra Region	7	Diesel	200km/hr	Black 	700	Toyota	SUV	["http://res.cloudinary.com/dpi89fe6z/image/upload/v1668375527/niilan/listings/m9xxw0papexiilzor3ta.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668375528/niilan/listings/dmpeshha2frdwtd2kgio.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668375529/niilan/listings/kbxxbmmkmhddwdisx4vl.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668375529/niilan/listings/myee6bqmhakbgpzgjmaq.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668375529/niilan/listings/wzdvykrvnh26unpiizof.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668375530/niilan/listings/h5rjfbostmpjeh3ivtan.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668375530/niilan/listings/ldqdnevsah3mudblpi9h.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668415153/niilan/listings/k4aaiueawkgbp6gl3lqy.jpg"]	Air Condition available, seat belts intact and comfortable seats. Driver comes with a full tank of fuel and clients Will have to re-fill the tank after use. Prices daily within Accra is 700 and outside Accra is 1000gh ( it depends).\n\n	Driver available	Vehicle is available	2022-11-13 21:38:50.951 +00:00	2022-11-14 08:39:14.307+00
+5	1	Toyota Highlander	GE-6996-22	Madina	Greater Accra Region	7	Petrol	140km/hr	White	500	Toyota	SUV	["http://res.cloudinary.com/dpi89fe6z/image/upload/v1668249760/niilan/listings/kvsq3amwdcrhqvz3memm.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668249761/niilan/listings/e4thmwsekx7skl4cnyvi.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668249761/niilan/listings/tvcunm0ebigilyfgafe0.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668251987/niilan/listings/h0uzb8dib4pkocynz2j9.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668415205/niilan/listings/bcwjygdkfwmzeyknoziw.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668415205/niilan/listings/pvxvwvk5s2abewmk21nr.jpg"]	For use outside Accra costs ¢700.00 while usage in Accra costs ¢500.00\nThe car's fuel is filled before rent and the customer is obliged to fill the fuel after use. \n\nThis vehicle comes with \nair-conditioning, \nseat belts,\nAnd Confortable seats. \n	Driver available	Vehicle is available	2022-11-12 10:42:42.720 +00:00	2022-11-14 08:40:06.093+00
+7	1	Nissan Sunny 	GB 6421-21	Madina - Legon	Greater Accra Region	5	Petrol	220	White 	300	Nissan	Sedan	["http://res.cloudinary.com/dpi89fe6z/image/upload/v1668251921/niilan/listings/trhqt0rjpsqhmwi9ho4t.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668251922/niilan/listings/r8qmopsuvsndrht1rauy.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668251923/niilan/listings/xlhc8bhj1vml29nhfpf8.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668251923/niilan/listings/rfyvhrhduv5bmmpqmsi3.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668415326/niilan/listings/rfqswavgqfigmgxszais.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668415327/niilan/listings/elzvza9b5hazf7rl0aq2.jpg"]	Air conditioned, seat belts available and comfortable seats. Fuel is filled by the client. Prices within Accra is 300 and outside Accra is 450gh cedis daily. 	Self driving	Vehicle is available	2022-11-12 11:18:44.321 +00:00	2022-11-14 08:42:07.882+00
+4	1	Hundai H1	GR 3389-22	Trinity Theological Seminary 	Greater Accra Region	11	Diesel	220	Ash	600	Hyundai	Van	["http://res.cloudinary.com/dpi89fe6z/image/upload/v1668249196/niilan/listings/lifto8mori9n4ghkfqgi.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668249198/niilan/listings/akta3j8x6pbseio1xytb.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668249198/niilan/listings/hxhrk8jchdrfntdkwxsu.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668249199/niilan/listings/drylwuvgaq90pey3p3za.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668415274/niilan/listings/cdyzsxvz6qu4aqic2c4w.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668415275/niilan/listings/maojzxbyvjrlnx4q5iuf.jpg"]	Prices within Accra is 600gh, however prices of other regions range between 800 to 1000gh daily\nAir condition available, seat belts, it's seats are comfortable and it is well maintained.	Driver available	Vehicle is available	2022-11-12 10:33:19.406 +00:00	2022-11-14 08:41:15.62+00
+9	8	Samsung Renault	GC 2235-21	Trinity theological serminary Legon	Greater Accra Region	5	Petrol	220	Ash	300	Renault	Sedan	["http://res.cloudinary.com/dpi89fe6z/image/upload/v1668531651/niilan/listings/oydc58p7ljoalcjugqdo.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668531652/niilan/listings/md6mjyma6l47caxeydeo.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668531653/niilan/listings/addrwuip3tyszcdnbnjg.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668531653/niilan/listings/obzfxvboaxrdkeait2gx.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668531654/niilan/listings/ua17lcld644uqprdggsv.jpg"]	Air condition available\nOnly moves within Accra and price is 300 cedis daily\nSeatbelts are in good condition\nBluetooth is also available.	Self driving	Vehicle is available	2022-11-15 17:00:55.201 +00:00	2022-11-15 17:00:55.201+00
+10	9	Toyota Land cruiser V8	GE 4089-22	Madina Accra	Greater Accra Region	7	Diesel	260	Black	1200	Toyota	SUV	["http://res.cloudinary.com/dpi89fe6z/image/upload/v1668602177/niilan/listings/nipyqbfzswwkelyioulw.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668602178/niilan/listings/ksfuh2oowm5iu00al2ah.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668602178/niilan/listings/fb8lometehjb5wq5m2f9.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668602179/niilan/listings/dgsszvtzu2zyuqomzq9i.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668602179/niilan/listings/gnculnssm4n7c2oxuoi2.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668602180/niilan/listings/ydb6e1xb4ut64b4noprs.jpg"]	Air condition available, comfortable and spacious seats, dark screen, Bluetooth available and seatbelts in good condition.\nPrices range within Accra is 1200 cedis daily, outside Accra is 1500 and the Northern region is 1800 and 2000 cedis( it depends).	Driver available	Vehicle is available	2022-11-16 12:36:20.388 +00:00	2022-11-16 12:36:20.388+00
+11	11	Toyota Land Cruiser V8	AB 1986 21	East Legon	Greater Accra Region	7	Diesel	260	Black	1200	Toyota	SUV	["http://res.cloudinary.com/dpi89fe6z/image/upload/v1668605051/niilan/listings/qr3yvqriovdre3k6dup5.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668605053/niilan/listings/k5rxwomw8ha4tufgacpl.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668605054/niilan/listings/jyz028tk7tzluazejd3u.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668605055/niilan/listings/pdlk7faqzl5a02dd21ju.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668605056/niilan/listings/l6sylyaydrzey9rozeei.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668605056/niilan/listings/e79hng9qhva2ika8z5sh.jpg"]	Air Condition available, comfortable seats, seat belts in good condition, free wifi\nPrices outside Accra is 1500 cedis and in the Northern Region 2000. However price for Greater Accra is 1200 cedis 	Driver available	Vehicle is available	2022-11-16 13:24:17.423 +00:00	2022-11-16 13:24:17.423+00
+12	12	Toyota Camry	GT 6895 22	Trinity- legon	Greater Accra Region	5	Petrol	150km/hr	Black	500	Toyota	Sedan	["http://res.cloudinary.com/dpi89fe6z/image/upload/v1668607883/niilan/listings/yjpgf37mhshd8ibea8t7.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668607884/niilan/listings/clnlfhmeppb6blxnbfzb.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668607884/niilan/listings/g6gv9vownbzkowhd8dyb.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668607885/niilan/listings/w8kbmst7jfdmutywcruc.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668607886/niilan/listings/ncajl1zqsxtk5z1wzxxl.jpg"]	Fully air conditioned, comfortable seats, and seat belts are available. Price for self driving in Accra is ¢500, However price for Driver available in Accra is ¢700.  Price outside Accra depends on the distance for both options. 	Self driving	Vehicle is available	2022-11-16 14:11:27.259 +00:00	2022-11-16 14:11:27.259+00
+13	9	TOYOTA HIACE	GT 6178-22	Trinity Legon	Greater Accra Region	15	Diesel	180	Ash	800	Toyota	Van	["http://res.cloudinary.com/dpi89fe6z/image/upload/v1668608667/niilan/listings/uj6wg2oa7xk0zhoirelz.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668608668/niilan/listings/ttr5zceyaxh5nnadnitq.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668608668/niilan/listings/uvx8kdwyfumm5whq3dtb.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668608669/niilan/listings/fpkf95a99udozgng6rbk.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668608670/niilan/listings/mwhvgtdg1peijcbzzhwd.jpg","http://res.cloudinary.com/dpi89fe6z/image/upload/v1668608670/niilan/listings/jovx4f4neinxalnvn8yk.jpg"]	Fully air conditioned, wifi available, spacious and comfortable seats. Seat belts are also in good condition.\nPrices within Accra is 800 cedis, kumasi 1200, Cape Coast 1000, Takoradi 1200, Northern region 1700. It can move around the entire country.	Driver available	Vehicle is available	2022-11-16 14:24:31.123 +00:00	2022-11-16 14:24:31.123+00
+\.
+
+
+--
+-- Data for Name: requests; Type: TABLE DATA; Schema: public; Owner: zkynyudbzthstm
+--
+
+COPY public.requests (id, "hostId", "propertyId", "firstName", "lastName", contact, email, "pickUpDate", "pickUpTime", days, "locationUSe", "pLocation", "dLincense", "dLincenseImage", approved, "createdAt", "updatedAt") FROM stdin;
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: zkynyudbzthstm
+--
+
+COPY public.users (id, "fullName", email, "phoneNumber", password, role, "agreedTermsOfService", "createdAt", "updatedAt") FROM stdin;
+2	Williams Nyanteh	williamsnyanteh2@gmail.com	245828272	$2b$10$GfitCW4orwqF3eWjSxsdeuWHZlkIWfXaaU/nkV3sshmR9wOrmnM6a	host	t	2022-10-27 13:32:54.174+00	2022-10-27 13:32:54.174+00
+3	Collins Ogheneovo College 	collegecollins7@gmail.com	257280149	$2b$10$Na3kJ4Grb5F9ww9GCSYEIeAVfUHTaEWT.i.hJyIOGsvNuNd.kRrsm	host	t	2022-11-10 11:54:00.899+00	2022-11-10 11:54:00.899+00
+1	Alfred Lawson 	alfredlawson20@gmail.com	540202325	$2b$10$KrDL35eyvgnPppI/PZWhDu.LEDbiiBaZYzFyPMEN.x1PR78LNlRku	admin	t	2022-10-24 13:16:00.784+00	2022-10-24 13:16:00.784+00
+6	Kwadwo Osei Bonsu	oseibonsukwadwo18@gmail.com	556197027	$2b$10$MTecLKk583dJhSOmepKzd.lPSZ1DRaPSn31N7ieCRTtaT17C/hUX.	host	t	2022-11-14 07:59:00.47+00	2022-11-14 07:59:00.47+00
+8	Frank Agyapong	jnrnatix@gmail.com	244378718	$2b$10$eEFOQOtyZK1se4tuFJv4EuPPakqbwfSwwT1BZC5TUy1HW19D6t7Dm	host	t	2022-11-15 16:43:45.521+00	2022-11-15 16:43:45.521+00
+9	Lawson Naa Lamiley Sally	sallylawson20@gmail.com	548353664	$2b$10$Xo.QhDciDplsxdiNQWUB3OY8Go8o.KDacpJkLMnteUWxYqzhvCZZa	host	t	2022-11-16 11:34:49.537+00	2022-11-16 11:34:49.537+00
+10	Obekusu Emmanuel Evame 	obekusuemmanuelperez@gmail.com	549441767	$2b$10$riuwy9SA.ZR4FGueioRXA.MhzYE.wOiAMtFR7co5/2KlKQklMPv7m	host	t	2022-11-16 12:03:07.499+00	2022-11-16 12:03:07.499+00
+11	Daniel 	skrilla47@gmail.com	244883567	$2b$10$q8aXkBnx89Puuf5Viiv0JuiUiSUY1SxWQfdOiVCnz4N39eH5R/qgK	host	t	2022-11-16 13:01:15+00	2022-11-16 13:01:15+00
+12	Prince basoah	pbasoah31@gmail.com	555122162	$2b$10$4oBAB3tqcoDi96KKRHddiun03cIXd.nQSeKaHt5orSoOxjq9U8O9G	host	t	2022-11-16 13:50:38.531+00	2022-11-16 13:50:38.531+00
+\.
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zkynyudbzthstm
+--
+
+SELECT pg_catalog.setval('public.comments_id_seq', 1, false);
+
+
+--
+-- Name: listings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zkynyudbzthstm
+--
+
+SELECT pg_catalog.setval('public.listings_id_seq', 13, true);
+
+
+--
+-- Name: requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zkynyudbzthstm
+--
+
+SELECT pg_catalog.setval('public.requests_id_seq', 1, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zkynyudbzthstm
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 12, true);
+
+
+--
+-- Name: SequelizeMeta SequelizeMeta_pkey; Type: CONSTRAINT; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER TABLE ONLY public."SequelizeMeta"
+    ADD CONSTRAINT "SequelizeMeta_pkey" PRIMARY KEY (name);
+
+
+--
+-- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: listings listings_pkey; Type: CONSTRAINT; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER TABLE ONLY public.listings
+    ADD CONSTRAINT listings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: requests requests_pkey; Type: CONSTRAINT; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER TABLE ONLY public.requests
+    ADD CONSTRAINT requests_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_email_key UNIQUE (email);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: zkynyudbzthstm
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: SCHEMA heroku_ext; Type: ACL; Schema: -; Owner: uceifiecq4vr64
+--
+
+GRANT USAGE ON SCHEMA heroku_ext TO zkynyudbzthstm;
+
+
+--
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: zkynyudbzthstm
+--
+
+REVOKE ALL ON SCHEMA public FROM postgres;
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+GRANT ALL ON SCHEMA public TO zkynyudbzthstm;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- Name: LANGUAGE plpgsql; Type: ACL; Schema: -; Owner: postgres
+--
+
+GRANT ALL ON LANGUAGE plpgsql TO zkynyudbzthstm;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

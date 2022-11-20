@@ -147,48 +147,22 @@ rent a car </h1> -->
         </div>
 
 
-        <div class="container my-5 bg-light rounded py-3  p-0" style="font-family: 'Inder">
+        <div class="container testimonials my-5 bg-light rounded py-3  p-0" style="font-family: 'Inder'; background-image: url(../../assets/road.jpg); background-size : cover; background-position: center; z-index: 0; position: relative; ">
 
             <p class="text-center text-warning font-weight-bolder m-0"> TESTIMONIALS </p>
     
-            <h1 class="text-center"> From clients </h1>
+            <h3 class="text-center text-light font-weight-bold m-0" >What our clients say about our services </h3>
     
-            <div class=" m-0 g-5 row ">
+            <div id="scroll" class=" m-0 g-5 row flex-row flex-nowrap" style="overflow-x : scroll;" >
     
-                <div class="col-md-4">
+                <div *ngFor="let feedback of testimonials" class="col-md-4">
     
-                    <div class="card text-light bg-dark text-center border border-0 shadow-lg ">
+                    <div class="card text-light text-center border border-0 shadow-lg " style="background-color: transparent;" >
                         <div class="card-title">
-                           <h3 class="m-0"> Abdul from Accra,Ghana </h3>
+                           <h3 class="m-0 text-warning font-weight-bold" > {{feedback.name}} <br> from {{feedback.from}} </h3>
                         </div>
                         <div class="card-body">
-                            <p> I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano. </p>
-                        </div>
-                    </div>
-    
-                </div>
-    
-                <div class="col-md-4">
-    
-                    <div class="card text-light bg-dark text-center border border-0 shadow-lg ">
-                        <div class="card-title">
-                           <h3 class="m-0"> Abdul from Accra,Ghana </h3>
-                        </div>
-                        <div class="card-body">
-                            <p> I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano. </p>
-                        </div>
-                    </div>
-    
-                </div>
-    
-                <div class="col-md-4 ">
-    
-                    <div class="card text-light bg-dark text-center border border-0 shadow-lg ">
-                        <div class="card-title">
-                           <h3 class="m-0"> Abdul from Accra,Ghana </h3>
-                        </div>
-                        <div class="card-body">
-                            <p> I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano. </p>
+                            <p> {{feedback.feedback}} </p>
                         </div>
                     </div>
     

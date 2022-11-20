@@ -54,6 +54,17 @@ div.work-flow::before{
     opacity: .6;
 }
 
+.testimonials::before{
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.596);
+    top: 0%;
+    left: 0%;
+    z-index: -1;
+}
+
 @media(max-width: 990px){
 
     .show{

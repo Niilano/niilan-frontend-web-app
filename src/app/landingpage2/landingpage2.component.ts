@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 // import { FormsModule } from '@angular/forms';
 import { CarsService } from '../cars.service';
 import { SeoService } from '../seo.service';
 // import { SeoService } from '../seo.service';
+import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-landingpage2',
@@ -11,6 +12,36 @@ import { SeoService } from '../seo.service';
   styleUrls: ['./landingpage2.component.scss']
 })
 export class Landingpage2Component implements OnInit {
+
+  @ViewChild('carousel', { static: true })  carousel!: NgbCarousel;
+
+  paused = true;
+  unpauseOnArrow = false;
+  pauseOnIndicator = false;
+  pauseOnHover = true;
+  pauseOnFocus = true;
+
+  
+  togglePaused() {
+    if (this.paused) {
+      this.carousel.cycle();
+    } else {
+      this.carousel.pause();
+    }
+    this.paused = !this.paused;
+  }
+
+  onSlide(slideEvent: NgbSlideEvent) {
+    if (this.unpauseOnArrow && slideEvent.paused &&
+      (slideEvent.source === NgbSlideEventSource.ARROW_LEFT || slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)) {
+      this.togglePaused();
+    }
+    if (this.pauseOnIndicator && !slideEvent.paused && slideEvent.source === NgbSlideEventSource.INDICATOR) {
+      this.togglePaused();
+    }
+  }
+
+  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
   p: number = 1;
 
@@ -24,6 +55,39 @@ export class Landingpage2Component implements OnInit {
   price = 100
 
   cars1:any
+
+  testimonials = [
+    {
+      name : 'Abdul',
+      from : 'Accra, Ghana',
+      feedback : 'I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano.'
+    },
+    {
+      name : 'Abdul',
+      from : 'Accra, Ghana',
+      feedback : 'I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano.'
+    },
+    {
+      name : 'Abdul',
+      from : 'Accra, Ghana',
+      feedback : 'I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano.'
+    },
+    {
+      name : 'Abdul',
+      from : 'Accra, Ghana',
+      feedback : 'I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano.'
+    },
+    {
+      name : 'Abdul',
+      from : 'Accra, Ghana',
+      feedback : 'I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano.'
+    },
+    {
+      name : 'Abdul',
+      from : 'Accra, Ghana',
+      feedback : 'I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano.'
+    }
+  ]
 
   moreCars = ()=>{
     this.route.navigateByUrl('cars#cars')
@@ -55,6 +119,18 @@ export class Landingpage2Component implements OnInit {
 
     this.seo.updateSeoTag()
     
+  }
+
+  ngAfterViewInit(){
+
+    let scroll = document.getElementById('scroll') as HTMLElement
+
+  setInterval(()=>{
+
+    scroll.scrollBy(1,0);
+
+  },100)
+
   }
 
 }
