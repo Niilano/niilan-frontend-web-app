@@ -64,29 +64,29 @@ export class Landingpage2Component implements OnInit {
       feedback : 'I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano.'
     },
     {
-      name : 'Abdul',
-      from : 'Accra, Ghana',
-      feedback : 'I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano.'
+      name : 'Kwadwo Owusu',
+      from : 'Tema, Ghana',
+      feedback : ' We needed a van for our tour to kakum national park and Elmina castle. we spent two days and niilano.com provided us with our choice of booking with a driver. very grateful niilano 🙏 . '
     },
     {
-      name : 'Abdul',
-      from : 'Accra, Ghana',
-      feedback : 'I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano.'
+      name : 'Asiamah Junior',
+      from : 'Mankessim, Ghana',
+      feedback : "I am already into the rental business and i had done many research on how to expand my business, god being sooo good i had find niilano.com and explored a little bit, i listed two of my cars over there since it was free and within this month i've had a foreign visitor book my car for one week generating Gh5000 revenue for me this month "
     },
     {
-      name : 'Abdul',
-      from : 'Accra, Ghana',
-      feedback : 'I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano.'
+      name : 'Micheal Morone',
+      from : 'Bangalore, India',
+      feedback : "Am micheal, a researcher currently based in india, i will be in Ghana for the first time on a project with my team next month, we simply need a van with a driver to make a few travels in Ghana, i have already booked a van with niilano.com after a few research on the internet and i am impressed how simple and effective the process was, i will back here to provide relevant feedback after we've being served by niilano.com.  "
     },
     {
-      name : 'Abdul',
+      name : 'Abena',
       from : 'Accra, Ghana',
-      feedback : 'I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano.'
+      feedback : 'My husband and I wanted a well maintained vehicle with a driver for our wedding. we actually got what we wanted from niilano.com by simply booking for our choice of vehicle.'
     },
     {
-      name : 'Abdul',
+      name : 'William Tetteh',
       from : 'Accra, Ghana',
-      feedback : 'I booked a car when returning home from the states during July, I was suprised the kind of service Niilano.com provided me, I provided my pickup date and made a full payment, a day before my arrival i received a call asking me of my plans for pickup the next day. On my arrival at the airport my vehicle was right there waiting for me. Thank you niilano.'
+      feedback : 'Am a host here on niilano.com, i have being a member over two months and i get an income of nearly Gh3000 from renting my vehicle on niilano with a liitle commision.'
     }
   ]
 
