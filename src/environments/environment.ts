@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiKey: 'http://localhost:4000/',
-  // apiKey: 'https://niilan.herokuapp.com/',
+  // apiKey: 'https://niilano.up.railway.app/',
   token : ''
 };
 
