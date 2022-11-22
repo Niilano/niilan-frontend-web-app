@@ -34,6 +34,10 @@ export class DashboardComponent implements OnDestroy {
       }
     )
     }
+    else{
+      alert("Please login to access this page")
+      this.route.navigate(['login'])
+    }
   }
   ngOnInit(): void {
     throw new Error('Method not implemented.');
