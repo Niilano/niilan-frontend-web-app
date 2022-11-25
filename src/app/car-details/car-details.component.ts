@@ -127,17 +127,34 @@ rent(){
 
   driving:any
 
-  files: File[] = [];
+ // ngx-dropzone logic used here for uploading of lincense image
 
-onSelect(event: { addedFiles: any; }) {
-  console.log(event);
-  this.files.push(...event.addedFiles);
-}
+ file: File[] = [] ;
 
-onRemove(event: File) {
-  console.log(event);
-  this.files.splice(this.files.indexOf(event), 1);
-}
+ onSelect(event:any) {
+   this.file.splice(0);
+   
+   this.file.push(...event.addedFiles);
+
+   this.fileToBase64(this.file)
+
+ }
+
+ fileToBase64(file: File[]){
+
+   const reader = new FileReader();
+
+   reader.readAsDataURL(file[0]);
+
+   reader.onload=(_event)=>{
+         this.request.controls['dLincenseImage'].setValue(reader.result)
+       }
+
+ }
+
+ onRemove() {
+   this.file.splice(0);
+ }
 
 
   constructor(  private route: ActivatedRoute, private changeRoute : Router, private http : HttpClient, private cars : CarsService, private fb : FormBuilder ) {  }

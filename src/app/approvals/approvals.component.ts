@@ -81,6 +81,10 @@ export class ApprovalsComponent implements OnInit {
 
   }
 
+  viewLincense(img:any){
+    window.open(img, '_blank')
+  }
+
   constructor( private cars : CarsService, private http : HttpClient ) { }
 
   ngOnInit(): void {

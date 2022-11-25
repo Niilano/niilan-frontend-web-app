@@ -1,3 +1,16 @@
 table{
     width: 100%;
 }
+
+.lincenseImg{
+    width: 50% !important;
+    margin: auto;
+}
+
+@media(max-width:500px){
+
+    .lincenseImg{
+        width: 100% !important;
+    }
+    
+}

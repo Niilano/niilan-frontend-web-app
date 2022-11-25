@@ -156,18 +156,7 @@
                 <small> So we can arrange your pickup </small>
             </div>
 
-            <!-- <div class="row">
-              <label class="my-3 font-weight-bolder"> When are you returning the car? </label>
-              <div class="col">
-              <input type="date" class="form-control " value="2022-10-02" >
-          </div>
-
-          <div class="col">
-              <input type="time" value="08:00" class="form-control ">
-              </div>
-
-              <small> Must match duration of rental </small>
-          </div> -->
+           
 
             <div class="form-group mt-3">
               <label> How many days do you need the car? </label>
@@ -189,26 +178,7 @@
                 <input type="text" class="form-control " formControlName="pLocation" >
             </div>
 
-            <!-- <div class="col">
-                <label class="mt-3 font-weight-bolder"> DropOff Location </label>
-                <input type="text"  class="form-control " formControlName="dLocation" >
-                </div> -->
-
             </div>
-
-            <!-- <div class="row container ">
-
-            <div class="form-check col">
-                <input class="form-check-input" type="radio" id="check1" name="option1"  checked>
-                <label class="form-check-label">With Driver</label>
-              </div>
-
-              <div class="form-check col">
-                <input class="form-check-input" type="radio" id="check1" name="option1"  >
-                <label class="form-check-label" #a >Without Driver</label>
-              </div>
-
-              </div> -->
 
               <div class="form-group" *ngIf="driving" >
                   ' Vehicle comes with driver, continue to submit your request '
@@ -223,21 +193,23 @@
                 <input class="form-control" type="text" formControlName="dLincense">
               </div>
 
-              <div class="form-group mt-3" *ngIf="!driving">
-                <p class="m-0 mb-2"> Upload an image of your driving license </p>
-                <ngx-dropzone (change)="onSelect($event)">
-                  <ngx-dropzone-label>Upload image</ngx-dropzone-label>
-                  <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                    <ngx-dropzone-label class="bg-dark">{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-                  </ngx-dropzone-preview>
-                </ngx-dropzone>
-            
-                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
-                  <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              <div class="form-group custom-dropzone mt-3" *ngIf="!driving" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+                <!-- <p class="m-0 mb-2"> Upload an image of your driving license </p> -->
+	
+                  <ngx-dropzone-label>
+                    <div class="bg-dark p-2 rounded" >
+                      <i class="fa-solid fa-circle-plus fa-2x"></i> <br>
+                       click to select your image <br>
+                      or <br>
+                      <span class="text-success"> drag here </span>
+                    </div>
+                  </ngx-dropzone-label>
+                  
+                  <ngx-dropzone-image-preview class="w-100" ngProjectAs="ngx-dropzone-preview" *ngFor="let f of file" [file]="f" [removable]="true" (removed)="onRemove()">
+                    <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
                   </ngx-dropzone-image-preview>
-            
-                <!-- <div class=" border-primary border-5 text-dark rounded p-3 d-flex align-items-center justify-content-center" style="height: 300px; border-style: dashed !important;"> <label for="license" class="bg-dark rounded text-light p-3"> <i class="fa-solid fa-plus"></i> Upload image </label> </div>
-                <input class="form-control d-none" type="file" id="license" > -->
+
+                
               </div>
 
               <div class="row">

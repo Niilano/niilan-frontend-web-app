@@ -43,7 +43,7 @@
 
             </div>
 
-            <div class="bg-dark rounded p-1 collapse" [id]="'x'+y.id" >
+            <div class="bg-dark rounded p-1 pb-3 collapse" [id]="'x'+y.id" >
               
               <div class="row text-center">
 
@@ -85,6 +85,17 @@
 
                 <div class="col-6 mt-3">
                   Email : {{y.email}}
+                </div>
+
+                <div *ngIf="x.driver==='Self driving'" class="col-12 mt-3">
+                  <div class="card" style=" background-color: transparent; " >
+                    <img class="card-img-top lincenseImg rounded" (click)="viewLincense(y.dLincenseImage)" [src]="y.dLincenseImage" style=" cursor: pointer; " />
+                    <div class="card-body">
+                      <h3 class="card-title m-0 text-center w-100 "> Diving lincense </h3>
+                      <p *ngIf="y.dLincense" class="card-text text-center" > {{y.dLincense}} </p>
+                      <p *ngIf="!y.dLincense" class="card-text text-center" > No lincense uploaded </p>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="col-6 mt-3">
