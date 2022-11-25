@@ -21,11 +21,13 @@ import { UsersComponent } from './Admin/users/users.component';
 import { ListingsComponent } from './Admin/listings/listings.component';
 import { AdminComponent } from './Admin/admin/admin.component';
 import { BroadcastMessageComponent } from './Admin/broadcast-message/broadcast-message.component';
+import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
 {path : 'home' , component: Landingpage2Component },
 {path : 'login' , component : AuthenticateusersComponent },
 { path : 'register' , component : AuthenticateusersComponent },
+{ path : 'terms-of-service' , component : TermsComponent },
 
 { path: 'cars', component: CarsComponent},
 { path: 'cars/details/:carsId', component: CarDetailsComponent},

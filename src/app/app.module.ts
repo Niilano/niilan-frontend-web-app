@@ -43,6 +43,7 @@ import { ListingsComponent } from './Admin/listings/listings.component';
 import { AdminComponent } from './Admin/admin/admin.component';
 
 import { BroadcastMessageComponent } from './Admin/broadcast-message/broadcast-message.component';
+import { TermsComponent } from './terms/terms.component';
 
 // import { NgbdCarouselPause } from './carousel-pause';
 
@@ -71,7 +72,8 @@ import { BroadcastMessageComponent } from './Admin/broadcast-message/broadcast-m
     UsersComponent,
     ListingsComponent,
     AdminComponent,
-    BroadcastMessageComponent
+    BroadcastMessageComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
