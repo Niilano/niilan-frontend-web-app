@@ -22,19 +22,13 @@ export class CarDetailsComponent implements OnInit {
   opp:any
 
   request = this.fb.group({
-    hostId : [''],
-    propertyId : [''],
-    email : ['',[Validators.email]],
-    contact : ['',Validators.required],
-    firstName : ['',Validators.required],
-    lastName : ['',Validators.required],
-    pickUpDate : ['',Validators.required],
-    pickUpTime : ['',Validators.required],
-    days : ['',Validators.required],
-    locationUSe : ['',Validators.required],
-    pLocation : ['',Validators.required],
-    dLincense : [''],
-    dLincenseImage : ['']
+    hostid : [''],
+    itemid : [''],
+    token : [''],
+    bookingdate : [''],
+    pickuplocation: [''],
+    dropofflocation : [''],
+    days : ['',Validators.required]
 })
 
 get requestsControls(){
@@ -49,7 +43,7 @@ con = true
 rent(){
   this.submitted = true
 
-  if(this.request.getRawValue().email=="" && this.request.getRawValue().contact=="") return
+  // if(this.request.getRawValue().email=="" && this.request.getRawValue().contact=="") return
   if(this.request.invalid) return
 
   this.loading = true

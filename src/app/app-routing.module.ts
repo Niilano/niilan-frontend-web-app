@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { LandingpageComponent } from './landingpage/landingpage.component';
 import { AuthenticateusersComponent } from './authenticateusers/authenticateusers.component';
 import { CarsComponent } from './cars/cars.component';
 import { CarDetailsComponent } from './car-details/car-details.component';

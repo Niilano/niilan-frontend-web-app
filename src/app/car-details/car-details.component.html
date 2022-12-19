@@ -104,17 +104,16 @@
 
         <form [formGroup]="request" (ngSubmit)="rent()" class="bg-warning rounded p-3" >
 
-          <h2 class="m-0"> Client details </h2>
+          <!-- <h2 class="m-0"> Client details </h2> -->
 
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label> Provide your email address <span class="bg-primary p-2 rounded"> Optional </span> </label>
-            <!-- <small class="text-danger font-weight-bold" *ngIf="submitted && this.requestsControls['email'].errors?.['required']" > Please provide your mail. </small> -->
+           
             <small class="text-danger font-weight-bold" *ngIf="submitted && this.requestsControls['email'].errors?.['email']" > Please provide a valid email address. </small>
             <input type="text" class="form-control" formControlName="email" [(ngModel)]="email" >
             <small> So we can send your confirmation message </small>
           </div>
 
-          <!-- <h1 class="text-center m-0"> OR </h1> -->
 
           <div class="form-group">
             <label> Provide your contact number </label>
@@ -128,20 +127,17 @@
             <small class="text-danger font-weight-bold" *ngIf="submitted && this.requestsControls['firstName'].errors?.['required']" > This field is required. </small> 
             <input type="text" class="form-control" formControlName="firstName">
           </div>
+        -->
 
           <div class="form-group">
-            <label> Last Name </label>
-            <small class="text-danger font-weight-bold" *ngIf="submitted && this.requestsControls['lastName'].errors?.['required']" > This field is required. </small>
-            <input type="text" class="form-control" formControlName="lastName" >
+            <label> Booking Date - ( When do you need the car? )</label>
+            <small class="text-danger font-weight-bold" *ngIf="submitted && this.requestsControls['bookingdate'].errors?.['required']" > This field is required. </small>
+            <input type="date" class="form-control" formControlName="bookingdate" >
+            <small> We will arrange your pickup </small>
           </div>
 
-          <!-- <div class="form-group">
-            <label> Where do you live? </label>
-            <input type="text" class="form-control">
-          </div> -->
-
-            <div class="row">
-                <label class="my-3 font-weight-bolder"> When do you need the car? </label>
+            <!-- <div class="row">
+                <label class="my-3 font-weight-bolder"> Booking Date </label>
                 
                 <div class="col">
                   <small class="text-danger font-weight-bold" *ngIf="submitted && this.requestsControls['pickUpDate'].errors?.['required']" > This field is required. </small>
@@ -154,7 +150,7 @@
                 </div>
 
                 <small> So we can arrange your pickup </small>
-            </div>
+            </div> -->
 
            
 
@@ -165,12 +161,18 @@
             </div>
 
             <div class="form-group">
-              <label> Location use of car? </label>
-              <small class="text-danger font-weight-bold" *ngIf="submitted && this.requestsControls['locationUSe'].errors?.['required']" > This field is required. </small>
-              <input type="text" class="form-control" formControlName="locationUSe" >
+              <label> Pickup Location - ( Where do you want to pick this vehicle ) </label>
+              <small class="text-danger font-weight-bold" *ngIf="submitted && this.requestsControls['pickuplocation'].errors?.['required']" > This field is required. </small>
+              <input type="text" class="form-control" formControlName="pickuplocation" >
             </div>
 
-            <div class="row my-3">
+            <div class="form-group">
+              <label> Drop-off Location - ( Where do you want to drop this vehicle after use ) </label>
+              <small class="text-danger font-weight-bold" *ngIf="submitted && this.requestsControls['dropofflocation'].errors?.['required']" > This field is required. </small>
+              <input type="text" class="form-control" formControlName="dropofflocation" >
+            </div>
+
+            <!-- <div class="row my-3">
 
                 <div class="col-12">
                     <label class="mt-3 font-weight-bolder"> Pickup Location </label>
@@ -178,9 +180,9 @@
                 <input type="text" class="form-control " formControlName="pLocation" >
             </div>
 
-            </div>
+            </div> -->
 
-              <div class="form-group" *ngIf="driving" >
+              <!-- <div class="form-group" *ngIf="driving" >
                   ' Vehicle comes with driver, continue to submit your request '
               </div>
 
@@ -207,11 +209,11 @@
                   </ngx-dropzone-label>
                   
                   <ngx-dropzone-image-preview class="w-100" ngProjectAs="ngx-dropzone-preview" *ngFor="let f of file" [file]="f" [removable]="true" (removed)="onRemove()">
-                    <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
                   </ngx-dropzone-image-preview>
 
                 
-              </div>
+              </div> -->
 
               <div class="row">
 
