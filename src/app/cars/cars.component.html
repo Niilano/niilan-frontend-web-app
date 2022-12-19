@@ -18,9 +18,9 @@
 
 <app-sort></app-sort>
 
-<div class="text-center bg-light border-bottom border-3 mt-2" *ngIf="cars1">
+<!-- <div class="text-center bg-light border-bottom border-3 mt-2" *ngIf="cars1">
 	<pagination-controls (pageChange)="p = $event"></pagination-controls>
-	</div>
+	</div> -->
 
 <div class="mt-3 container" id="cars">
 
@@ -36,7 +36,9 @@
 
 		<div class="lists row m-0 p-0 " >
 
-	<div [routerLink]="['/cars/details', x.id ]" class="col-lg-3 col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of cars1 | paginate: { itemsPerPage: 12, currentPage: p } index as carsId " style="cursor: pointer;" >
+	<!-- <div [routerLink]="['/cars/details', x.id ]" class="col-lg-3 col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of cars1 | paginate: { itemsPerPage: 12, currentPage: p } index as carsId " style="cursor: pointer;" > -->
+
+		<div [routerLink]="['/cars/details', x.id ]" class="col-lg-3 col-md-4 m-0 p-1 mt-3 car" *ngFor=" let x of cars1 index as carsId " style="cursor: pointer;" >
 
 		<div class="card"  >
 
@@ -78,9 +80,9 @@
 
 </div>
 
-<div class="text-center bg-light border-bottom border-3 mb-5 pb-5" *ngIf="cars1">
+<!-- <div class="text-center bg-light border-bottom border-3 mb-5 pb-5" *ngIf="cars1">
 	<pagination-controls (pageChange)="p = $event"></pagination-controls>
-	</div>
+	</div> -->
 
 	<div class="mb-5 text-light">f</div>
 
